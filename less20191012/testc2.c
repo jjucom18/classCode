@@ -4,7 +4,7 @@
 #include <string.h>
 #include <stdlib.h>
 
-typedef struct {
+typedef struct _stu{
 	char *name;
 	bool sex; 
 	int *age;
