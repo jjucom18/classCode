@@ -22,8 +22,8 @@ typedef struct _linkedList{
 	Node *current;
 } LinkedList;
 
-Student initStu(char *name, int age, double record);
-void outStu(Student stu);
+Student *initStu(char *name, int age, double record);
+void outStu(Student *stu);
 void initList(LinkedList *);
 void addHead(LinkedList *, void *);
 void addTail(LinkedList *, void *);

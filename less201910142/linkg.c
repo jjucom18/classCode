@@ -1,17 +1,18 @@
 #include "linkg.h"
 
 
-Student initStu(char *name, int age, double record){
-	Student *str = (Student *)malloc(sizeof(Student));
-	strcpy(str->name, name);
-	str->age = age;
-	str->record = record;
+Student* initStu(char *name, int age, double record){
+	Student *stu = (Student *)malloc(sizeof(Student));
+	stu->name = (char *)malloc(sizeof(char) * 30);
+	strcpy(stu->name, name);
+	stu->age = age;
+	stu->record = record;
 
-	return *str;
+	return stu;
 }
 
-void outStu(Student stu){
-	printf("%s'Info: age-%d and record-%f\n", stu.name, stu.age, stu.record);
+void outStu(Student *stu){
+	printf("%s'Info: age-%d and record-%f\n", stu->name, stu->age, stu->record);
 
 	return;
 }
@@ -94,7 +95,7 @@ void displayList(LinkedList *list){
 	Node *tmp = (Node *)malloc(sizeof(Node));
 	tmp = list->head;
 	while(tmp != NULL){
-		outStu(*((Student *)(tmp->data)));
+		outStu((Student *)(tmp->data));
 		tmp = tmp->next;
 	}
 

@@ -11,22 +11,24 @@ void displayList(LinkedList *);*/
 
 int main(int argc, char **argv)
 {
-	Student stu0 = initStu("zhangsan", 20, 77.5);
-	Student stu1 = initStu("lisi", 21, 78.5);
-	Student stu2 = initStu("wangwu", 20, 77.5);
-	Student stu3 = initStu("zhaoliu", 21, 78.5);
-	Student stu4 = initStu("zhouqi", 21, 78.5);
+	char *nameArr[] = {"zhangsan", "lisi", "wangwu", "zhaoliu","zhouqi"};
+	//Student *stu0 = initStu("zhangsan", 20, 77.5);
+	Student *stu0 = initStu(nameArr[0], 20, 77.5);
+	Student *stu1 = initStu(nameArr[1], 21, 78.5);
+	Student *stu2 = initStu(nameArr[2], 20, 77.5);
+	Student *stu3 = initStu(nameArr[3], 21, 78.5);
+	Student *stu4 = initStu(nameArr[4], 21, 78.5);
 
-	//LinkedList *list = (LinkedList *)malloc(sizeof(LinkedList));
-	LinkedList list;
-	initList(&list);
-	addHead(&list, &stu0);
-	addHead(&list, &stu1);
-	addHead(&list, &stu2);
-	addHead(&list, &stu3);
-	addHead(&list, &stu4);
+	LinkedList *list = (LinkedList *)malloc(sizeof(LinkedList));
+	initList(list);
+	printf("init success!\n");
+	addHead(list, stu0);
+	addHead(list, stu1);
+	addHead(list, stu2);
+	addHead(list, stu3);
+	addHead(list, stu4);
 	
-	displayList(&list);
+	displayList(list);
 
 
 	return 0;
