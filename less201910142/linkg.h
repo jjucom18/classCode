@@ -1,6 +1,10 @@
 #ifndef linkg_h
 #define linkg_h
 
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
 typedef struct _stu{
 	char *name;
 	int age;

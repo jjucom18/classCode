@@ -1,28 +1,19 @@
 #include "linkg.h"
 
-typedef struct _stu{
-	char *name;
-	int age;
-	double record;
-} Student;
-
-typedef struct _node{
-	void *data;
-	struct _node *next;
-} Node;
-
-typedef struct _linkedList{
-	Node *head;
-	Node *tail;
-	Node *current;
-} LinkedList;
 
 Student initStu(char *name, int age, double record){
-	//DONE
+	Student *str = (Student *)malloc(sizeof(Student));
+	strcpy(str->name, name);
+	str->age = age;
+	str->record = record;
+
+	return *str;
 }
 
 void outStu(Student stu){
-	//DONE
+	printf("%s'Info: age-%d and record-%f\n", stu.name, stu.age, stu.record);
+
+	return;
 }
 
 void initList(LinkedList *list){
@@ -35,14 +26,12 @@ void initList(LinkedList *list){
 
 void addHead(LinkedList *list, void *data){
 	Node *node = (Node *)malloc(sizeof(Node));
-	//Student stu = initStu("zhangsan", 20, 78.5);
-	//node->data = (Student *)malloc(sizeof(Student));
-	//node->data->name = (char *)malloc(30);
 	node->data = data;
+	node->next = NULL;
 
-	if(list->head == NULL){
+	//if(list->head == NULL){
+	if(NULL == list->head){
 		list->tail = node;
-		node->next = NULL;
 	}else{
 		node->next = list->head;
 	}
@@ -63,6 +52,51 @@ void addTail(LinkedList *list, void *data){
 	}
 	list->tail = node;
 }
-void delNode(LinkedList *, Node *);
-Node *getNode(LinkedList *, void *);
-void displayList(LinkedList *);
+void delNode(LinkedList *list, Node *node){
+	if(node == list->head){
+		if(list->head->next == NULL){
+			list->head = list->tail = NULL;
+		}else{
+			list->head = list->head->next;
+		}
+	}else{
+		Node *tmp = list->head;
+		while(tmp != NULL && tmp->next != node){
+			tmp = tmp->next;
+		}
+		if(tmp != NULL){
+			tmp->next = node->next;
+		}
+	}
+
+	free(node);
+
+	return;
+}
+
+Node *getNode(LinkedList *list, void *data){
+	/*Node *node = (Node *)malloc(sizeof(Node));
+	node = list->head;
+	if(list->head->data == *data){
+		return node;
+	}
+	while(node != NULL){
+		node = node->next;
+	}
+	if(node->data == *data){
+		return node;
+	}*/
+
+	return NULL;
+}
+
+void displayList(LinkedList *list){
+	Node *tmp = (Node *)malloc(sizeof(Node));
+	tmp = list->head;
+	while(tmp != NULL){
+		outStu(*((Student *)(tmp->data)));
+		tmp = tmp->next;
+	}
+
+	return;
+}
