@@ -3,6 +3,7 @@
 
 Student* initStu(char *name, int age, double record){
 	Student *stu = (Student *)malloc(sizeof(Student));
+	//must malloc stu->name memory
 	stu->name = (char *)malloc(sizeof(char) * 30);
 	strcpy(stu->name, name);
 	stu->age = age;
