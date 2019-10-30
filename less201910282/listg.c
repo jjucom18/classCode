@@ -1,11 +1,6 @@
 #include "listg.h"
 
 
-typedef struct{
-	DataType data[MAXSIZE];
-	int size;
-} SeqList;
-
 SeqList *initSeq(){
 	SeqList *ptrList = (SeqList *)malloc(sizeof(SeqList));
 	if(NULL == ptrList){

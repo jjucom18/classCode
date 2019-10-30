@@ -1,7 +1,7 @@
 #ifndef listg_h
 #define listg_h
 
-#define MAXSIZE 10;
+#define MAXSIZE 10
 typedef int DataType;
 
 typedef struct{
