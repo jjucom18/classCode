@@ -12,18 +12,18 @@ Student initStu(){
 	return *ptrStu;
 }
 
-void outStu(Student stu){
+void outStu(Classmate stu){
 	printf("%s's id: %d and record: %f\n", stu.name, stu.id, stu.record);
 
 	return;
 }
 
-float getRec(Student stu){
+float getRec(Classmate stu){
 	return stu.record;
 }
 
 void setRec(int id, float record){
-	Student stu;
+	Classmate stu;
 	if(stu.id == id){
 		stu.record = record;
 	}
