@@ -1,7 +1,7 @@
-#include "sampleg.h"
+#include "testc.h"
 
-Student initStu(){
-	Student *ptrStu = (Student *)malloc(sizeof(Student));
+Classmate initStu(){
+	Classmate *ptrStu = (Classmate *)malloc(sizeof(Classmate));
 	printf("please input name: ");
 	scanf("%s", ptrStu->name);
 	printf("please input id: ");
@@ -28,9 +28,5 @@ void setRec(int id, float record){
 		stu.record = record;
 	}
 
-	      return;
+	return;
 }
-
-
-
-
