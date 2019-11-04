@@ -28,7 +28,7 @@ void setRec(int id, float record){
 		stu.record = record;
 	}
 
-	return;
+	      return;
 }
 
 
