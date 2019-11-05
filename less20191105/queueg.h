@@ -9,8 +9,8 @@ typedef int DataType;
 typedef struct{
 	DataType data[MaxSize];
 	int front;
-	int rear;
-}SeqQueue;
+	int rear;int num;
+}CSeQueue;
 
 SeqQueue *initQueue();
 bool emptyQueue(SeqQueue *queue);

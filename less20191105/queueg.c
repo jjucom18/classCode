@@ -4,46 +4,46 @@
 typedef struct{
 	DataType data[MaxSize];
 	int front;
-	int rear;
-}SeqQueue;
+	int rear;int num;
+}CSeqQueue;
 
-SeqQueue *initQueue(){
-	SeqQueue *queue = (SeqQueue *)malloc(sizeof(SeqQueue));
-	queue->front = -1;
-	queue->rear = -1;
+CSeQueue *initQueue(){
+	CSeQueue *queue = (CSeQueue *)malloc(sizeof(CSeQueue));
+	queue->front =queue->rear=MAXSIZE-1;
+	queue->num = 0;
 
-	return;
+return ;
 }
 
-bool emptyQueue(SeqQueue *queue){
+bool emptyQueue(CSeQueue *queue){
 	return queue->front == -1;
 }
 
-bool fullQueue(SeqQueue *queue){
+bool fullQueue(CSeQueue *queue){
 	return queue->rear == MaxSize - 1;
 }
 
-void inQueue(SeqQueue *queue, DataType data){
+void inQueue(CSeQueue *queue, DataType data){
 	queue->rear++;
 	queue->data[queue->rear] = data;
 
 	return;
 }
 
-void deQueue(SeqQueue *queue, DataType *data){
+void deQueue(CSeQueue *queue, DataType *data){
 	queue->front++;
 	*data = queue->data[queue->front];
 
 	return;
 }
 
-void frontQueue(SeqQueue *queue, DataType *data){
+void frontQueue(CSeQueue *queue, DataType *data){
 	*data = queue->data[queue->front + 1];
 
 	return;
 }
 
-void rearQueue(SeqQueue *queue, DataType *data){
+void rearQueue(CSeQueue *queue, DataType *data){
 	*data = queue->data[queue->rear + 1];
 
 	return;
