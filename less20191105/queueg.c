@@ -1,49 +1,49 @@
 
-#include "queue.h"
+#include "queueg.h"
 
 typedef struct{
 	DataType data[MaxSize];
 	int front;
 	int rear;
-}SeqQueue;
+}CSeqQueue;
 
-SeqQueue *initQueue(){
-	SeqQueue *queue = (SeqQueue *)malloc(sizeof(SeqQueue));
+CSeqQueue *initQueue(){
+	CSeqQueue *queue = (CSeqQueue *)malloc(sizeof(CSeqQueue));
 	queue->front = -1;
 	queue->rear = -1;
 
 	return;
 }
 
-bool emptyQueue(SeqQueue *queue){
+bool emptyQueue(CSeqQueue *queue){
 	return queue->front == -1;
 }
 
-bool fullQueue(SeqQueue *queue){
+bool fullQueue(CSeqQueue *queue){
 	return queue->rear == MaxSize - 1;
 }
 
-void inQueue(SeqQueue *queue, DataType data){
+void inQueue(CSeqQueue *queue, DataType data){
 	queue->rear++;
 	queue->data[queue->rear] = data;
 
 	return;
 }
 
-void deQueue(SeqQueue *queue, DataType *data){
+void deQueue(CSeqQueue *queue, DataType *data){
 	queue->front++;
 	*data = queue->data[queue->front];
 
 	return;
 }
 
-void frontQueue(SeqQueue *queue, DataType *data){
+void frontQueue(CSeqQueue *queue, DataType *data){
 	*data = queue->data[queue->front + 1];
 
 	return;
 }
 
-void rearQueue(SeqQueue *queue, DataType *data){
+void rearQueue(CSeqQueue *queue, DataType *data){
 	*data = queue->data[queue->rear + 1];
 
 	return;

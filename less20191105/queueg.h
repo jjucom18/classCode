@@ -10,14 +10,15 @@ typedef struct{
 	DataType data[MaxSize];
 	int front;
 	int rear;
-}SeqQueue;
+	int num;
+}CSeqQueue;
 
-SeqQueue *initQueue();
-bool emptyQueue(SeqQueue *queue);
-bool fullQueue(SeqQueue *queue);
-void inQueue(SeqQueue *queue, DataType data);
-void deQueue(SeqQueue *queue, DataType *data);
-void frontQueue(SeqQueue *queue, DataType *data);
-void rearQueue(SeqQueue *queue, DataType *data);
+CSeqQueue *initQueue();
+bool emptyQueue(CSeqQueue *queue);
+bool fullQueue(CSeqQueue *queue);
+void inQueue(CSeqQueue *queue, DataType data);
+void deQueue(CSeqQueue *queue, DataType *data);
+void frontQueue(CSeqQueue *queue, DataType *data);
+void rearQueue(CSeqQueue *queue, DataType *data);
 
 #endif
