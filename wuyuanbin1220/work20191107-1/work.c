@@ -27,7 +27,7 @@ void Out_SeqList(SeqList *list){
 		printf("empty !\n");
 	}else{
 		int i = 0;
-		while(i < tmp){
+		while(i < tmp+1){
 			if(list->data[i] != 0)
 				printf("%d\t",list->data[i] );
 			i++;
