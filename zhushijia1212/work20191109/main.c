@@ -1,4 +1,4 @@
-#include"work.h"
+#include"data.h"
 
 int main(int argc, char **argv)
 {

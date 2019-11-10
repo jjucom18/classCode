@@ -1,4 +1,4 @@
-#include"work.h"
+#include"data.h"
 
 SeqList *init_SeqList(){
 	SeqList *list;
@@ -7,7 +7,7 @@ SeqList *init_SeqList(){
 	return list;
 }
 void Input_SeqList(SeqList *list, DataType data){
-	if (MaxSize-1 == list->last)
+	if (MAXSIZE-1 == list->last)
 	{
 		printf("full !\n");
 		

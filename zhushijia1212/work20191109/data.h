@@ -1,5 +1,5 @@
-#ifndef work_h
-#define work_h
+#ifndef data_h
+#define data_h
 
 #define MAXSIZE 50
 #include<stdio.h>
