@@ -13,4 +13,5 @@ i=*ptr_var1;
 *ptr_var2=*ptr_var3;
 *ptr_var3=i;
 printf("after:var1=%d,var2=%d,var3=%d\n",var1,var2,var3);
+return 0;
 }
