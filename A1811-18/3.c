@@ -3,7 +3,7 @@
 
 int main(int argc,char **argv)
 {
-	int i,n;
+	int n,i;
 	printf("请输入想分配的内存空间：\n");
 	scanf("%d",&n);
 	int *ptr_arr;
@@ -17,3 +17,8 @@ int main(int argc,char **argv)
 	printf("内存的初始值：%d\n",n);
 	printf("指针的地址：%p",ptr_arr);
 
+
+
+
+	return 0;
+}
