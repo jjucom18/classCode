@@ -2,10 +2,10 @@
 void swap(int *p1,int *p2,int *p3)
 {
      int t;
-     t = *p1;
+      t = *p1;
      *p1 = *p2;
      *p2 = t;
-     t = *p2;
+      t = *p2;
      *p2 = *p3;
      *p3 = t;
      t = *p3;
