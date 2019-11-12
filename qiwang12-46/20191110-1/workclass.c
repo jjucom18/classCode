@@ -1,15 +1,19 @@
-#include"work.h"
+#include"workclass.h"
 
-SeqList *init_SeqList(){
+SeqList *init_SeqList()
+{
 	SeqList *list;
 	list = (SeqList *)malloc(sizeof(SeqList));
 	list->last = -1;
 	return list;
 }
-void Input_SeqList(SeqList *list, DataType data){
+
+
+void Input_SeqList(SeqList *list, DataType data)
+{
 	if (MaxSize-1 == list->last)
 	{
-		printf("full !\n");
+		printf("满！\n");
 		
 	}else{
 		list->last++;
@@ -19,12 +23,12 @@ void Input_SeqList(SeqList *list, DataType data){
 }
 
 
-
-void Out_SeqList(SeqList *list){
+void Inout_SeqList(SeqList *list)
+{
 	int tmp = list->last;
 	if (-1 == list->last)
 	{
-		printf("empty !\n");
+		printf("空！\n");
 	}else{
 		int i = 0;
 		while(i < tmp+1){
@@ -37,12 +41,15 @@ void Out_SeqList(SeqList *list){
 	list->last = tmp;
 	return;
 }
-SeqList *bubbleSort(SeqList *list){
+SeqList *bubbleSort(SeqList *list)
+{
 	DataType tmp;
 	int i,j;
 	for (i = 0; i < list->last; ++i)
-		for (j = 0; j < list->last-i; ++j){
-			if (list->data[j] > list->data[j+1]){
+		for (j = 0; j < list->last-i; ++j)
+		{
+			if (list->data[j] > list->data[j+1])
+			{
 				tmp = list->data[j];
 				list->data[j] = list->data[j+1];
 				list->data[j+1] = tmp;
@@ -50,24 +57,19 @@ SeqList *bubbleSort(SeqList *list){
 		}
 		return list;
 }
-SeqList *Del_element(SeqList *list){
+SeqList *Delete_element(SeqList *list)
+{
 	int tmp = list->last;
 	SeqList *List = bubbleSort(list);
 	DataType x,y;
-	printf("please input range like x~y\n");
-	scanf("%d~%d",&x,&y);
+	printf("请输入像x-y的范围\n");
+	scanf("%d-%d",&x,&y);
 	int i = 0;
 	int j = 0;
-	while(y > List->data[i]){
-		i++;
-	}
-	while(x > List->data[j]){
-		j++;
-	}
+	while(y > List->data[i]) i++;
+	while(x > List->data[j]) j++;
 	while(List->data[j]){
-		List->data[j] = List->data[i];
-		i++;
-		j++;
+		List->data[j] = List->data[i]; i++; j++;
 	}
 	return List;
 

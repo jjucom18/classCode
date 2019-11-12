@@ -1,20 +1,20 @@
-#include"data.h"
+#include"workclass.h"
 
 int main(int argc, char **argv)
 {
 	DataType data;
 	SeqList *list,*List;
 	list = init_SeqList();
-	printf("please input data and input -1 end\n");
+	printf("请输入数据并且输入-1结束\n");
 	scanf("%d",&data);
 	while(data != -1)
 	{
 		Input_SeqList(list,data);
 		scanf("%d",&data);
 	}
-	Out_SeqList(list);
-	List = Del_data(list);
-	Out_SeqList(List);
+	Inout_SeqList(list);
+	List = Delete_element(list);
+	Inout_SeqList(List);
 
 	return 0;
 }
