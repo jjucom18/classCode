@@ -7,8 +7,7 @@ int main(int argv,char **argc)
 	int const *ptr_cvar1=&cvar1;
 printf("please  input your data var1:,cvar1:");
 scanf("%d,%d",&var1,&p);
-ptr_cvar1=&var1;
-*(ptr_cvar1++) ;
+var1=var1+(*ptr_cvar1); 
 printf("%d",var1);
 
 
