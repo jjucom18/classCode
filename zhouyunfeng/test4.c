@@ -1,23 +1,32 @@
 #include<stdio.h>
 
-#include<malloc.h>
+#include<stdlib.h>
 
-int main(int argv,char **argc)
+const int c_var1 = 4;
 
-{int var1,p;int const cvar1;p=cvar1;
+int var1;
 
-	int *ptr_var1=&var1;
+void main()
 
-	int const *ptr_cvar1=&cvar1;
 
-	printf("please  input your data var1:,cvar1:");
-	
-	scanf("%d,%d",&var1,&p);
+{
 
-	var1=var1+(*ptr_cvar1); 
+	int *ptr_var1 = (int *)malloc(sizeof(int));
 
-	printf("%d",var1);
 
-	return 0;
+	        ptr_var1 = &var1;
+
+		scanf("%d",&var1);
+
+		int *ptr_c_var1 = (int *)malloc(sizeof(int));
+
+		ptr_c_var1 = &c_var1;
+
+	  	var1 +=*ptr_c_var1;
+
+		ptr_c_var1=&var1;
+
 
 }
+
+
