@@ -1,7 +1,7 @@
 #include<stdio.h>
 
 void swap(int *p1, int *p2) 
-{		int p;
+{   int p;
 	p = *p1;
 	*p1 = *p2;
 	*p2 = p;
@@ -10,7 +10,7 @@ void swap(int *p1, int *p2)
 int main() 
 {	int a, b;
 	printf("请输入两个数字 a 和 b :") ;
-	scanf("%d%d", &a, &b) ;
+	scanf("%d,%d", &a, &b) ;
 	int *pt1, *pt2;
 	pt1 = &a;
 	pt2 = &b;
