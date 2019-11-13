@@ -19,8 +19,8 @@ ptr_var1 = &var2;
 ptr_var2 = &var3;
 ptr_var3 = &var1;
 
-printf ("%d ,%p\n" , &var1 ,*ptr_var1);
-printf ("%d ,%p\n" , &var2 ,*ptr_var2);
-printf ("%d ,%p\n" , &var3 ,*ptr_var3);
+printf ("%d ,%p\n" , var1 ,*ptr_var1);
+printf ("%d ,%p\n" , var2 ,*ptr_var2);
+printf ("%d ,%p\n" , var3 ,*ptr_var3);
 
 }
