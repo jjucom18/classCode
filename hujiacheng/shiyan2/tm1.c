@@ -1,92 +1,107 @@
-#include "stdio.h"
+#include"stdio.h"
 #include"stdlib.h"
-typedf struct lnode{
+typedef struct LNode{
 	int  data;
-	struct lnode *next;
-} LNode ,*LinkList;
-    LinkList L;
-LinkList Creat_LinkList1(){//头插
-	LinkList L=NULL;
-	LNode *s;
-	int x;
-	scanf("%d",&x);
-	while(x!=100){
-		s=(LNode*)malloc(sizeof(LNode));
-	s->data=x;
-	s->next=L;
-	L=s;
-	scanf("%d",&x);}
-	return L;
-	}
+	struct LNode *next;
+} 
+LNode ,*LinkList;  
+  LinkList L;
+  LinkList Creat_LinkList1(){
+	  LinkList L=NULL;
+	  LNode *s;
+	  int x;
+	  scanf("%d",&x);
+	  while(x!=100){
+		  s=(LNode*)malloc(sizeof(LNode));
+		  s->data=x;
+		  s->next=L;
+		  L=s;
+		  scanf("%d",&x);}
+	  return L;
+  }
 
-LinkList Creat_LinkList2(){//尾插
+LinkList Creat_LinkList2(){
 	LNode *s,*r=NULL;
 	int x;
 	scanf("%d",&x);
 	while(x!=100){
-		s=(LNode*)
-	malloc(sizeof(LNode));
-	s->data=x;
-	if(L==NULL) L=s;
-	else r->next=s;r=s;
-	scanf("%d",&x);}
+		s=(LNode*)malloc(sizeof(LNode));
+		s->data=x;
+		if(L==NULL) L=s;
+		else r->next=s;r=s;
+		scanf("%d",&x);}
 	if(r!=NULL) 
 		r->next=NULL;return L;
 }
-LinkList reverse(){//倒置
+
+LinkList reverse(){
 	LNode *p,*q;
 	p=L->next;
 	L->next=NULL;
 	while(p){
 		q=p;
 		p=p->next;
-		q->next=L->next;
+		q->next=L->next;			
 		L->next=q;	}
 } 
 
-LNode *Get_LinkList(LinkList L,int i){//查找
-	LNode *p=L;
-	int j=0;
-	while (p->next!=NULL&&j<i)
-	{p=p->next; j++;}
-if(j==i) return p;
-else return NULL;
+LNode *Get_LinkList(LinkList L,int i){
+		LNode *p=L;
+		int j=0;
+		while (p->next!=NULL&&j<i)
+		{p=p->next; j++;}
+		if(j==i) return p;
+		else return NULL;
 }
 
-LNode *Locate_LinkList(LinkList L,int  x){//按值查找定位
-	LNode *p=L->next;
-	while (p!=NULL&&p->data!=x)
-		p=p->next;
-	return p;
+LNode *Locate_LinkList(LinkList L,int  x){
+		LNode *p=L->next;
+		while (p!=NULL&&p->data!=x)
+			p=p->next;
+		return p;
 }
 
-int  Del_LinkList(LinkList L,int i){//删除
-	LinkList p,s;
-	p=Get_Link(L,i-1);
-	if(p==NULL){
-		printf("第i-1个结点不存在")；
-			return -1;
-	}
-	else if (p->next==NULL)
-	{printf("第i个结点不存在")；
-           return 0;	}
-  else {
-	  s=p->next;
-	  p->next=s->next;
-	  free(s);
-	  return 1;} 
-  }
-
-
+int  Del_LinkList(LinkList L,int i){
+		LinkList p,s;
+		p=Get_LinkList(L,i-1);
+		if(p==NULL){
+			printf("i-1 not found");
+			return -1;		}
+		else if (p->next==NULL)
+		{printf("i not found");
+			return 0;	}
+		else {
+			s=p->next;
+			p->next=s->next;
+			free(s);
+			return 1;} 
+					    }
 
 void displist(){
-	LNode *p=L->next;
-	int i=0;
-	while (p!=NULL){
-		printf("%d\n",p->data);
-		p=p->next;
-		i++;
-	}
-	printf("finshed\n");
-	return ;
+		LNode *p=L;
+		int i=0;
+		while (p!=NULL){
+			printf("%d\n",p->data);
+			p=p->next;
+			i++;
+		}
+		return ;
+}
+
+int main(int agrc,char **argv){
+	int p,i,x;
+	LinkList L;
+	printf("尾插请输入0，头插输入1\n");
+	scanf("%d",&p);
+	printf("输入单链表的值\n");											if(p==0) L=Creat_LinkList2();
+	if(p==1) L=Creat_LinkList1();
+	displist(L);
+	printf("输入查找的值\n");
+	scanf("%d",&x);
+	Locate_LinkList(L,x);
+	printf("删除第几个结点\n");
+	scanf("%d",&i);
+	Del_LinkList(L,i-1);
+	displist(L);
+	return 0;
 }
