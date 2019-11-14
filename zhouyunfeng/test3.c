@@ -1,23 +1,88 @@
-#include <stdio.h>
+#include<stdio.h>
 
-#include <stdlib.h>
+#include<stdlib.h> 
 
-int main(int argc,char **argv)
 
-{
-	int n,i;
- 	printf("请输入想分配的内存空间：\n");
-	scanf("%d",&n);
-	int *ptr_arr;
-	ptr_arr = (int *)malloc(sizeof(int) * n);
-	printf("内存的初始值：%d\n",n);
-	printf("指针的地址：%p\n",ptr_arr);
+void fun();
+
+
+
+int main(){
+
+	
+
+	fun();
+
+	
+
+	return 0;
+
+} 
+
+
+
+void fun(){
+
+	int size, initialValue, increment, *ptr_arr = NULL, *p = NULL;
+
+	printf("请输入内存大小、初始值、增量：");
+
+	scanf("%d %d %d",&size, &initialValue, &increment);
+
+	
+
+	// 申请内存 
+
+	ptr_arr = (int*)malloc(size*sizeof(int));
+
+	if(ptr_arr == NULL){
+
+		printf("内存申请失败！");
+
+		return; 
+
+	}
+
+	
+
+	p = ptr_arr;
+
+	// 内存数值初始化 
+
+	for(int i = 0; i < size; i++,p++){
+
+		*p = initialValue + i * increment;
+
+	}
+
+	
+
+	p = ptr_arr;
+
+	// 输出数值及地址 
+
+	for(int i = 0; i < size; i++,p++){
+
+		if(p == NULL) {
+
+			printf("失败");
+
+			break;
+
+		}
+
+		printf("初始值：%d 内存地址：%X\n", *p, p);
+
+	}
+
+	
+
+	// 释放内存 
+
 	free(ptr_arr);
-	printf("请输入想改变的内存变量：\n");
-	scanf("%d",&n);									
-	ptr_arr = (int *)malloc(sizeof(int) * n);
-	printf("内存的初始值：%d\n",n);	
-	printf("指针的地址：%p",ptr_arr);
-															return 0;
 
-}
+	free(p); 
+
+	return; 
+
+} 
