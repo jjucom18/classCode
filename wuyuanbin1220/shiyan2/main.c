@@ -5,8 +5,7 @@ int main(int argc, char **argv){
 	
 	int data;
 	char flat;
-	Node *node;
-	LinkedList *list = (LinkedList *)malloc(sizeof(LinkedList));
+	LinkedList *list
 	int DataArr[] = {1,2,3,4,5,6,7,8,9};
 	initList(list);
 	printf("使用头插法请输入h，使用尾插法请输入t\n");
@@ -26,8 +25,7 @@ int main(int argc, char **argv){
 	displayList(list);
 	printf("\n请输入你要删除的数据\n");
 	scanf("%d",&data);
-	node = FindData(list,data);
-	delNode(list,node);
+	delNode(list,FindData(list,data));
 	printf("删除成功 ！\n");
 	displayList(list);
 	printf("\n");
