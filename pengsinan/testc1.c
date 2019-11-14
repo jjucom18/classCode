@@ -1,7 +1,7 @@
 #include<stdio.h>
 swap(int *p1 , int *p2)
 {
-	int * p;
+	int  p;
 	p = p1;
 	p1 = p2;
 	p2 = p;
@@ -10,7 +10,7 @@ swap(int *p1 , int *p2)
 main()
 {
 	int a , b;int *pt1 ,*pt2;
-	scanf("%d ,%d" , &a ,&b);
+	scanf("%d%d" , &a ,&b);
 	pt1 = &a;
 	pt2 = &b;
 	if (a < b)
