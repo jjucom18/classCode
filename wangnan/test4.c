@@ -3,7 +3,7 @@ void main()
   void Ptr1(int var1)
 {
 	int *ptr_var1;
-	ptr_var1 =&var1;
+	*ptr_var1 =&var1;
     scanf("%d\n",&var1);
 	var1++;
 	scanf("%d\n",&var1);
