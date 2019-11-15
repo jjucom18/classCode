@@ -30,9 +30,9 @@ typedef struct node {
         }
           return L;
         }
-status Delete_linklist(linklist &L)
+status Delete_LinkList(LinkList &L)
 {
-linklist p,q;
+LinkList p,q;
 int k=0,x;
 printf("请输入删除节点的值x: ");
 scanf("%d",&x);
@@ -57,5 +57,5 @@ q=p->next ;
 }
 if(k==0)
 printf("表中没有值为%d的结点！\n",&x);
-return OK;
+return L;
 }
