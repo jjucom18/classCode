@@ -1,27 +1,16 @@
 #include<stdio.h>
-  void swap()
+
+
+int main(int argc, char **argv)
 
 
 {
-	   int var1, var2, var3;
-	      scanf("%d %d %d",&var1,&var2,&var3);
-	         printf("var1=%d,var2=%d,var3=%d\n",var1,var2,var3);
-		    printf("&var1=%p,&var2=%p,&var3=%p\n", &var1,&var2,&var3);
-		       int *ptrVar1 = &var1;
-		          int *ptrVar2 = &var2;
-			     int *ptrVar3 = &var3;
+   int var1, var2, var3;
+   scanf("%d, %d, %d",&var1,&var2,&var3);
+   int *ptr_var1=&var3;int *ptr_var2=&var1;int *ptr_var3=&var2;
+   printf("%d,%d,%d\n",var1,var2,var3);
+   printf("%p,%p,%p\n",&ptr_var1,&ptr_var2,&ptr_var3);
+   printf("%d,%d,%d\n",*ptr_var1,*ptr_var2,*ptr_var3);
+   return 0;
 
-			        int  *temp;
-				   temp = ptrVar2;
-				      ptrVar2 = ptrVar1;
-				         ptrVar1 = ptrVar3;
-					    ptrVar3 = temp;
-					       printf("after swap\n");
-					          printf("var1=%d,var2=%d,var3=%d\n",*ptrVar1,*ptrVar2,*ptrVar3);
-
-}
-int main()
-
-{
-	        swap();
-}
+}     

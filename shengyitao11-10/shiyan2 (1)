@@ -1,0 +1,78 @@
+#include < stdio.h>
+struct Node
+{ 
+   Node *next;
+   string data;
+  }
+ struct Node 
+{ 
+   Node *next;
+   string data;
+  }
+ typedef struct Node *List;
+ bool init(List &head)<==>bool init(Node* &head)<==>bool init(List *head)
+bool init (List &head)
+{ 
+	List newnode =new Node;
+	if(nullptr ==newnode)
+	{
+		cout <<"new failed!"<< end;
+		return false;
+	}
+// 头插法：
+  bool insert_head(List head,string value)
+{ 
+	List newnod =new Node;
+	if (nullptr ==newnode)
+	{
+		cout << "new failed!"<< end;
+		return false;
+	}
+//尾插法
+ bool insert_tail(List head,string value)
+{   
+	List newnode =new Node;
+	if(nullptr ==newnode)
+	{ 
+		cout<< "new failed!"<< end;
+		return false;
+	}
+	newnode ->next =nullptr;
+	while (head ->next !=nullptr)
+	{
+		head=head->next;
+	}
+	head->next= newnode;
+	return true;
+}
+//打印节点
+ void display(List head)
+{ 
+   while (head->next !=nullptr)
+   { 
+      cout<< head->next-data 
+     head =head->next;
+}   
+ cout<< end;
+ }
+//实现链表节点删除 
+int Del_LinkList(LinkList L,int i)
+{ 
+   LinkList p,s;
+   p=Get_LinkList(L,i-1);
+   if(p==NULL)
+     {printf（"第i-1个结点不存在");
+	 return -1;
+     }
+  else if(p->next==NULL)
+       {printf("第i个结点不存在");
+	  return 0;
+	}
+   else 
+	{s=p->next;
+         p->next=s->next;
+	 free(s);
+	 return 1;
+	}
+}
+

@@ -1,0 +1,98 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+
+typedef struct _node{
+	void *data;
+	struct _node *next;
+} Node;
+
+typedef struct _linkedList{
+	Node *head;
+	Node *tail;
+	Node *current;
+} LinkedList;
+
+
+void initList(LinkedList *list);  //初始化链表//
+Node *node = (Node *)malloc(sizeof(Node));
+	node->data = data;
+	node->next = NULL; 
+
+void addHead(LinkedList *list, void *data);//给链表头节点添加数据//
+Node *node = (Node *)malloc(sizeof(Node));
+	node->data = data;
+	node->next = NULL;
+
+	
+	if(NULL == list->head){
+		list->tail = node;
+	}else{
+		node->next = list->head;
+	}
+	list->head = node;
+
+	return;
+}
+
+void addTail(LinkedList *list, void *data);//给链表尾节点添加数据//
+Node *node = (Node *)malloc(sizeof(Node));
+	node->data = data;
+	node->next = NULL;
+
+	if(list->head == NULL){
+		list->head = node;
+	}else{
+		list->tail->next = node;
+	}
+	list->tail = node;
+}
+
+void deleteNode(LinkedList *list, void *data);//从链表删除节点//
+Node *tmp = (Node *)malloc(sizeof(Node));
+	tmp = list->head;
+	if(*(tmp->data) == *data){
+		if(tmp->next == NULL)
+			list->head = list->tail = NULL;
+		}else{
+			list->head = list->head->next;
+		}
+	}else{
+		while(tmp != NULL && *(tmp->data) != *data){
+			tmp = tmp->next;
+		}
+		if(tmp != NULL){
+			tmp->next = tmp->next->next;
+		}
+	}
+
+	free(tmp);
+
+	return;
+}
+
+Node *getNode(LinkedList *list, void *data);//返回包含指定数据的节点指针//
+Node *tmp = (Node *)malloc(sizeof(Node));
+	tmp = list->head;
+	if(*(tmp->data) == *data){
+		return tmp;
+	}else{
+		while(tmp != NULL && *(tmp->data) != *data){
+			tmp = tmp->next;
+		}
+		if(tmp != NULL){
+			return tmp;
+		}
+	}
+
+	return NULL;
+}
+void displayLinkedList(LinkedList *list, DISPLAY display) //打印链表// 
+{    printf("\nLinked List\n");
+    Node *current = list->head;
+    while (current !=NULL) {
+         display(current->data);
+         current = current->next;
+    }
+
+}
