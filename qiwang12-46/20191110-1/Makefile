@@ -1,4 +1,4 @@
-testc:workclass.c main.c
-	gcc -g workclass.c main.c -o testc
+testc:list.c main.c
+	gcc -g list.c main.c -o testc
 clean:
 	rm testc
