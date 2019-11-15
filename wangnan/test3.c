@@ -1,17 +1,28 @@
+#include<stdio.h>
 #include<stdlib.h>
-main void *malloc(size_t size);
-int *ptr_ar;
-int N;
-printf("%d"," N:\n");
-scanf("%d",&N);
-if(N<=0),N=100;
-ptr_ar=(int*);
-malloc(sizeof(int)*N);
-if(!ptr_ar)
+int *Get( int n)
 {
-	printf("malloc ptr_ar error !\n";
-			exit(0);
-		
-}(else
-pirntf("malloc ptr_ar success!\n");
+	int *ptr_arr = (int *)malloc(sizeof(int)*n);
+	for (int i = 0;i < n; ++i) 
+	{
+		ptr_arr[i] = i+1;
+		}
+	printf("初始化的值和地址为\n");
+	for (int i = 0;i<n; ++i)
+	{
+		printf("ptr_arr[%d]=%d\t",i,ptr_arr[i]);
+		printf("&ptr_arr[%d] = %p\n",i,&ptr_arr[i]);
+	}
+	return ptr_arr;
+	}
+int main(int argc, char **argv)
+{
+	int n;
+	int *ptr_arr;
+	printf("请输入内存大小\n");
+	scanf("%d" ,&n);
+	ptr_arr = Get(n);
+	return 0;
+}
+
 
