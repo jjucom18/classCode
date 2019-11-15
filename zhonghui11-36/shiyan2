@@ -1,0 +1,127 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct _node{
+	void *data;
+	struct _node *next;
+} Node;
+
+typedef struct _linkedList{
+	Node *head;
+	Node *tail;
+	Node *current;
+} LinkedList;
+
+void initList(LinkedList *list){
+	list->head = NULL;
+	list->tail = NULL;
+	list->current = NULL;
+
+	return;
+}
+
+
+void addHead(LinkedList *list, void *data){
+	Node *node = (Node *)malloc(sizeof(Node));
+	node->data = data;
+	node->next = NULL;
+	if(NULL == list->head){
+		list->tail = node;
+	}else{
+		node->next = list->head;
+	}
+	list->head = node;
+
+	return;
+  
+  
+void addTail(LinkedList *list, void *data){
+	Node *node = (Node *)malloc(sizeof(Node));
+	node->data = data;
+	node->next = NULL;
+
+	if(list->head == NULL){
+		list->head = node;
+	}else{
+		list->tail->next = node;
+	}
+	list->tail = node;
+}
+
+
+void delNode(LinkedList *list, void *data){
+	Node *tmp = (Node *)malloc(sizeof(Node));
+	tmp = list->head;
+	if(*(tmp->data) == *data){
+		if(tmp->next == NULL){
+			list->head = list->tail = NULL;
+		}else{
+			list->head = list->head->next;
+		}
+	}else{
+		while(tmp != NULL && *(tmp->data) != *data){
+			tmp = tmp->next;
+		}
+		if(tmp != NULL){
+			tmp->next = tmp->next->next;
+		}
+	}
+
+	free(tmp);
+
+	return;
+}
+
+Node *getNode(LinkedList *list, void *data){
+	Node *tmp = (Node *)malloc(sizeof(Node));
+	tmp = list->head;
+	if(*(tmp->data) == *data){
+		return tmp;
+	}else{
+		while(tmp != NULL && *(tmp->data) != *data){
+			tmp = tmp->next;
+		}
+		if(tmp != NULL){
+			return tmp;
+		}
+	}
+
+	return NULL;
+}
+
+Node *getNode(LinkedList *list, void *data){
+	Node *tmp = (Node *)malloc(sizeof(Node));
+	tmp = list->head;
+	if(*(tmp->data) == *data){
+		return tmp;
+	}else{
+		while(tmp != NULL && *(tmp->data) != *data){
+			tmp = tmp->next;
+		}
+		if(tmp != NULL){
+			return tmp;
+		}
+	}
+
+	return NULL;
+}
+
+int main(int agrc,char **argv){
+	int x,y,z;
+	LinkList L;
+	printf("尾插请输入0，头插输入1\n");
+	scanf("%d",&x);
+	printf("输入单链表的值\n");	
+  if(p==0) L=Creat_LinkList2();
+	if(p==1) L=Creat_LinkList1();
+	displist(L);
+	printf("输入查找的值\n");
+	scanf("%d",&z);
+	Locate_LinkList(L,z);
+	printf("删除第几个结点\n");
+	scanf("%d",&y);
+	Del_LinkList(L,i-y);
+	displist(L);
+	return 0;
+}
+

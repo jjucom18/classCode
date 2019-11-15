@@ -27,5 +27,5 @@ void addTail(List *list, void *data){
 	}
 	list->tail = node;
 
-	return;
-}
+	return;}:wq
+
