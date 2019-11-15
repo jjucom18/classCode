@@ -30,3 +30,32 @@ typedef struct node {
         }
           return L;
         }
+status Delete_linklist(linklist &L)
+{
+linklist p,q;
+int k=0,x;
+printf("请输入删除节点的值x: ");
+scanf("%d",&x);
+getchar();
+if(L->next ==NULL)
+return ERROR;
+p=L;
+q=L->next ;
+while(q!=NULL)
+if(q->data ==x)
+{ 
+k=1;
+p=q ;
+p->next =q->next ; 
+free(q);
+q=p->next ;
+}
+else
+{
+p=q ;
+q=p->next ;
+}
+if(k==0)
+printf("表中没有值为%d的结点！\n",&x);
+return OK;
+}
