@@ -1,10 +1,10 @@
 #include<stdio.h>
 int swap(int*p1,int*p2)
 {
-	int*p;
-	p=p1;p1=p2;p2=p;
+	int p;
+	p=*p1;*p1=*p2;*p2=p;
 }
-main() 
+int main() 
 {
 	int a,b;int*pt1,*pt2;
 	scanf("%d,%d",&a,&b);
