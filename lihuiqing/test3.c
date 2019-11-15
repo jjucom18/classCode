@@ -6,7 +6,7 @@ int main(int argc,int *argv)
 	int *ptr_arr=(int *)malloc(sizeof(int)*_size);
 	scanf("%d",&_size);
 	ptr_arr=&_size;
-	printf("_high=%d\n",_size);
-	printf("&_high=%p\n",&_size);
+	printf("_size=%d\n",_size);
+	printf("&_size=%p\n",&_size);
 return 0;
 }

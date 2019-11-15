@@ -1,0 +1,58 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+typedef struct LNode
+{
+	int data ;
+	struct LNode *next;
+
+}LNode,*LinkList;
+
+LinkList Init_LNode()
+{
+  LNode *L;
+  L =(LinkList)malloc(sizeof(LNode));
+  if(L == NULL)
+  { 
+	  printf("初始化失败！\n");
+	  exit(-1);
+
+  }
+  L->next = NULL;
+  return L;
+ }
+
+LinkList Creat_LinkList1()
+{
+  LinkList L= NULL;
+  LNode *s;
+  int x;
+  scanf("%d",&x);
+  while(x!=float)  
+  {
+	 s=(LNode*)malloc(sizeof(LNode));
+	 s->data=x;
+	 s->next=L;
+	 L=s;
+	 scanf("%d",&x);
+
+  }
+  return L;
+ }
+LinkList Creat_LinkList2(){
+	LinkList L=NULL;
+	LNode *s,*r=NULL;
+	int x;
+	scanf("%d",&x);
+	while(x!=float)
+	{
+	s=(LNode *)malloc(sizeof(LNode));
+	s->data=x;
+	if(L==NULL) L=s;
+	else r->next=s;
+		
+	}
+  if(r!=NULL)  r->next=NULL;
+  return L;
+}
+	
