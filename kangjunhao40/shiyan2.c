@@ -10,10 +10,10 @@ typedef struct _linkedList{
 	Node *current;
 } LinkedList;
 void initList(LinkedList *list);
-Node *node = (Node *)malloc(sizeof(Node));
-	node->data = data;
-	node->next = NULL;
-  void addHead(LinkedList *list, void *data);
+       list->head = NULL;
+       list->tail = NULL;
+       list->current = NULL;
+  void addHead(LinkedList *list, void *data){
 Node *node = (Node *)malloc(sizeof(Node));
 	node->data = data;
 	node->next = NULL;
@@ -27,7 +27,7 @@ Node *node = (Node *)malloc(sizeof(Node));
   return;
 }
 
-void addTail(LinkedList *list, void *data);
+void addTail(LinkedList *list, void *data){
 Node *node = (Node *)malloc(sizeof(Node));
 	node->data = data;
 	node->next = NULL;
@@ -39,7 +39,7 @@ Node *node = (Node *)malloc(sizeof(Node));
 	}
 	list->tail = node;
 }
-void delNode(LinkedList *list, void *data);
+void delNode(LinkedList *list, void *data){
 Node *tmp = (Node *)malloc(sizeof(Node));
 	tmp = list->head;
 	if(*(tmp->data) == *data){
@@ -59,6 +59,7 @@ Node *tmp = (Node *)malloc(sizeof(Node));
   free(tmp);
   return;
 }
+	  
 Node *getNode(LinkedList *list, void *data)
 {
 Node *tmp = (Node *)malloc(sizeof(Node));
@@ -75,7 +76,7 @@ Node *tmp = (Node *)malloc(sizeof(Node));
 	}
   return NULL;
 }
-void displayList(LinkedList *list);
+void displayList(LinkedList *list){
 Node *tmp = (Node *)malloc(sizeof(Node));
 	tmp = list->head;
 	while(tmp != NULL){
