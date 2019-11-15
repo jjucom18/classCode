@@ -1,0 +1,5 @@
+initiaPerson:定义Person使得它指向姓和名以及表现和年龄
+deallocatePerson:定义Person使得申请了的内存内存空间释放
+displayPerson:展示这个人的姓名表现和年龄
+这个程序的作用是显示一个人的姓名表现和年龄的
+
