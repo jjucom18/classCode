@@ -1,8 +1,8 @@
 #include<stdio.h>
 
 void swap(int *p1,int *p2){ 
-	int p;
-	p=*p1;
+	int p; 
+	p=*p1;		//交换地址改为交换值
 	*p1=*p2;
 	*p2=p;
 	return;
