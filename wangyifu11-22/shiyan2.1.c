@@ -15,28 +15,31 @@ typedef struct _linkedList{
 
 
 void initList(LinkedList *list);
-Node *node = (Node *)malloc(sizeof(Node));
+      list->head = NULL;
+      list->tail = NULL; 
+      list->current = NULL;
+
+void addHead(LinkedList *list, void *data){
+        Node *node = (Node *)malloc(sizeof(Node));
 	node->data = data;
 	node->next = NULL;
 
-void addHead(LinkedList *list, void *data);
-Node *node = (Node *)malloc(sizeof(Node));
-	node->data = data;
-	node->next = NULL;
-
-	//if(list->head == NULL){
-	if(NULL == list->head){
+	if(list->head == NULL)
+        {
+	if(NULL == list->head)
+	{
 		list->tail = node;
-	}else{
+	}else
+	{
 		node->next = list->head;
 	}
 	list->head = node;
-
+	}
 	return;
 }
 
-void addTail(LinkedList *list, void *data);
-Node *node = (Node *)malloc(sizeof(Node));
+void addTail(LinkedList *list, void *data){
+        Node *node = (Node *)malloc(sizeof(Node));
 	node->data = data;
 	node->next = NULL;
 
@@ -48,20 +51,26 @@ Node *node = (Node *)malloc(sizeof(Node));
 	list->tail = node;
 }
 
-void delNode(LinkedList *list, void *data);
-Node *tmp = (Node *)malloc(sizeof(Node));
+void delNode(LinkedList *list, void *data){
+        Node *tmp = (Node *)malloc(sizeof(Node));
 	tmp = list->head;
-	if(*(tmp->data) == *data){
-		if(tmp->next == NULL){
+	if(*(tmp->data) == *data)
+	{
+		if(tmp->next == NULL)
+		{
 			list->head = list->tail = NULL;
-		}else{
+		}else
+		{
 			list->head = list->head->next;
 		}
-	}else{
-		while(tmp != NULL && *(tmp->data) != *data){
+	}else
+	{
+		while(tmp != NULL && *(tmp->data) != *data)
+		{
 			tmp = tmp->next;
-		}
-		if(tmp != NULL){
+	        }
+		if(tmp != NULL)
+		{
 			tmp->next = tmp->next->next;
 		}
 	}
@@ -71,27 +80,33 @@ Node *tmp = (Node *)malloc(sizeof(Node));
 	return;
 }
 
-Node *getNode(LinkedList *list, void *data);
-Node *tmp = (Node *)malloc(sizeof(Node));
+Node *getNode(LinkedList *list, void *data)
+{
+        Node *tmp = (Node *)malloc(sizeof(Node));
 	tmp = list->head;
-	if(*(tmp->data) == *data){
+	if(*(tmp->data) == *data)
+	{
 		return tmp;
-	}else{
+	}else
+	{
 		while(tmp != NULL && *(tmp->data) != *data){
 			tmp = tmp->next;
-		}
-		if(tmp != NULL){
+        }
+		if(tmp != NULL)
+		{
 			return tmp;
 		}
-	}
+	
 
 	return NULL;
 }
 
-void displayList(LinkedList *list);
+void displayList(LinkedList *list)
+{
 Node *tmp = (Node *)malloc(sizeof(Node));
 	tmp = list->head;
-	while(tmp != NULL){
+	while(tmp != NULL)
+	{
 		printf("%d \t", *(tmp->data));
 		tmp = tmp->next;
 	}
@@ -99,6 +114,7 @@ Node *tmp = (Node *)malloc(sizeof(Node));
 
 	return;
 }
+	
 int main()
 
 {
