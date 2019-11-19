@@ -1,7 +1,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
-
+#include<time.h>
 typedef int ElemType;
 typedef struct Node{
    ElemType data;
@@ -10,7 +10,7 @@ typedef struct Node{
    int initlist(Linklist *L){
         (*L)=(Linklist)malloc(sizeof(Node));
         (*L)->next = NULL;
-        printf("Á´±í³õÊ¼»¯³É¹¦\n");
+        printf("é“¾è¡¨åˆå§‹åŒ–æˆåŠŸ\n");
         return 1;}
 
     int createlistHead(Linklist *L,int n){
@@ -23,7 +23,7 @@ typedef struct Node{
          printf("testing:Node[%d]=%d\n",i+1,p->data);
          p->next=(*L)->next;
          (*L)->next=p;
-         printf ("Á´±í(Í·²å·¨)´´½¨³É¹¦\n");
+         printf ("é“¾è¡¨(å¤´æ’æ³•)åˆ›å»ºæˆåŠŸ\n");
          return 1;}
 
      int createlistTail(Linklist *L,int n){
@@ -37,19 +37,19 @@ typedef struct Node{
          p->next =NULL;
          temp->next = p;
          temp = p;}
-         printf ("Á´±í(Î²²å·¨)´´½¨³É¹¦\n");
+         printf ("é“¾è¡¨(å°¾æ’æ³•)åˆ›å»ºæˆåŠŸ\n");
          return 1;}
 
      int printlist(Linklist *L){
          Linklist p;
          int i=0;
          p=(*L)->next;
-         printf("------´òÓ¡Á´±í-----\n");
+         printf("------æ‰“å°é“¾è¡¨-----\n");
          if(p==NULL){
-         printf("ÕâÊÇÒ»¸ö¿ÕÁ´±í\n");}
+         printf("è¿™æ˜¯ä¸€ä¸ªç©ºé“¾è¡¨\n");}
          while(p){
           i++;
-         printf("µÚ%d¸ö½ÚµãµÄÊı¾İdataÎª=%d\n",i,p->data);
+         printf("ç¬¬%dä¸ªèŠ‚ç‚¹çš„æ•°æ®dataä¸º=%d\n",i,p->data);
          p=p->next;}
          return 1;}
 
@@ -57,22 +57,22 @@ typedef struct Node{
           Linklist p;
           p=(*L)->next;
           if(p=NULL){
-          printf("Á´±íÎª¿Õ,Çë´´½¨Ò»¸öÁ´±í\n");
+          printf("é“¾è¡¨ä¸ºç©º,è¯·åˆ›å»ºä¸€ä¸ªé“¾è¡¨\n");
           *getdata =-1;
           return 0;}
           if(i<1){
-          printf("Ëù²éÑ¯µÄ½Úµã%d,Ó¦¸Ãf´óÓÚ0,ÇëÖØĞÂÊäÈë²éÑ¯\n",i);
+          printf("æ‰€æŸ¥è¯¢çš„èŠ‚ç‚¹%d,åº”è¯¥få¤§äº0,è¯·é‡æ–°è¾“å…¥æŸ¥è¯¢\n",i);
           *getdata =-1;
           return 0;}
           int j=1;
           while(p&&j<i){
           j++;p=p->next;}
           if(p=NULL){
-          printf("Ëù²éÑ¯µÄ½Úµã%d,ÒÑ¾­³¬³öÁËÊı×éµÄ³¤¶È\n",i);
+          printf("æ‰€æŸ¥è¯¢çš„èŠ‚ç‚¹%d,å·²ç»è¶…å‡ºäº†æ•°ç»„çš„é•¿åº¦\n",i);
           *getdata=-1;
           return 0;}
           *getdata=p->data;
-          printf("²éÑ¯³É¹¦!\n",i);
+          printf("æŸ¥è¯¢æˆåŠŸ!\n",i);
           return 1;}
 
      int insertlist(Linklist *L,int i,ElemType data){
@@ -81,24 +81,24 @@ typedef struct Node{
          p=(*L);
          int j=0;
          if (p->next==NULL){
-          printf("Á´±íÎª¿Õ,Ä¬ÈÏÔÚµÚÒ»¸öÎ»ÖÃ²åÈëÒ»¸ö½Úµã\n");
+          printf("é“¾è¡¨ä¸ºç©º,é»˜è®¤åœ¨ç¬¬ä¸€ä¸ªä½ç½®æ’å…¥ä¸€ä¸ªèŠ‚ç‚¹\n");
           insNode=(Linklist)malloc(sizeof(Node));
           insNode->data=data;
           insNode->next=p->next;
           p->next=insNode;
-          printf("½Úµã²åÈë³É¹¦\n");
+          printf("èŠ‚ç‚¹æ’å…¥æˆåŠŸ\n");
           return 1;}
          while(p&&j<i-1){
           j++;p=p->next;
           printf("j=%d\t p->data=%d\n",j,p->data);}
          if(p->next==NULL){
-           printf("²åÈëµÄÎ»ÖÃ³¬¹ıÁËÁ´±íµÄ³¤¶È%d,ÇëÖØĞÂ²Ù×÷!\n",j);
+           printf("æ’å…¥çš„ä½ç½®è¶…è¿‡äº†é“¾è¡¨çš„é•¿åº¦%d,è¯·é‡æ–°æ“ä½œ!\n",j);
            return 0;}
           insNode=(Linklist)malloc(sizeof(Node));
           insNode->data=data;
           insNode->next=p->next;
           p->next = insNode;
-          printf("½Úµã²åÈë³É¹¦\n");
+          printf("èŠ‚ç‚¹æ’å…¥æˆåŠŸ\n");
           return 1;}
 
      int insertlistHead(Linklist *L,ElemType  *data){
@@ -109,7 +109,7 @@ typedef struct Node{
         p=(Linklist)malloc(sizeof(Node));
         p->data=NULL;
         n->data=p;
-        printf("½Úµã²åÈë³É¹¦\n");
+        printf("èŠ‚ç‚¹æ’å…¥æˆåŠŸ\n");
         return 1;}}
 
      int insertlistTail(Linklist *L,ElemType  *data){
@@ -120,7 +120,7 @@ typedef struct Node{
          p=(Linklist)malloc(sizeof(Node));
          p->next=NULL;
          temp->next=p;
-         printf("½Úµã²åÈë³É¹¦\n");
+         printf("èŠ‚ç‚¹æ’å…¥æˆåŠŸ\n");
          return 1;}}
 
      int deletelist(Linklist *L,int i,ElemType *data){
@@ -128,19 +128,19 @@ typedef struct Node{
          int j=0;
          p=(*L);
          if(p->next==NULL){
-          printf("Á´±íÎª¿Õ£¬ÎŞ·¨É¾³ıÖ¸¶¨½Úµã");
+          printf("é“¾è¡¨ä¸ºç©ºï¼Œæ— æ³•åˆ é™¤æŒ‡å®šèŠ‚ç‚¹");
           *data=-1;
           return 0;}
           while(p->next&&j<i-1){
           j++;p=p->next;
           printf("j=%d\t p->data=%d\n",j,p->data);}
          if(p->data==NULL){
-          printf("É¾³ıµÄ½Úµã³¬¹ıÁËÁ´±íµÄ³¤¶È%d,ÇëÖØĞÂ²Ù×÷!\n",j);
+          printf("åˆ é™¤çš„èŠ‚ç‚¹è¶…è¿‡äº†é“¾è¡¨çš„é•¿åº¦%d,è¯·é‡æ–°æ“ä½œ!\n",j);
           *data=-1;
           return 0;}
          pnext=p->next;
          p->next=pnext->next;
          *data=pnext->data;
          free(pnext);
-         printf("½Úµã³É¹¦É¾³ı\n");
+         printf("èŠ‚ç‚¹æˆåŠŸåˆ é™¤\n");
          return 1;}}

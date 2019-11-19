@@ -20,8 +20,8 @@ typedef struct _linkedList
 void initializeList(LinkedList *list);
 void addHead(LinkedList *list, int data);
 void addTail(LinkedList *list, int data);
-void delete(LinkedList *list,Node *node);
-Node *getNode(LinkedList *list,int data);
+void delNode(LinkedList *list,Node *node);
+Node *FindData(LinkedList *list,int data);
 void displayList(LinkedList *list);
 #endif
 
@@ -37,7 +37,7 @@ int main(int argc, char **argv){
 	LinkedList *list = (LinkedList *)malloc(sizeof(LinkedList));
 	int DataArr[] = {1,2,3,4,5,6,7,8,9};
 	initializeList(list);
-	printf("插入节点请输入h\n");
+	printf("使用头插法请输入h,使用尾插法请输入t\n");
 	scanf("%c",&flat);
 	if (flat =='h' || flat =='H')
 {
@@ -54,13 +54,13 @@ if (flat == 't'|| flat == 'T'){
 displayList(list);
 printf("\n请输入你要删除的数据\n");
 scanf("%d",&data);
-delete(list,getNode(list,data));
+delNode(list,FindData(list,data));
 printf("删除成功 ！\n");
 displayList(list);
 printf("\n");
 
 
 
-rturn 0;
+return 0;
 } 
 
