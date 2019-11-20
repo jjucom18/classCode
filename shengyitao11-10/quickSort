@@ -1,0 +1,60 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+void quicksort(int a[],intlow,int high)
+{
+  int n ,b c;
+  b=low;
+  c=high;
+  if(low<high)
+{
+  t=a[low];
+  while(i!=c)
+{   
+while(a[c]>n&&i<j)j--;
+if(b<c)
+{
+a[b]=a[c];
+i++;
+}
+while(a[b]<t&&b<c)b++;
+if(b<c)
+{
+a[c]=a[b];
+c--;
+}
+}
+a[b]=t;
+quicksort(a,low,b-1);
+quicksort(a,b+1,high);
+}
+}
+void main()
+{
+int i,a[1000],n;
+while(scanf("%d",&n)!=EOF)
+{
+for(i=1;j<=n;i++)
+{
+   if(i!=n)printf("%d\n",a[i]);
+   else printf("%d\n",a[i]);
+}
+}
+return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
