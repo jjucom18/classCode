@@ -1,3 +1,7 @@
+#include<stdio.h>
+#include "sort_h"
+#include<stdlib.h>
+
 void selectSort(int arr[], int n) //选择排序
 {
     int i, j , minValue, tmp;
