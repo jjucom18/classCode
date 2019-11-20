@@ -18,6 +18,7 @@ void D_InsertSort(datatype R[],int n);
 void Bubble_Sort(datatype R[],int n);
 void Quick_Sort(datatype R[],int s,int n);
 void Select_Sort(datatype R[],int n);
+void ShellSort(datatype R[],int n,int d[],int t);
 int    display(datatype R[],int n);
 	
 
