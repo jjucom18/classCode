@@ -1,4 +1,4 @@
-ifndef sort_h
+#ifndef sort_h
 #include<stdio.h>
 #include <stdlib.h>
 #include <time.h>
@@ -48,7 +48,7 @@ void Bubble_Sort(SeqList *L)
         if(swap == 0) break;
         }
         printf("输出排序后的值\n");
-        for(datetype i = 0;i <= MAXSIZE -1; i++)
+for(datetype i = 0;i <= MAXSIZE -1; i++)
         printf("%d\t",L->date[i]);
         printf("\n");
 }
@@ -98,7 +98,7 @@ void Select_Sort(SeqList *L)
 }
 void ShellSort(SeqList *L)
 {
-        printf("希尔排序\n");
+printf("希尔排序\n");
         datetype i,j,k,h;
         datetype t = 5;
         datetype d[]={5,4,3,2,1};
@@ -120,37 +120,6 @@ void ShellSort(SeqList *L)
         printf("%d\t",L->date[i]);
         printf("\n");
 
-}
-void Menu(SeqList *L)
-{
-        int choice;
-        printf("请按数字输入，选择对应的排序方式:\n");
-        printf("1、插入排序\n");
-        printf("2、冒泡排序\n");
-        printf("3、选择排序\n");
-        printf("4、希尔排序\n");
-
-        do
-        {       do
-                {       scanf("%d",&choice);
-                        switch(choice)
-                        {
-                        case 1: D_InserSort ( L );
-                                break;                                  //插入排序
-                        case 2: Bubble_Sort ( L );
-                                break;                                  //冒泡排序
-                        case 3: Select_Sort ( L );
-                                break;                                  //选择排序
-                        case 4: ShellSort   ( L );
-                                break;                                  //希尔排序
-                        default :0;
-                        printf("error:");
-                                break;
-                        }
-                }while(choice==1||choice==2||choice==3||choice==4);
-
-                printf("没有此排序，请重新输入\n");
-        }while(1);
 }
 
 #endif
