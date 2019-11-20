@@ -1,3 +1,6 @@
+#include<stdio.h>
+#include<stdlib.h>
+
 void bubbleSort(int line[], int lineNum, int *compareTime, int *moveTime)
 {
 	for (int i = lineNum - 1; i >= 0; i--)
