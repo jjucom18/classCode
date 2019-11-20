@@ -2,13 +2,13 @@
 #include "FastSort.c"
 #include "SimpleSort.c"
 #include "insertSort.c"
-#include "creatrandom.c"
+#include "creaerandom.c"
 #include "out_arr.c"
 
 int main(int argc, char **argv)
 {  
           int arr[10];
-          createrandom(arr);
+          creaerandom(arr);
           out_arr(arr);
           BubbleSort(arr,10);
           out_arr(arr);
