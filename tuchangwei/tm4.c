@@ -1,3 +1,4 @@
+
 #include<stdio.h>
 #include<malloc.h>
 int main(int argv,char **argc)
@@ -5,7 +6,7 @@ int main(int argv,char **argc)
         int *ptrvar1=&var1;
         int const *ptrcvar1=&cvar1;
         int const *const cptrvar=&cvar1;
-printf("please  input your two  datas:");
+printf("请输入你的数据");
 scanf("%d,%d",&var1,&p);
 (*ptrvar1)++;
 printf("利用指针实现变量的自增\n");
@@ -20,7 +21,8 @@ printf("指针值自增\n");
 printf("%p\n",ptrcvar1);
 int *const cptrvar1=&var1;
 (*cptrvar1)++;
-    printf("使用指向变量的常量指针使变量自增\n");
+    printf("使用常量指针使变量自增\n");
     printf("%d\n",var1);
-        printf("指向变量的常量指针的值不能被修改\n");
-
+        printf("指针的值不能被修改\n");
+return 0;
+}

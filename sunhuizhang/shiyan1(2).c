@@ -3,10 +3,10 @@
    int swap(int *p1,int *p2)
    {
        int *p;
-       p=p1;p1=p2;p2=p;
-       printf("%d,%d\n",*p1,*p2);    
+       p=*p1;p1=*p2;p2=*p;
+           
  }
-   void main()
+   int main()
   {
       int a,b;
       int *pt_1,*pt_2;
