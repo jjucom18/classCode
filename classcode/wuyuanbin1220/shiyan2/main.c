@@ -5,7 +5,7 @@ int main(int argc, char **argv){
 	
 	int data;
 	char flat;
-	LinkedList *list = (LinkedList *)malloc(sizeof(LinkedList));
+	LinkedList *list
 	int DataArr[] = {1,2,3,4,5,6,7,8,9};
 	initList(list);
 	printf("使用头插法请输入h，使用尾插法请输入t\n");
