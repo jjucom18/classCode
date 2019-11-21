@@ -1,0 +1,110 @@
+#include <stdio.h>
+
+#include <stdlib.h>
+typedef struct Link {
+
+
+	int elem;
+    struct Link *next;
+    } link;
+    link * initLink() ;
+
+	void display(link *p) ;
+
+	int main()  {
+
+	printf("初始化链表为：\n") ;
+
+	link *p = initLink() ;
+
+	display(p) ;
+	return 0;
+
+							} 
+    void insert_head(struct node *pH, struct node *new)  {
+	 new->pNext = pH->pNext; 
+	 pH->pNext= new; 
+	 pH->data += 1; } 
+
+	 void insert_tail(struct node *ph,struct node *new)  {
+	struct node *p=ph;
+	while(NULL !=p->pNext);  
+    p=p->pNext;  
+	p->pNext=new;  } 
+
+	  node *write() 
+{
+	
+     int temp;
+	node *head,*p,*q;
+	head=(node *) malloc(sizeof(node) ) ;
+	p=head; 
+	scanf("%d",&temp);
+	while(temp!=-1) 
+	{
+     p->next=(node *) malloc(sizeof(node) ) ; 
+	p=p->next; 
+    p->elem=temp;
+	scanf("%d",&temp) ;	 
+	p->next=NULL; 
+    return head; } 
+    void delaynode(node *head,int a) {
+    node *p,*q;
+    p=head;
+    q=p->next;
+    while(q){
+    if(q->elem==a){
+	p->next=q->next;
+	free(q);
+	break;} 						
+	else{
+	p=q;
+	q=q->next;} 
+    if(!q) 			
+	printf("没有此数\n") ;} 
+	
+    void delaynode(node *head,int a) {
+    node *p;
+    p=head->next;
+    while(p&&p->elem!=a) 
+	p=p->next;
+	if(p）{
+	p->elem=p->next->elem;
+    p->next=p->next->next;}  
+	else
+	printf("无此数") ;}
+
+    void pri(node *head){
+	node *p;
+	p=head->next;
+	while(p){						
+	printf("%d ",p->elem) ;
+	p=p->next;
+    printf("\n") ;} 
+    void main() {
+	int a;
+	node *write() ;
+	void delaynode(node *head,int a) ;
+	void pri(node *head) ;
+	node *head;
+	printf("输入一串数据，以-1作为结束标志:") ; 
+	head=write() ;
+	pri(head) ;
+	printf("输入一个删除数字:") ;
+    scanf("%d",&a) ; 
+	printf("\n") ;
+	delaynode(head,a) ;
+    pri(head) ;} 
+
+	linklist* Locate(linklist* head, datatype key) {
+    linklist *p;/* p 指向开始结点 */
+    p = head -> next;
+	while(p != NULL) {
+	if(p -> data != key）{
+    p = p -> next;} 
+    else{
+    break;} } 
+	return p;} 
+
+	
+
