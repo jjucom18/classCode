@@ -1,23 +1,23 @@
 #include"Sort.h"
 
-void main()
+void D_inSort(DataType *R)
 {
 	int i,j;
 	int tem;
-	DataType R[i];
-	*R = Random_Numble();
-	//for (i=1;i<=MaxSize;i++)
-	//{
-	//	tem = r[i];
-	//	j=i-1;
+	//R=Random_Numble();
+	//R[0]=1;R[1]=4;R[2]=3;R[3]=9;R[4]=8;
+	for (i=1;i<=MaxSize;i++)
+	{
+		tem = R[i];
+		j=i-1;
 
-		//while(j>0 && tem<r[j])
-		//{
-		//	r[j+1] = r[j];
-		//	j--;
-		//}
-	//	r[j+1] = tem;
-	//}
+		while(j>=0 && tem<r[j])
+		{
+			R[j+1] = R[j];
+			j--;
+		}
+		R[j+1] = tem;
+	}
 	for(int i=0;i<MaxSize;i++)
 	printf("%d\t",R[i]);
 	printf("\n");
