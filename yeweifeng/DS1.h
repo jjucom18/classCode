@@ -31,23 +31,20 @@ Status Destroy(SqList &L){
 Status Append(SqList &L, KeyType e){
 	    RcdType *newbase;
 	        //如果长度大于顺序表存储容量，进行扩容
-		//    if(L.length+1 >= L.size){
-		//            newbase = (RcdType*)realloc(L.rcd, (L.size+L.increment)*
-		//                                                 sizeof(RcdType));
-		//                                                         if(NULL==newbase)return OVERFLOW;
-		//                                                                 L.rcd = newbase;
-		//                                                                         L.size += L.increment;
-		//                                                                             }
-		//
-		//                                                                                 L.rcd[L.length+1].key=e;
-		//                                                                                     L.length++;
-		//                                                                                         return OK;
-		//                                                                                         }
-		//
-		//                                                                                         Status Print(SqList &L){
-		//                                                                                             int i;
-		//                                                                                                 for(i=1; i<L.length+1; i++){
-		//                                                                                                         printf("%c",L.rcd[i].key);
-		//                                                                                                             }
-		//                                                                                                                 printf("\n");
-		//                                                                                                                 }
+		    if(L.length+1 >= L.size){
+		            newbase = (RcdType*)realloc(L.rcd, (L.size+L.increment)*
+		                                                 sizeof(RcdType));
+                                                       if(NULL==newbase)return OVERFLOW;
+		                                                                 L.rcd = newbase;
+		                                                                         L.size += L.increment;
+		                                                                             }
+                                                                        L.rcd[L.length+1].key=e;
+		                                                                                     L.length++;
+		                                                                              return OK;
+		                                                                             }
+                                                                   Status Print(SqList &L){
+		                                                    for(i=1; i<L.length+1; i++){
+	                                                                        printf("%c",L.rcd[i].key);
+                                                                                                      }	                                                                                                   
+									   printf("\n");
+}
