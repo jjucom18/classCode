@@ -7,7 +7,7 @@
 
 typedef int datetype;
 
-typedef struct 					
+typedef struct 			
 {
         datetype date[MAXSIZE];
                 datetype last;
@@ -53,7 +53,7 @@ void Bubble_Sort(SeqList *L)
         printf("\n");
 }
 
-void D_InserSort(SeqList *L)                    
+void D_InserSort(SeqList *L)                   
 {
         printf("插入排序\n");
         for(datetype i = 1;i<=MAXSIZE;i++)
@@ -134,12 +134,16 @@ void Menu(SeqList *L)
         {       do
                 {       scanf("%d",&choice);
                         switch(choice)
-                       {
-              case 1: D_InserSort ( L );
-                              break;                                                         case 2: Bubble_Sort ( L );
-               			 break;                                                      case 3: Select_Sort ( L );
-                                   break;                                                    case 4: ShellSort   ( L );
-                                 break;                                                          default :0;
+                        {
+                        case 1: D_InserSort ( L );
+                                break;                                  
+                        case 2: Bubble_Sort ( L );
+                                break;                                  
+                        case 3: Select_Sort ( L );
+                                break;                                  
+                        case 4: ShellSort   ( L );
+                                break;                                  
+                        default :0;
                         printf("error:");
                                 break;
                         }
@@ -150,3 +154,4 @@ void Menu(SeqList *L)
 }
 
 #endif
+
