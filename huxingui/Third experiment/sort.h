@@ -27,4 +27,4 @@ void Print_sort_positive(int *arr, int len);                                  //
 void Print_sort_negative(int *arr, int len);                                  //    逆序输出
 void Print_mob_com();                                                         //    显示移动次数和比较次数
 
-#endif                    
+#endif          
