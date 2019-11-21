@@ -11,7 +11,6 @@ void D_inSort(datatype *r,int n);
 void Bubble_Sort(datatype *r,int n);
 void Quick_Sort(datatype *r,int n,int *d,int t);
 void Select_Sort(datatype *r,int n);
-void QSort(datatype *r,int n,int *d,int t);
 
 
 #endif

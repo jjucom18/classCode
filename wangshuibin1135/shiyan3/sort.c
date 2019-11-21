@@ -1,5 +1,5 @@
 #include<stdio.h>
-#include "sort_h"
+#include "sort.h"
 #include<stdlib.h>
 
 void selectSort(int arr[], int n) //选择排序
