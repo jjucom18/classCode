@@ -2,24 +2,46 @@
 
 
 
- void initializeList(LinkedList *List){
+ void initializeList(LinkedList *list){
 	 list ->head = NULL;
 	 list ->tail = NULL;
 	 list ->current =NULL;
+ 
+     return;
+ } 
+ void addHead(LinkedList *list, int data){
+	 Node *node = (Node *)malloc(sizeof(Node));
+	 node->data = data;
+	 node->next =NULL;
 
- return;}
- void addHead(LinkedList *list, void* data){
-	 Node *node = (Node*) malloc(sizeof(Node));
-	 node->data =data;
-	 if (list->head == NULL){
+	 if(NULL == list->head){
 		 list->tail =node;
-		 node->next =NULL;
-	 }else {
+	 }
+	 else {
 		 node->next = list->head;
 	 }
 	 list->head = node;
+	 return;
  }
- void delelte(LinkedList *list, Node *node){
+
+
+
+void addTail(LinkedList *list, int data){
+
+	Node *node = (Node *)malloc(sizeof(Node));
+	node -> data=data;
+	node -> next =NULL;
+
+	if(NULL == list->head){
+		list->head = node;
+	}
+	else{
+         list->tail->next = node;
+	}
+	list->tail-> = node;
+	return;
+}
+ void delNode(LinkedList *list, Node *node){
 	 if (node == list->head){
 		 if (list->head->next == NULL){
              list->head = list->tail = NULL;
@@ -32,21 +54,23 @@
 					 tmp =tmp->next;
 
 				 }
-				 if (tmp->next = node->next;)
+				 if (tmp->next = node->next) 
 			 }
 		 }
-	 free(node);
-	 
-return;
- Node *getNode(LinkedList *list,  compare , void* data){
-	 Node *node = list->head;
-	 while (node !=NULL){
-		 if(compare(node->data, data) ==0){
-			 return node;
+         free(node);
+	     
+		 return;
+} 
+
+
+
+ Node *FindData(LinkedList *list,int data){
+	 Node *tmp = list->head;
+	 while (tmp !=NULL && tmp->data != data){
+		 tmp = tmp->next;
 		 }
-		 node = node->next;
-	 }
-	 return NULL;
+		 
+	  return tmp;
  }
 
 
@@ -55,5 +79,6 @@ void displayList(LinkedList *list){
 	while(tmp !=NULL){
 		printf("%d\t",tmp->data);
 		tmp = tmp->next;
+	} 
+} 
 	
-
