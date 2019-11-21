@@ -10,7 +10,8 @@ int main(int argc, char **argv){
         printf("%d\t",arr[i]);
     return 0;
     }
-
+    
+    int i;
     bubble_sort(arr[i],10);
     printf("%d\t",arr[i]);
     printf("\n");
