@@ -1,4 +1,5 @@
-
+#include<stdio.h>
+#include<stdlib.h>
 
 
 void bubbleSort(int arr[], int n)
