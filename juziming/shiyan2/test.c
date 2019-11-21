@@ -36,4 +36,23 @@ int Insert_Head(Node *h, LinkList data)
 		h->next = node;
 								
 		return 0;
+}
+void deleNode(List *list, DataType iData) {
+
+		if(list->head->data == iData) {
+        list->head = list->head->next;
+} 
+		Node *prev = list->head;
+		Node *node = prev->next;
+		while(node != NULL) {
+        if(node->data == iData) {
+        prev->next = prev->next->next;
+        return;
+      } else {
+        prev = prev->next;
+		node = node->next;
+	  } 
+	} 
+
+		return;
 } 
