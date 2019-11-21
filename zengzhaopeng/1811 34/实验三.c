@@ -1,12 +1,16 @@
 # include <stdio.h>
-# include <stdlib.h>                                                                                                    # include <time.h>
+# include <stdlib.h> 
+# include <time.h>
 # define N 20
 void bubble(int a[], int n) {
             int i, flag=1, t;
             for (i=1; i<n && flag==1; i++) {
             flag = 0;
             for (int j=0; j<n-1; j++) {
-            if (a[j] > a[j+1])        {                                                                                                 t = a[j];                                                                                                               a[j] = a[j+1];                                                                                                          a[j+1] = t;flag = 1;   }
+            if (a[j] > a[j+1])        {
+            t = a[j];                
+            a[j] = a[j+1]; 
+            a[j+1] = t;flag = 1;   }
                 }
                 }
                 }
@@ -33,7 +37,8 @@ int Partition(int a[], int low, int high) {
         while (low<high && a[low]>=x) low++;
         if (low < high) {
         a[high] = a[low];
-        high--;                                                                                                                                 }
+        high--;         
+                        }
                         }
         a[low] = x;
         return low;
