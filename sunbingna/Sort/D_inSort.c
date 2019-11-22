@@ -21,5 +21,4 @@ void D_inSort(DataType *R)
 	for(int i=0;i<MaxSize;i++)
 	printf("%d\t",R[i]);
 	printf("\n");
-	return;
 }

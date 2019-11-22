@@ -7,6 +7,4 @@ void main()
 	Bubble_Sort(R);
 	ShellSort(R);
 	Select_Sort(R);
-
-	return ;
 }
