@@ -10,5 +10,5 @@ int *Random_Numble()
 	//for(int i=0; i < MaxSize; i++)
 	//{printf("%d\t",r[i]);}
 	//printf("\n");
-	return &r[0];
+	return r;
 }
