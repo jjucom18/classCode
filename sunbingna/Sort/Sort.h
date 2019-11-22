@@ -11,7 +11,7 @@
 
 typedef int DataType;
 DataType r[MaxSize];
-DataType *R;
+//DataType *R;
 
 int *Random_Numble();
 void D_inSort(DataType *R);
