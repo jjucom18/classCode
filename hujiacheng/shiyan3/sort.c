@@ -15,30 +15,32 @@ void Bubble_Sort(datatype R[],int n){
 	printf("冒泡排序\n");
 	int i,j;
 	int swap;
+	datatype element;
 	for(i=1;i<n-1;j++){
 		swap = 0;
 	  for(j=1;j<=n-1;j++)
 		if(R[j].key>R[j+1].key){
-		R[0]=R[j+1];
+		element=R[j+1];
 		R[j+1]=R[j];
-		R[j]=R[0];
+		R[j]=element;
 		swap =1; }
 	if(swap == 0) break;	
 	}
   } 
 
 int Partition(datatype R[],int low,int high){//划分算法
-	R[0]=R[low];
+	datatype element;
+	element=R[low];
 	while(low<high){
-	while(low<high&&R[high].key>=R[0].key)
+	while(low<high&&R[high].key>=element.key)
 		high--;
 	if(low<high){R[low]=R[high];low++; }
-	while(low<high&&R[low].key<R[0].key)
+	while(low<high&&R[low].key<element.key)
 		low++;
 	if(low<high){
 	R[high]=R[low];high--; }
 		}
-	R[low]=R[0];
+	R[low]=element;
 	return low;
 }
 void Quick_Sort(datatype R[],int s,int t){
@@ -47,4 +49,28 @@ void Quick_Sort(datatype R[],int s,int t){
 	i =Partition(R,s,t);
 	Quick_Sort(R,s,i-1);
 	Quick_Sort(R,i+1,t);
-	
+	}
+void Select_Sort(datatype R[],int n){
+	datatype element;
+	printf("简单选择排序\n");
+	int i, k,j;	
+	for(i=0;i<=n;i++){
+		k=i;
+		for(j=i+1;j<=n;j++)
+			if(R[j].key<R[k].key)
+				k=j;
+		if(i!=k){
+			element=R[k];
+			R[k]=R[i];
+			R[i]=element;
+		}	}	
+}
+
+
+void display(datatype R[],int n){
+		int i;
+		for(i=1;i<=n;i++){
+			printf("%d  ",R[i+1].key);
+		}
+}
+
