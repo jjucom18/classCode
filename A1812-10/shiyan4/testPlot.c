@@ -1,9 +1,9 @@
-#include “Plot.h”
+#include"Plot.h"
 
 
-Int main()
+int main()
 {
-// 初始化
+
 s.top   = -1;
 b.top   =  0;
 p.rear  =  0;
@@ -13,29 +13,29 @@ p.front =  0;
 
 while(1)
 {
-        //system(“clear”);
-        Welcome();
-        Int I, cho;
-        Scanf (“%d”, &i);
+        system("clear");
+        welcome();
+        int i, cho;
+        scanf ("%d",&i);
 
-        If (1 == i) car_come();
-        If (2 == i) car_leave();
-        If (3 == i) Display();
-        If (4 == i) break;
+        if (1 == i) car_come();
+        if (2 == i) car_leave();
+        if (3 == i) Display();
+        if (4 == i) break;
 
-        Printf (“返回请输入1\n”);
-        Scanf (“%d”, &cho);
-        If (1 == cho)
+        printf("返回请输入1\n");
+        scanf ("%d",&cho);
+        if (1 == cho)
         {
-            Continue;
+            continue;
         }
-        Else
+        else
         {
-            Printf (“您的输入有误，请重新输入\n”);
-            Scanf (“%d”, &cho);
-            Continue;
+            printf ("您的输入有误，请重新输入\n");
+            scanf ("%d",&cho);
+            continue;
         }
 }
-Return 0;
+  return 0;
 }
 
