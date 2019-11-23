@@ -1,15 +1,6 @@
 #include <stdio.h>
-
 #include <time.h>
-
-
-
- namespace ;
-
-
-
 #define MAXSIZE 4
-
 #define SMaxSize 5
 #define ElemType int
 #define FALSE 0
