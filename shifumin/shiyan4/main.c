@@ -5,7 +5,6 @@ void main()
 	SeqStackCar Enter,temp;
 	LinkQueueCar Wait;
 	int ch;
-	system("color 4A");
 	InitStack(&Enter);
 	InitStack(&Temp);
 	InitQueue(&Wait);
