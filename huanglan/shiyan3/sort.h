@@ -4,14 +4,13 @@
 #include <stdlib.h>
 #define MAXNUM 20
 typedef int datatype; 
-datatype R[MAXNUM];
+int *R;
+datatype r[20];
 
-int Random_Numble();
-void D_inSort(datatype *r,int n);
-void Bubble_Sort(datatype *r,int n);
-void Quick_Sort(datatype *r,int n,int *d,int t);
-void Select_Sort(datatype *r,int n);
-void QSort(datatype *r,int n,int *d,int t);
-
+int *Random_Numble();
+void D_inSort(datatype *R,int n);
+void Bubble_Sort(datatype *R,int n);
+void Select_Sort(datatype *R,int n);
+void QSort(datatype *R);
 
 #endif
