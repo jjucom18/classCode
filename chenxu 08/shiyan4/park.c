@@ -65,9 +65,9 @@ int Arrival(SeqStackCar *Enter,LinkQueueCar *W){
 	CarNode *p;
     QueueNode *t;
     p=(CarNode *)malloc(sizeof(CarNode));
-    flushall();
+    //flushall();
     printf("\n请输入车牌号(例:豫B1234):");
-    gets(p->num);
+    //gets(p->num);
 	if(Enter->top<MAX)
 	{
 		Enter->top++;
