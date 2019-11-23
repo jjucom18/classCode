@@ -1,4 +1,4 @@
-ifndef sort_h
+#ifndef sort_h
 #include<stdio.h>
 #include <stdlib.h>
 #include <time.h>
