@@ -1,23 +1,8 @@
 #include <stdio.h>  
-
-
-
 # include <stdlib.h>
-
-
-
 # include <time.h>
-
-
-
 # define N 50
-
-
-
 # define SR 100
-
-
-
 int A[N],B[N],C[N],D[N],E[N],F[N],G[N];
 
 
@@ -346,76 +331,20 @@ int change(int *a,int *b)
 
 
 int main(){    
-
-
-
-    int i,t; 
-
-
-
-    srand(time(0));
-
-
-
-    printf("请输入N [2,%d]:",N);
-
-
-
-    gainint(&num,2,N);
-
-
-
-    for(i=0;i<num;i++)
-
-
-
-     printf("%d\t",A[i]=B[i]=C[i]=D[i]=E[i]=F[i]=rand()%SR);
-
-
-
+    int i,t,g;   srand(time(0));
+    printf("请输入N [2,%d]:",N); gainint(&num,2,N);
+    for(g=0;g<6;g++){
+    printf("第%d次排序的结果为:\n\n",g+1);	    
+    for(i=0;i<num;i++ )
+    { printf("%d\t",A[i]=B[i]=C[i]=D[i]=E[i]=F[i]=rand()%SR);}
     charu(A,num);
-
-
-
     printf("\n直接插入排序:\n比较次数:%10d\t移动次数%10d\n\n",a,aa);
-
-
-
     xuanzepai(B,num);
-
-
-
     printf("简单选择排序:\n比较次数:%10d\t移动次数%10d\n\n",b+bb/3,bb);
-
-
-
     c=(num-1)*num/2;
-
-
-
     maopao(C,num); 
-
-
-
     printf("冒泡排序:\n比较次数:%10lld\t移动次数%10lld\n\n",c+cc/3,cc);
-
-
-
     Quicksort(D,0,num-1);
-
-
-
     printf("快速排序:\n比较次数:%10d\t移动次数%10d\n\n",d+dd/3,dd);
-
-
-
-
-	getchar(); 
-
-
-
-    return 0;  
-
-
-
-}  
+	getchar();} 
+    return 0;  }  

@@ -1,0 +1,28 @@
+typedef struct time
+{
+   int hour;
+   int main;
+} Time; //时间节点
+typedef struct node 
+{
+   char  num[10];
+   Time reach;
+   Time leave;
+   Time leave;
+}CarNode; //车辆信息节点
+typedef struct NODE
+{
+	CarNode *stack[MAXNUM+1];
+	int top;
+}SeqStackCar;  // 模拟停车场
+typedef struct car
+{
+	CarNode *data;
+	struct car *next;
+}  QueueNode;
+typedef struct Node
+{
+    QueueNode *head;
+    QueueNode *rear;
+} LinkQueueCar; //模拟便道
+
