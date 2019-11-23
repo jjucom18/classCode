@@ -1,7 +1,7 @@
 #ifndef  parking_h
 #define  parking_h
 #include <stdio.h>
-#include <malloc.h>
+#include <stdlib.h>
 #define N 10 //停车场内最多的停车数
 #define M 10 //候车场内最多的停车数
 #define Price 2 //每单位时间停车费用
