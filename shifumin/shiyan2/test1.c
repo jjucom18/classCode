@@ -1,7 +1,6 @@
 #include<stdio.h>
 #include<stdlib.h>
-#include<string.h>
-
+#include"test1.h"
 typedef struct _node{
 	void *data;
 	struct _node *next;
@@ -76,4 +75,5 @@ typedef struct _linkedList{
 		}
 		return;
 	}
+
 

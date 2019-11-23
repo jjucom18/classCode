@@ -1,4 +1,4 @@
-nclude<stdio.h>
+#include<stdio.h>
 #include<malloc.h>
 
 typedef int dataType;
