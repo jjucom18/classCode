@@ -1,7 +1,7 @@
 #ifndef SORT_H_
 #define SORT_H_
 
-#define ARRAY_LEN 1000        //    数组长度
+#define ARRAY_LEN 20          //    数组长度
 #define MIN 1                 //    数组的最小值
 #define MAX 1000              //    数组的最大值
 
