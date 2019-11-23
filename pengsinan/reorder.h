@@ -4,14 +4,14 @@
 
 #define Maxnum = 20
 
-typedef struct Shellsort{
+/*typedef struct Shellsort{
 	int datatype R[];
 	int n;
 	int d[];
 	int t;
-	/*keytype key;*/
+	keytype key;
 }shelltype;
-shelltype R[Maxnum];
+shelltype R[Maxnum];*/
 
 /*typedef struct Bubblesort{
 	int arr[];
@@ -20,20 +20,20 @@ shelltype R[Maxnum];
 }bubbletype;
 bubbletype B[Maxnum];*/
 
-typedef struct Quick_sort{
+/*typedef struct Quick_sort{
 	int datatype Q[];
 	int s;
 	int z;
-	/*keytype key;*/
+	keytype key;
 }quicktype;
 quicktype Q[Maxnum];
 
 typedef struct Select_sort{
 	int datatype S[];
 	int n;
-	/*keytype key;*/
+	keytype key;
 }selecttype;
-selecttype S[Maxnum];
+selecttype S[Maxnum];*/
 
 void Shellsort(int datatype R[] ,int number ,int d[] ,int t);
 void Bubblesort(int arr[] ,int arrsize);
