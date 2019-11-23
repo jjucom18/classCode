@@ -11,13 +11,13 @@
 
 typedef int DataType;
 DataType r[MaxSize];
-int *R;
+//DataType *R;
 
 int *Random_Numble();
 void D_inSort(DataType *R);
-void Bubble_Sort(DataType *R,int n);
-void ShellSort(DataType *r,int n,int *d,int t);
-void Select_Sort(DataType *r,int n);
+void Bubble_Sort(DataType *R);
+void ShellSort(DataType *R);
+void Select_Sort(DataType *R);
 
 #endif
 
