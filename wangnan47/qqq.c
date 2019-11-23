@@ -95,7 +95,7 @@ int Arrival(SeqStackCar *Enter, LinkQueueCar *W)  //车辆到达
 
 	}
 }
-
+`
 void Leave(SeqStackCar *Enter, SeqStackCar *Temp, LinkQueueCar *W) 
 	//车辆离开
 {
