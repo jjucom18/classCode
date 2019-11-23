@@ -10,4 +10,6 @@ typedef struct{
 }SqStack;
 void Init_SqStack(SqStack *s);
 void DispStack(SqStack *s);
+
+
 #endif

@@ -9,4 +9,6 @@ typedef struct{
 }SqQueue;
 void InitQueue(SqQueue *q);
 void DispQueue (SqQueue *q);
+
+
 #endif
