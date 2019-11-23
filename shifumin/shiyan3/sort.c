@@ -10,7 +10,7 @@ void D_InsertSort(int R[],int n)
 		R[j+1]=R[0];
 		}
 	return;
-} 
+} //直接插入排序
 
 void Bubble_Sort(int R[],int n)
 {
@@ -28,7 +28,7 @@ void Bubble_Sort(int R[],int n)
     if(swap==0)break;
 	}
 	return;
-}
+}//冒泡排序
 
 void Select_Sort(int R[],int n)
 {   int k,j,i;
@@ -45,7 +45,7 @@ void Select_Sort(int R[],int n)
 	 }
 	}
 	return;
-}
+}//简单选择排序
 
 void ShellSort(int R[],int n)
 {
@@ -66,4 +66,4 @@ void ShellSort(int R[],int n)
 		}
 	}
 	return;
-}
+}//希尔排序
