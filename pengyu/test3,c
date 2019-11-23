@@ -1,0 +1,43 @@
+#include "stdafx.h"
+#include<stdio.h>
+using namespace std;
+
+void swap(int *a, int *b)
+{
+int tmp = *a;
+*a = *b;
+*b = tmp;
+}
+int Partition(int a[], int low, int high)
+{
+int privotkey = a[low];
+while (low < high)
+{
+while (low<high && a[high]>privotkey) --high;
+swap(&a[low], &a[high]);
+while (low < high && a[low] < privotkey) ++low;
+swap(&a[low], &a[high]);
+}
+return low;
+}
+void QuickSort(int a[], int low, int high)
+{
+if (low < high)
+{
+int privot = Partition(a, low, high);
+QuickSort(a, low, privot - 1);
+QuickSort(a, privot + 1, high);
+}
+}
+int main()
+{
+int a[10] = { 0, 2, 1, 4, 5, 3, 6 ,7, 8, 9 };
+ShellSort(a, 10);
+ QuickSort(a, 0, 9);
+ for (int j = 0; j < 10; j++)
+ {
+ printf("%d\t", a[j]);
+ }
+ printf("\n");
+ return 0;
+ }
