@@ -8,7 +8,7 @@ void main()
 SeqStack *s1,*s2;SeqQueue *q;InitStack(s1);InitStack(s2);InitQueue(q);
 while(1)
 {printf("please input command(1:arrive   2:leave   3:exit):\n");
-	while (1)scanf("%d",&command);
+	while (1) scanf("%d",&command);
 	if(command>=1&&command<=3) break;
 	else
 	switch(command)
@@ -18,7 +18,7 @@ while(1)
 				else {if(!QueueFull(q))
 				{InQueue(q,num);printf("location of waiting area:%d\n",q->rear);}
 				else printf("Location of waiting area is full\n");}
-	}break;
+	break;
 	case 2:printf ("leave time:   ");scanf("%d%d",&num,&time);
 	for (m=0;m<=s1->top&&s1->CarNum[m]!=num;m++);
 	       if(m>=s1->top)
@@ -31,8 +31,13 @@ while(1)
 	if(!QueueEmpty(q))
 	{OutQueue(q,i);push(s1,i,time);}}
 			break;
-	case 3:if(!StackEmpty(s1)) {printf("停车场的车辆：");DisStack(s1);}
-		       if(!QueueEmpty(q)) {printf("候车场的车辆：");DispQueue(q);}break;
-		default:
-	       break;}}
+	case 3:if(!StackEmpty(s1)) 
+	       {printf("停车场的车辆：");
+		       DispStack(s1);}
+		       if(!QueueEmpty(q)) 
+		       {printf("候车场的车辆：");
+			       DispQueue(q);}break;
+	default:
+	       break;}
+	}}
 	
