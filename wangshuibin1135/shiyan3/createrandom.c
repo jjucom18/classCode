@@ -9,7 +9,7 @@ int createrandom(int arr[])
 {
       srand((int)time(NULL));
       for(int i=0;i < 10;i++){
-         arr[i] = random_l(1,20);
+         arr[i] = random_1(1,20);
       }
       return 0;
 

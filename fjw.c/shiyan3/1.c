@@ -1,4 +1,5 @@
 #include<stido.h>
+#include"sort.h"
 int main(int argv,char **argc)
 	void D_InsertSort(datatype R[],int n)
 {//对排序表R【1】·R【n】进行直接插入排序，n是记录的个数
