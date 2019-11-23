@@ -52,7 +52,7 @@ bool pop(SeqStack *c1,int i,int j)
 void DispStack(SeqStack *c1)
 {int m;
 	for(m=c1->top;m>=0;m--)
-		printf("%d",c1->CarNum[m]);
+		printf("%d",c1->CarNum[m]);}
 		
 void InitQueue(SeqQueue *c2)
 {c2=(SeqQueue *)malloc(sizeof(SeqQueue));
@@ -84,6 +84,6 @@ void DispQueue(SeqQueue *c2)
 	printf("候车的车牌号：%d\n",c2->CarNum[m]);
 			while ((c2->rear-m+MaxWait)%MaxWait>0)
 			{m=(m+1)%MaxWait;
-			printf("%d",c2->CarNum[m]);}
+			printf("%d",c2->CarNum[m]);}}
 
 #endif
