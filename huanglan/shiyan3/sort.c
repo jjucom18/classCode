@@ -80,6 +80,6 @@ void QSort(int R[],int low,int high){
 		QSort(R,mid+1,high);
 	}
 }
-void QuickSort(int R[],int n){
+void Quick_Sort(int R[],int n){
 	QSort(R,0,n-1);
 }
