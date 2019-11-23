@@ -1,4 +1,4 @@
-#include "stackg.h"
+#include "tcc.h"
 
 SeqStack *initStack(){
 	SeqStack *stack = (SeqStack *)malloc(sizeof(SeqStack));
