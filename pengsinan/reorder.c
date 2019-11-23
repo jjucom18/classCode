@@ -35,7 +35,7 @@ void Quick_sort(int datatype Q[] ,int s ,int y){
 	}
 }
 
-void Select_sort(datatype S[] ,int n){
+void Select_sort(int datatype S[] ,int n){
 	for(i = 1 ; i < n ;i ++)
 	{
 		k = i;
