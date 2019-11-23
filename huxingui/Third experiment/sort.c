@@ -4,7 +4,6 @@
 #include <math.h>
 #include <conio.h>
 #include <string.h>
-//#pragma warning (disable:4996)
 
 extern int Comparisons_num;       //    比较次数
 extern int Mobile_num;            //    移动次数
