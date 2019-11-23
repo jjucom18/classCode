@@ -73,13 +73,10 @@ R[j] = x;
 return j;
 } 
 
-void QSort(int R[],int low,int high){
+void QSort(datatype *r){
 	if (low < high){
 		int mid = Partition2(R,low,high);
 		QSort(R,low,mid-1);
 		QSort(R,mid+1,high);
 	}
-}
-void Quick_Sort(int R[],int n){
-	QSort(R,0,n-1);
 }
