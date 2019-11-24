@@ -4,6 +4,7 @@
 #include<stdlib.h>
 #include<queue>
 #include<stack>
+#include<iostream>
 int main()
 {
     Manager dch;
@@ -47,3 +48,4 @@ int main()
         }
     }
 }
+
