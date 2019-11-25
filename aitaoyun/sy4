@@ -1,0 +1,153 @@
+nclude<stdio.h>
+#include<stdlib.h>
+#include<malloc.h>
+//函数返回状态代码
+#define OK 1
+#define ERROR 0
+#define TRUE 1
+#define FALSE 0
+#define INFEASIBLE -1
+#define OVERFLOW -2
+#define SIZE 2//停车场位置数
+typedef int Status;//栈，模拟停车场
+typedef struct Car1{//车  int number;//汽车车号
+ int ar_time;//汽车到达时间
+}CarNode;
+typedef struct{//停车场  
+CarNode *base;//停车场的堆栈底
+ CarNode *top;//停车场的堆栈顶
+ int stacksize;
+}Park;
+//队列，模拟便道
+typedef struct Car2{//车
+ int number;//汽车车号
+ int ar_time;//汽车到达时间  
+struct Car2 *next;
+}*CarPtr;
+typedef struct{//便道
+ CarPtr front;//便道的队列的对头
+ CarPtr rear;//便道的队列的队尾  
+int length;
+}Shortcut;
+Status InitStack(Park& P){//初始化停车场
+ P.base=(CarNode*)malloc(SIZE*sizeof(Car1));
+ if(!P.base) exit(OVERFLOW);
+ P.top=P.base;
+ P.stacksize=0;
+ return OK;
+}
+Status Push(Park &P,CarNode e){//车进入停车场
+ *P.top++=e;
+ ++P.stacksize;  
+return OK;
+}
+Status Pop(Park &P,CarNode &e){//车离开停车场
+ if(P.top==P.base)  
+ printf("停车场为空。");
+ else
+ {  
+ e=*--P.top;
+  --P.stacksize;
+ }
+ return OK;
+}
+Status InitQueue(Shortcut &S){//初始化便道
+ S.front=S.rear=(CarPtr)malloc(sizeof(Car2));
+ if(!S.front||!S.rear) exit(OVERFLOW);
+ S.front->next=NULL;
+ S.length=0;
+ return OK; }
+ 
+Status EnQueue(Shortcut &S,int number,int ar_time){//车进入便道
+ CarPtr p;
+ p=(CarPtr)malloc(sizeof(Car2));
+ if(!p) exit(OVERFLOW);
+ p->number=number;
+ p->ar_time=ar_time;
+ p->next=NULL;  
+S.rear->next=p;
+ S.rear=p; ++S.length;  return OK;
+}
+Status DeQueue(Shortcut &S,CarPtr &w){//车离开便道
+ if(S.length == 0)
+  printf("通道为空。");  
+else  {  
+ w = S.front->next;  
+ S.front->next=S.front->next->next;
+  --S.length;
+ }
+ return OK;
+}
+Status Arrival(Park &P,Shortcut &S){//对进站车辆的处理
+ int number,ar_time;
+ scanf("%d",&number);  
+scanf("%d",&ar_time);
+ if(P.stacksize<SIZE)  {
+  CarNode c;  
+ c.number=number;
+  c.ar_time=ar_time;
+  Push(P,c);  
+ printf("进入车位%d\n",P.stacksize);
+ }
+ else  {   EnQueue(S,number,ar_time);
+  printf("进入便道%d\n",S.length);
+ }
+ return OK;
+}
+Status Leave(Park &P,Park &P1,Shortcut &S){//对离站车辆的处理
+ int number,le_time,flag=1,money,ar_time;
+ scanf("%d",&number);  
+scanf("%d",&le_time);  
+CarNode e,m;
+ CarPtr w;  while(P.stacksize)  {  
+ Pop(P,e);
+  if(e.number==number)   {   
+ flag=0;   
+ money=(le_time-e.ar_time)*2;  
+  ar_time=e.ar_time;  
+  break;  
+ }
+  Push(P1,e);
+ }
+ while(P1.stacksize)  {  
+ Pop(P1,e);  
+ Push(P,e);
+ }
+ // 车从停车场中出
+ if (flag == 0)  {
+  if(S.length!=0)   {
+   DeQueue(S,w);  
+  m.ar_time=le_time;   
+ m.number=w->number;
+   Push(P,m);  
+  free(w);
+   printf("%d车由便道进入停车场\n",m.number);
+  }
+  printf("收费%d元,  停车时间%d\n",money,money/2);
+ }
+ else  {
+  printf("停车场不存在牌号为%d的车\n", number);
+ }
+ return OK; }
+int main()
+{
+ int m=1;
+ char flag;//选项
+ Park P,Q;
+ Shortcut S;
+ InitStack(P);  
+InitStack(Q);
+ InitQueue(S);
+ while(m)  {
+  scanf("%c",&flag);
+  switch(flag)   {  
+ case 'A':   case 'a':    Arrival(P,S);break; //车进入停车场
+  case 'D':   case 'd':    Leave(P,Q,S);break; //车离开停车场
+  case 'E':   case 'e':    m=0;  
+  break;   
+default:    printf("Input error!\n");
+   break;   }
+  while (flag != '\n')  
+  scanf("%c",&flag);
+ }
+}
