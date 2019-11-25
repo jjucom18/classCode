@@ -10,7 +10,7 @@ void InsertSort(int R[],int n)
 	   temp = R[i];
           j = i-1;
     while(j>=0 && R[j]>temp){
-		   R[j+1] = R[j];
+		    R[j+1] = R[j];
 		   j--;}
 	   R[j+1] = temp;}
 	           }
