@@ -1,5 +1,5 @@
-#include 
-#include 
+#include <stdio.h>
+#include <malloc.h>
 //栈的基本函数
 typedef struct  
 {
