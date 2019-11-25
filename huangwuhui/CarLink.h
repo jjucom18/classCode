@@ -15,10 +15,10 @@ typedef struct
 	QueueNode *front,*rear;
 }LinkQueueCar;
 
-void InitLinkQueue(LinkQueueCar *q)
-void EnLinkQueue(LinkQueueCar *q,int x)
-int DeLinkQueue(LinkQueueCar *q)
-void Arrive(SqStackCar *stop,LinkQueueCar *lq,CarNode x)
-void Leave(SqStackCar *s1,SqStackCar *s2,LinkQueueCar *p,CarNode x)
+void InitLinkQueue(LinkQueueCar *q);
+void EnLinkQueue(LinkQueueCar *q,int x);
+int DeLinkQueue(LinkQueueCar *q);
+void Arrive(LinkQueueCar *lq);
+void Leave(LinkQueueCar *p);
 
 #endif	
