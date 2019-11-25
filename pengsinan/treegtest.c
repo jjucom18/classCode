@@ -5,15 +5,15 @@
 
 int main () {
 	TreeNode *t ;
-	ptintf("Input the char you want in preorder,and if the left or right chlid is null,please intput a #\n");
+	printf("Input the char you want in preorder,and if the left or right chlid is null,please intput a #\n");
 	printf("such as ABD#G###CE##F##\n");
-	CreatTree (t , '#');
+	CreateTree (t , '#');
 	printf("preorder is : ");
-	PreOreder (t);
-	ptintf("\n");
-	ptintf("inorder is : ") ;
+	PreOrder (t);
+	printf("\n");
+	printf("inorder is : ") ;
 	InOrder (t);
-	ptintf("\n");
+	printf("\n");
 	printf("postorder is : ") ;
 	PostOrder (t);
 	printf("\n");

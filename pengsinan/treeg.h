@@ -6,7 +6,7 @@
 typedef char dataType;
 typedef struct TreeNode{
 	char dataType ;
-	void TreeNode *left ,*right ;
+	struct TreeNode *left ,*right ;
 } TreeNode;
 
 void CreateTree(TreeNode *t ,dataType x);

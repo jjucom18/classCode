@@ -2,14 +2,14 @@
 #include<malloc.h>
 #include "treeg.h"
 
-void CreateTree(TreeNode *&t ,dataType x){
+void CreateTree(TreeNode *t ,dataType x){
 	dataType d ;
 	scanf("%c" , &d);
 	if (d == x) {
 		t = NULL ;
 	} else {
 		t = (TreeNode *)malloc(sizeof(TreeNode));
-		t -> data = d ;
+		t -> dataType = d ;
 		CreateTree (t -> left , x);
 		CreateTree (t -> right , x);
 		
@@ -18,7 +18,7 @@ void CreateTree(TreeNode *&t ,dataType x){
 void InOrder (TreeNode *t) {
 	if (t) {
 		InOrder(t -> left);
-		prtint("%c" , t -> data);
+		printf("%c" , t -> dataType);
 		InOrder (t -> right) ;
 	}
 }
@@ -27,23 +27,23 @@ void PostOrder(TreeNode *t) {
 	if (t) {
 		PostOrder(t -> left) ;
 		PostOrder(t -> right) ;
-		printf("%c" , t -> data);
+		printf("%c" , t -> dataType);
 	}
 }
 
 void LevelOrder(TreeNode *t) {
 	TreeNode *q[MaxSize];
 	int front = 0 ,rear = 0 ;
-	treeNode *p ;
+	TreeNode *p ;
 	if (t == NULL) return ;
 	q[rear] = t;
 	rear = (rear + 1) % MaxSize ;
 	while (front != rear) {
 		p = q[front] ;
 		front = (front + 1) % MaxSize ;
-		print ("%c" , p -> data) ;
+		printf ("%c" , p -> dataType) ;
 		if (p -> left) {
-			q(rear) = p -> left ;
+			q[rear] = p -> left ;
 			rear = (rear + 1) % MaxSize ;
 		}
 	}
