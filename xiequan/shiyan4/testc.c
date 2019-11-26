@@ -7,7 +7,7 @@ int main(int argc,char **argv){
 	Linkstack giveway;
 	int num = 0;
 	int t   = 0;
-	init(&wait,&park,num,t);
-	menu(&wait,&park,num,t);
+	init(&wait,&park,&giveway);
+	menu(&wait,&park,&giveway,num,t);
 	return 0;
 }
