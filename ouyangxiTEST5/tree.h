@@ -11,8 +11,7 @@ typedef struct _TreeNode{
 dataType data;
 struct _TreeNode *left,*right;
 }TreeNode;
-void buOrder(TreeNode *t);
-void CreatTree(TreeNode *t,dataType x);
+void CreateTree(TreeNode *t,dataType x);
 void PreOrder(TreeNode *t);
 void InOrder(TreeNode *t);
 void PostOrder(TreeNode *t);

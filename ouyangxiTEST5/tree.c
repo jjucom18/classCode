@@ -38,6 +38,7 @@ PostOrder(t->left);
 PostOrder(t->right);
 printf("%c",t->data);
 	}
+}
 //以层次顺序遍历二叉树
  void LevelOrder(TreeNode *t){
  TreeNode *q[MAXSize];
