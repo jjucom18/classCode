@@ -9,36 +9,37 @@
   * 修订时间: *** :2019年第46周 11月23日 星期六 下午03:20 (第327天)
   * 文件描述: *** :自行添加
  * *+=+=+=+=* *** *+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+*/
-#include "test_4.c"
+#include "test_4.h"
+#include "struct4.c"
 #include<stdio.h>
+#include<string.h>
 #include<stdlib.h>
+void menual(){//停车管理系统的显示界面
 
-void menual()//停车管理系统的显示界面
-	{
-    LinkStackCar In,Temp;
+    SeqStackCar In,Temp;
     LinkQueueCar W;
     int ch;
-		LinkStackInit(&In);
-		LinkStackInit(&Temp);
+		StackInit(&In);
+		StackInit(&Temp);
         QueueInit(&W);
-        while(1)
-{
 
+		printf("是否进入停车管理系统\n 请输入1或者0");
+		scanf("%d",&ch);	
+    while(1){
 
-    printf(" 欢迎使用停车场系统\n");
-    printf("1. 车辆到达登记\t");
-    printf("2. 车辆离开登记\t");
-    printf("3. 车辆列表显示\t");
-    printf("4. 退出管理系统\n");
-     while(1)
-{
-    printf(" \n\n请选择: ");
-    scanf("%d",&ch);
-    if(ch>=1&&ch<=4)break;
-		else printf("\n 输入有误，请重新选择： 1~4: ");
-    }
-    switch(ch)
-    {
+		printf(" 欢迎使用停车场系统\n");
+		printf("1. 车辆到达登记\t");
+		printf("2. 车辆离开登记\t");
+		printf("3. 车辆列表显示\t");
+		printf("4. 退出管理系统\n");
+     
+//	while(){
+		printf("\n请选择: ");
+		scanf("%d",&ch);
+
+    if(ch>4&&ch<1){
+		//else printf("\n 输入有误，请重新选择： 1~4: ");
+    switch(ch){
     case 1:Arrival(&In,&W);
 		break;
     case 2:Leave(&In,&Temp,&W);
@@ -49,6 +50,7 @@ void menual()//停车管理系统的显示界面
 
 	default: break;} 
  
+	} 		else printf("\n 输入有误，请重新选择： 1~4: ");
 	}
 }   
 
