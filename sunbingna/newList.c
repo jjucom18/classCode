@@ -32,19 +32,37 @@ void printfnode(Node *head)
 	Node *pmove = head->next;
 	while(pmove)
 	{
-		printf("%d",pmove->data);
+		printf("%d\t",pmove->data);
 		pmove = pmove->next;
-	}
+	}printf("\n");
 }
+
+void deletenode(Node  *head,int data)
+{
+	Node *p = head->next;
+	Node *pfront = head;
+	while(p != NULL)//判断链表是非为空
+	{
+		if(p->data == data){pfront->next = p->next; break;}
+		else pfront = p; p = p->next;
+	}
+	free (p);
+}
+
 
 int main()
 {
 	Node *list = creatList();
 	addHead(list,1);
-	addHead(list,2);
-	addHead(list,3);
+	addHead(list,5);
+	addHead(list,6);
+	addHead(list,8);
 	printfnode(list);
-	printf("\n");
+	deletenode(list,6);
+	printfnode(list);
+	return 0;
+
+
 }
 
 
