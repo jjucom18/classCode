@@ -1,17 +1,6 @@
-#include <stdio.h>
-#include <malloc.h>
-#define N 10//停车场最多的停车数
-#define M 10//候车处最大停车数
-#define Price 1//单位时间内所需费用
-typedef struct{
-	int CarNum[N];//车牌号
-	int Time[N];//进场时间
-    int top;
-}SqStack;
-typedef struct{
-	int CarNum[M];
-	int front,rear;
-}SqQueue;
+#include"zhan.h"
+#include"duilie.h"
+
 void Init_SqStack(SqStack *s){
 	s=(SqStack *)malloc(sizeof(SqStack));
 	s->top=-1;
@@ -54,10 +43,10 @@ int QueueEmpty(SqQueue *q){
 	return(q->front==q->rear);
 }
 int QueueFull(SqQueue *q){
-	return(q->rear+1%M==q->front);
+	return((q->rear+1)%M==q->front);
 }
 int enQueue(SqQueue *q,int e){
-	if (q->rear+1%M==q->front) ;
+	if ((q->rear+1)%M==q->front) ;
 	return 0;
 	q->rear=(q->rear+1)%M;
 	q->CarNum[q->rear]=e;
@@ -81,3 +70,52 @@ void DispQueue (SqQueue *q)
 	}
 	printf("\n");
 }
+int main(){
+	int comm;
+	int num,e1,time,e2;
+	int i,j,t;
+	SqStack *St,*St1;//St是停车场，St1是离开位置的车辆
+	SqQueue *Qu;//候车场
+	Init_SqStack(St);
+	Init_SqStack(St1);
+	InitQueue(Qu);
+	do{
+		printf("输入指令（0:退出 1:到达 2:离开 3:显示停车场 4:显示候车处）：");
+		scanf("%d",&comm);
+		switch(comm);
+		{
+			printf("输入车号与时间：");//汽车到达
+			scanf("%d%d",&num,&time);
+			if (!StackFull(St)){
+				Push(St,num,time);
+				printf("停车场位置：%d\n",St->top+1);
+       	}else{
+				if (!QueueFull(Qu)){
+					enQueue(Qu,num);
+					printf("候车处位置:%d\n",Qu->rear);
+				}else
+					printf("候车满，不可停车\n");
+			}break;
+			printf("输入车号与时间：");//汽车离开
+			scanf("%d%d",&num,&time);
+	        for(i=0;i<=St->top && St->CarNum[i]!=num;i++);
+			if (i>St->top)
+				printf("未找到该车辆\n");
+			else{
+				t =St->top -i;
+				for(j=0;j<t;j++){
+					Pop(St,e1,e2);
+					Push(St1,e1,e2);	}
+				Pop(St,e1,e2);
+				printf("%d汽车费用：%d\n",num,(time-e2)*Price);
+				while(!StackEmpty(St1)){
+					Pop(St1,e1,e2);
+					Push(St,e1,e2);	}
+				if (!QueueEmpty(Qu)){
+					deQueue(Qu,e1);
+					Push(St,e1,time);	}
+			}break;} } 
+	       while(comm!=0);
+           return 0;} 
+
+		

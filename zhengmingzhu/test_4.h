@@ -1,6 +1,6 @@
-#ifndef test_4.h
-#define test_4.h
-#define MAX 50
+#ifndef test_4_h
+#define test_4_h
+#define MAXSIZE 100
 
 typedef struct time{    //  时间节点
 	int hour;
@@ -13,12 +13,18 @@ typedef struct node{    //  车辆信息节点
 	Time leave;
 }CarNode;
 
-typedef struct node{    //用链栈模拟停车场
-   // CarNode *stack[MAX+1];
-	datatype data;
-	struct node *next
+//typedef int dataType;
+//typedef struct NODE{    //用链栈模拟停车场
+//	CarNode linkstack(MAXSIE + 1);
+//	datatype data;
+///	struct node *next
+   // datatype *top;
+    //}SeqStackCar;
+
+typedef struct NODE{	//用栈模拟停车场
+    CarNode *linkstack[MAX+1];
     int top;
-    }LinkStackCar;
+    }SeqStackCar;
 
 typedef struct car{		//用队列模拟车流
     CarNode *data;
@@ -30,11 +36,11 @@ typedef struct Node{	//用队列模拟车道
     QueueNode *rear;
     }LinkQueueCar;
 
-void InitStack(LinkStackCar *);
-int InitQueue(LinkQueueCar *);
-int Arrival(LinkStackCar *,LinkQueueCar *);
-void Leave(LinkStackCar *,LinkStackCar *,LinkQueueCar *);
-void List(LinkStackCar,LinkQueueCar);
-void menu();
+void StackInit(SeqStackCar *s);
+int QueueInit(LinkQueueCar *Q);
+int Arrival(SeqStackCar *In,LinkQueueCar *W);
+void Leave(SeqStackCar *In,SeqStackCar *Team,LinkQueueCar *W);
+void List(SeqStackCar,LinkQueueCar);
+void menual();
 
 #endif

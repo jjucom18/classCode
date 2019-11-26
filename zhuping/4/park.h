@@ -4,9 +4,9 @@
 #include<stdio.h>
 #include<malloc.h>
 
-#define N 10 //最大停车数
-#define M 10 //最大候车数
-#define Price 2 //停车费/每小时
+#define N 3 //最大停车数
+#define M 3 //最大候车数
+#define Price 1 //停车费/每小时
 typedef struct{
 	int num[N];//车牌号
 	int time[N];//进场时间

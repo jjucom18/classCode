@@ -20,7 +20,7 @@ typedef struct {
 }SeqQueue;
 
 
-void initStack(SeqStack *c1)
+void InitStack(SeqStack *c1)
 {
 	c1=(SeqStack *)malloc(sizeof(SeqStack));
 	c1->top=-1;
@@ -51,8 +51,8 @@ bool pop(SeqStack *c1,int i,int j)
 	return true;}
 void DispStack(SeqStack *c1)
 {int m;
-	for(m=c1->top;m>=0;m++)
-		printf("显示车牌号:\n%d\n",c1->CarNum[m]);
+	for(m=c1->top;m>=0;m--)
+		printf("%d",c1->CarNum[m]);}
 		
 void InitQueue(SeqQueue *c2)
 {c2=(SeqQueue *)malloc(sizeof(SeqQueue));
@@ -81,13 +81,9 @@ bool OutQueue(SeqQueue *c2,int i1)
 void DispQueue(SeqQueue *c2)
 {int m;
 	m=(c2->front+1)%MaxWait;
-	printf("候车车牌号：\n%d\n",c2->CarNum[m]);
+	printf("候车的车牌号：%d\n",c2->CarNum[m]);
 			while ((c2->rear-m+MaxWait)%MaxWait>0)
 			{m=(m+1)%MaxWait;
-			printf("候车车牌号：\n%d\n",c2->CarNum[m]);}
-
-
-
-
+			printf("%d",c2->CarNum[m]);}}
 
 #endif

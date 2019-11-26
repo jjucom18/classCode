@@ -15,7 +15,7 @@ int main(int argc,char **argv)
 	{
 		printf("输入数据:'A'/'L'/'E',车牌号，到达/离开时间\n");
 		scanf("%c%d%d%d",&ch1,&x.num,&x.arrtime.hour,&x.arrtime.minute);
-		gerchar();
+		getchar();
 		switch(ch1)
 		{
 			case'A':Arrive(&s1,&p,x);

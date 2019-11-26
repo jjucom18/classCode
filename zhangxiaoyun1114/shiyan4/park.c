@@ -25,7 +25,7 @@ QNODE              //队列节点
 	struct Node data;
 	QNODE *next;
 } ;
-typedef struct linkqueue      //队列结构体定义
+typedef struct LinkQueue      //队列结构体定义
 {
 
 	QNODE *front,*rear;
@@ -52,7 +52,7 @@ LinkQueue *Init_LQueue()         //队列初始化
 	q->num=0;
 	return q;
 } 
-int ISEmpty_SeqStack(SqStack *s)         //判断栈是否为空，栈为空返回1
+int Empty_SeqStack(SqStack *s)         //判断栈是否为空，栈为空返回1
 {
 
 	if(s->top ==-1) 
@@ -60,7 +60,7 @@ int ISEmpty_SeqStack(SqStack *s)         //判断栈是否为空，栈为空返�
 	else
 		return 0;
 } 
-int  ISFULL_SeqStack(SqStack *s,int n)     //判断栈是否已满，若栈满返回1
+int  Full_SeqStack(SqStack *s,int n)     //判断栈是否已满，若栈满返回1
 {
 
 	if(s->top==n-1) 
@@ -68,7 +68,7 @@ int  ISFULL_SeqStack(SqStack *s,int n)     //判断栈是否已满，若栈满�
 	else
 		return 0;
 } 
-int ISEmpty_LQueue(LinkQueue *q)         //判断队列是否为空，队列为空返回1
+int Empty_LQueue(LinkQueue *q)         //判断队列是否为空，队列为空返回1
 {
 
 	if(q->front==q->rear) 
@@ -76,7 +76,7 @@ int ISEmpty_LQueue(LinkQueue *q)         //判断队列是否为空，队列为�
 	else
 		return 0;
 } 
-void IN_Lqueue(    LinkQueue *q,struct Node s)   //入队
+void In_Lqueue(    LinkQueue *q,struct Node s)   //入队
 {
 
 	QNODE *p;
@@ -94,7 +94,7 @@ void Push_SeqStack(SqStack *p,struct Node s)   //入栈
 	p->data[p->top] =s;
 	p->num++;
 } 
-int POP_SeqStack(SqStack *s,struct Node car) //出栈
+int Pop_SeqStack(SqStack *s,struct Node car) //出栈
 {
 
 	SqStack *p;
@@ -110,7 +110,7 @@ int POP_SeqStack(SqStack *s,struct Node car) //出栈
 	t=car.time-s->data[s->top] .time;
 	s->top--;
 	s->num--;
-	while(ISEmpty_SeqStack(p) ==0) 
+	while(Empty_SeqStack(p) ==0) 
 	{
 
 		Push_SeqStack(s,p->data[p->top] ) ;
@@ -144,7 +144,7 @@ int main()
 	timeinfo = localtime (&rawtime) ;
 	parkstack=Init_SeqStack() ;
 	parkqueue=Init_LQueue() ; //初始界面
-	printf(" 实验名称： 停车场管理问题\n") ;
+	printf(" 实验名称： 停车场管理系统\n") ;
 	printf("=============================================\n") ;
 	printf("程序运行开始，") ;
 	printf("Current local time and date:%s",asctime(timeinfo) ) ;
@@ -157,15 +157,15 @@ int main()
 
 		if(car.AL=='A' ) 
 		{
-			                                //    汽车到达的情况
-     if(ISFULL_SeqStack(parkstack,n) ==1)         //栈满的情况
-											    {
+			                                // 汽车到达的情况
+     if(Full_SeqStack(parkstack,n) ==1)         //栈满的情况
+			 {
 
-     IN_Lqueue(parkqueue,car) ;                //进入队列等待
+     In_Lqueue(parkqueue,car) ;                //进入队列等待
 	 printf("这辆车在门外便道上第%d个位置\n",parkqueue->num) ;
      printf("\n") ;
 	 printf("请输入车辆信息\n") ;
-} 
+           } 
  else {
 
 	 Push_SeqStack(parkstack,car) ;        //入栈
@@ -176,18 +176,17 @@ int main()
 } 
 	 if(car.AL=='D' )                     //汽车离开的情况
 {
-
-     t=POP_SeqStack(parkstack,car) ;//出栈
-      printf("这辆车停留时间为%d\n",t) ;
-	  printf("\n") ;
+    t=Pop_SeqStack(parkstack,car) ;//出栈
+    printf("这辆车停留时间为%d\n",t) ;
+	printf("\n") ;
 	 printf("请输入车辆信息\n") ;
-	 if(ISEmpty_LQueue(parkqueue) ==0)   //队列不为空需要进栈
+	 if(Empty_LQueue(parkqueue) ==0)   //队列不为空需要进栈
 	 Push_SeqStack(parkstack,Out_LQueue(parkqueue)  ) ;     
 } 
  if(car.AL=='P'&&car.NO==0&&car.time==0 ) //显示停车场的车数
  {
 
-	 printf("停车场的车数为%d\n",parkstack->num) ;
+	printf("停车场的车数为%d\n",parkstack->num) ;
     printf("\n") ;
     printf("请输入车辆信息\n") ;
 } 
