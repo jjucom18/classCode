@@ -1,7 +1,7 @@
 #include "carWait.h"
 
 int init_carWait(carWait *q){
-	q = (carWait *)malloc (sizeof(carWait));
+	//q = (carWait *)malloc (sizeof(carWait));
 	if(q->head != NULL){
 		q->rear = q->head;
 		q->head->next = NULL;
@@ -9,7 +9,7 @@ int init_carWait(carWait *q){
 }//初始化等候路线
 int in_carWait(carWait *q,car *x){
 	queuenode *p;
-	x = (car *)malloc(sizeof(car));
+	//x = (car *)malloc(sizeof(car));
 	p = (queuenode *)malloc(sizeof(queuenode));
 	if(p = NULL)
 		printf("分配内存不成功！\n");
@@ -21,10 +21,11 @@ int in_carWait(carWait *q,car *x){
 }//入队
 int out_carWait(carWait *q,car *x){
 	queuenode *p;
+	p = (queuenode *)malloc(sizeof(queuenode));
 	if(emoty_carWait(q))
 		printf("停车场为空！\n");
 	else{
-		p = (queuenode *)malloc(sizeof(queuenode));
+		//p = (queuenode *)malloc(sizeof(queuenode));
 		p = q->head->next;
 		x = p->data;
 		q->head->next = p->next;
