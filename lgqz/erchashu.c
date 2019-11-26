@@ -1,3 +1,4 @@
+
 #include<stdio.h>
 #include<malloc.h>
 
@@ -90,6 +91,7 @@ void levelTreeSearch(struct TreeNode * treeNode)
 	{
 		tt = t1[front];
 		front = (front + 1) % 100;
+		printf("%d ", tt->num);
 		if (tt->left != NULL)
 		{
 			t1[rear] = tt->left;
@@ -129,3 +131,4 @@ int main()
 	getchar();
 	return 0;
 }
+
