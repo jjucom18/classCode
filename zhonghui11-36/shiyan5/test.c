@@ -13,9 +13,11 @@ int main()
 	mid_OrderTraverse(t);
 	printf("\n后序遍历结果：\n"); 
 	post_OrderTraverse(t);
+	printf("\n层序遍历结果：\n"); 
+	leve_OrderTraverse(t);
 	printf("\n");
-	
 	
 	
 	return 0;
 }
+
