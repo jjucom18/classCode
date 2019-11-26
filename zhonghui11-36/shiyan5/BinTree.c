@@ -50,3 +50,26 @@ void post_OrderTraverse(TreeNode *t)
 		printf("%c", t->element);
 	}
 }
+void  leve_OrderTraverse(TreeNode *t){
+	TreeNode *q[MaxSize];
+	int front=0,rear=0;
+	TreeNode *p;
+	if(t==NULL) return ;
+	q[rear]=t;
+	rear=(rear+1)%MaxSize;
+	while(front !=rear){
+		p=q[front];
+		front=(front+1)%MaxSize;
+		printf("%c",p->element);
+		if(p->lchild){
+			q[rear]=p->lchild;
+			rear=(rear+1)%MaxSize;
+			
+		}
+		if(p->rchild){
+			q[rear]=p->rchild;
+			rear=(rear+1) % MaxSize;
+			
+		}
+		
+	}
