@@ -22,11 +22,11 @@ typedef struct
 typedef int datatype;
 
 
-void InitSeqStack(SqStackCar *s)
-int push(SqStackCar *s,CarNode x)
-CarNode pop(SqStackCar *s)
-void Arrive(SqStackCar *stop,LinkQueueCar *lq,CarNode x)
-void Leave(SqStackCar *s1,SqStackCar *s2,LinkQueueCar *p,CarNode x,)
+void InitSeqStack(SqStackCar *s);
+int push(SqStackCar *s,CarNode x);
+CarNode pop(SqStackCar *s);
+void Arrive(SqStackCar *stop);
+void Leave(SqStackCar *s1,SqStackCar *s2);
 
 #endif	
 
