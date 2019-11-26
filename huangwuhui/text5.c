@@ -1,91 +1,114 @@
 #include<stdio.h>
 #include<stdlib.h>
-typedef struct LNode
+typedef struct Node
 {
 	int data;
-	struct LNode *next;
-}LNode,*LinkList;
-LinkList L;
-void InitList(LinkList*L){
-	L=(LinkList*)malloc(sizeof(LinkList));
-	L=NULL;
-}
-void Creat_LinkList1(){
-	LinkList L=NULL;
-	LNode *s;
-	int x,flag;
-	scanf("%d",&x);
-	while(x!=flag)
-	{
-		s=(LNode*)malloc(sizeof(LNode));
-		s->data=x;
-		s->next=L;
-		L=s;
-		scanf("%d",&x);
+	struct Node *next;
+}LinkNode,*LinkList;
+LinkList head;
 
-	} 
-	return ;
-
-}
-void Creat_LinkList2()
+void InitList(LinkList *head)
 {
-	LinkList L=NULL;
-	LNode *s,*r=NULL;
-	int x,flag;
-	scanf("%d",&x);
-	while(x!=flag)
+	head=(LinkList*)malloc(sizeof(LinkList));
+		(*head)->next=NULL;
+}
+LinkList CreatFormHead()
+{
+	LinkList head;
+	LinkList s;
+	char ch;
+	int flag=1;
+	head=(LinkList*)malloc(sizeof(LinkList));
+	head->next=NULL;
+	while(flag)
 	{
-		s=(LNode*)malloc(sizeof(LNode));
-		s->data=x;
-		if(L==NULL) L=s;
-		else r->next=s;
+		ch=getchar();
+		if(ch!='$')
+		{
+			s=(LinkList*)malloc(sizeof(LinkList));
+			s->data=ch;
+			s->next=head->next;
+			head->next=s;
+		}
+		else
+			flag=0;
+	}
+	return head;
+}
+LinkList CreatFromTail()
+{
+	LinkList head,r,s;
+	char ch;
+	int flag=1;
+	head=(LinkList*)malloc(sizeof(LinkList));
+	head->next=NULL;
+	r=head;
+	while(flag)
+	{
+		ch=getchar();
+		if(ch!='$')
+		{
+		s=(LinkList*)malloc(sizeof(LinkList));
+		s->data=ch;
+		r->next=s;
 		r=s;
-		scanf("%d",&x);
-
-	}
-	if(r!=NULL) r->next=NULL;
-	return ;
-}
-void Delete_LinkList(LinkList L,int i)
+		} 
+		else
+		{
+		flag=0;
+		r->next=NULL;
+		} 
+		}
+	return head;
+} 
+void DeleteList(LinkList head,int i)
 {
-	LinkList p,s;
-	p=Get_LinkList(L,i-1);
-	if(p==NULL)
+	LinkList pre,r;
+	int j;
+	pre=head; j=0;
+	while(pre->next!=NULL&&j<i-1)
 	{
-		printf("第i-1个节点不存在");
+		pre=pre->next;
+		j++;
+	}
+	if(j!=i-1||pre->next==NULL)
+	{
+		printf("\nPosition Error\n");
 		return ;
 	}
-	else if(p->next==NULL)
-	{
-		printf("第i个节点不存在");
-		return ;
-
-	}
-	else
-	{
-		s=p->next;
-		p->next=s->next;
-		free(s);
-		return ;
-	}
+	r=pre->next;
+	pre->next=r->next;
+	free(r);
 }
-void Get_LinkList(LinkList L,int i){
-	LNode *p=L;
-	int j=0;
+LinkList GetElem(LinkList head,int i)
+{
+	int j;
+	LinkNode *p;
+
+	p=head;j=0;
 	while(p->next!=NULL&&j<i)
 	{
-		p=p->next;j++;
-
-	}if(j==i) return p;
-	else return NULL;
-
+		p=p->next;
+		j++;
 	}
-	void Display(LinkList L,int p){
-		LNode *p=L;
-		int i=0;
-		while(p!=NULL){
-			printf("%d\n",p->data);
-			p=p->next;
-			i++;
-		}return;
-	}
+	if(i==j&&i!=0)
+		return p;
+	else
+		return NULL;
+}
+int main(int argc,char **argv)
+{
+	LinkList head;
+	int x,i;
+	head=CreatFromHead();
+	printf("please input insert location\n");
+	scanf("%d",&i);
+	printf("please input insert data\n");
+	scanf("%d",&x);
+	head=CreatFronTail();
+	printf("please input insert location\n");
+    scanf("%d",i);
+	printf("please input insert data\n");
+	scanf("%d",&x);
+
+}
