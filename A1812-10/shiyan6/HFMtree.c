@@ -1,6 +1,5 @@
 #include<iostream>
-#include<iomanip>//这个头文件是声明一些 “流操作符”的
-//比较常用的有:setw(int);//设置显示宽度，left//right//设置左右对齐。 setprecision(int);//设置浮点数的精确度。
+#include<iomanip>
 using namespace std;
 // 哈夫曼树的结点结构
 struct element
