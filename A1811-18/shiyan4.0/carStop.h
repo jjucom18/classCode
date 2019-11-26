@@ -5,10 +5,9 @@
 #include <stdlib.h>
 #include <time.h>
 
-#define maxnumber 1000
 #define ok 1
 #define error 0
-
+#define maxnumber 10
 typedef struct {
 	int hours;
 	int minte;
@@ -22,11 +21,12 @@ typedef car datatype;
 typedef struct snode{
 	datatype data;
 	struct snode *next;
-}stackNode,* carStop;//模拟停车场
+	//计数器
+}stackNode, *carStop;//模拟停车场
 void init_carStop(carStop top);
 int empty_carStop(carStop top);
-int push_carStop(carStop top,datatype *x);//入栈
-int pop_carStop(carStop top,datatype *X);
+int push_carStop(carStop top,car *x);//入栈
+int pop_carStop(carStop top,car *x);
 
 #endif
 
