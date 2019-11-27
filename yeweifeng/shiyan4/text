@@ -1,0 +1,78 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include "Sqstack.h"
+#include "LinkQueue.h"
+#include "Car.h"
+SqStack ParkLot;
+SqStack Temp;
+LinkQueue WaitLane;
+void Start(){
+    int N;
+    scanf("%d",&N);
+    InitStack(&ParkLot,N);
+    InitStack(&Temp,N-1);
+    InitQueue(&WaitLane);
+    return;
+}
+void Arrive(Car A){
+   if(StackFull(&ParkLot))
+   {
+         EnQueue(&WaitLane,A);
+         printf("停车场已满，停在便道第%d等候车位\n",QueueLength(&WaitLane));
+   }
+   else
+   {
+          Push(&ParkLot,A);
+          printf("在停车场自北向南第%d个车位\n",ParkLot.Top-ParkLot.Base);
+   }
+   return;
+}
+void Departure(Car A){
+   Car B;
+   while(1)
+   {
+       Pop(&ParkLot,&B);
+       if(B.CarNum==A.CarNum)
+           break;
+       else
+           Push(&Temp,B);
+   }
+   printf("车牌%d离开停车场,应缴停车费%d元\n",B.CarNum,20*(A.Time-B.Time));
+   while(!StackEmpty(&Temp))
+   {
+      Pop(&Temp,&B);
+      Push(&ParkLot,B);
+   }
+   if(!QueueEmpty(&WaitLane))
+   {
+   DeQueue(&WaitLane,&B);
+   int waitTime=A.Time-B.Time;
+   B.Time=A.Time;
+   Push(&ParkLot,B);
+   printf("便道上最前面的车%d等候%d时长后在%d时刻进入停车场\n",B.CarNum,waitTime,B.Time);
+   }
+   return;
+}
+void Run(){
+    char Op;
+    Car A;
+    while(1)
+    {
+        scanf("%c%d%d",&Op,&A.CarNum,&A.Time);
+        if(Op=='A')
+             Arrive(A);
+        if(Op=='D')
+             Departure(A);
+        if(Op=='E')
+             break;
+    }
+    return;
+}
+
+int main()
+{
+    system("Color 0e");
+    Start();
+    Run();
+    return 0;
+}
