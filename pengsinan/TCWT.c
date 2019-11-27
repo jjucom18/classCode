@@ -33,17 +33,19 @@ void Print(CarNode *p ,int room){
 
 }
 
-int Arrival(SeqStackCar *Enter ,LinkQueueCar *W){
+int Arrival(LinkQueueCar *W ,SeqStackCar *Enter){
+	char *fgets(char *s ,int n ,FILE *stream);
 	CarNode *p;
 	QueueNode *t;
 	p = (CarNode *)malloc(sizeof(CarNode));
 	printf("Please input the car number:");
-	getchar();
-	gets(p -> num);
+	/*getchar();
+	gets(p -> num);*/
+	fgets(p ,(CarNode *)malloc(sizeof(CarNode)) ,stdin);
 	if(Enter -> top < Maxsize){
 	Enter -> top ++;
 	printf("The parking place is:%d" ,Enter -> top);
-	printf("Please input the arriving time: **:** ")；
+	printf("Please input the arriving time: **:** ");
 	scanf("%d:%d" ,&(p -> arrive .hour) ,&(p -> arrive .min));
 	Enter -> stack[Enter -> top] = p ;
 	return 1;
@@ -54,8 +56,8 @@ int Arrival(SeqStackCar *Enter ,LinkQueueCar *W){
 		t = (QueueNode *)malloc(sizeof(QueueNode));
 		t -> data = p;
 		t -> next = NULL;
-		w -> rear -> next = t;
-		w -> rear ->t;
+		W -> rear -> next = t;
+		W -> rear -> = t;
 		return 1;
 	}
 }
@@ -66,9 +68,9 @@ void leave(SeqStackCar *Enter ,SeqStackCar *Temp ,LinkQueueCar){
 	QueueNode *q;
 
 	if(Enter -> top > 0){
-		while(/*Enter -> top > 0*/TRUE){
+		while(Enter -> top > 0/*TURE*/){
 			printf("Please input the parking place :%d" ,Enter -> top);
-			scanf("%d",&room)；
+			scanf("%d",&room);
 				if(room > 1 && room <= Enter -> top) break;
 
 		}
@@ -131,7 +133,8 @@ void List1(LinkQueueCar *W){
 			puts(p -> data -> num);
 			p = p ->next;
 		}
-		else
-			printf("no cars in queue")
+		else{
+			printf("no cars in queue");
+		}
 	}
 }
