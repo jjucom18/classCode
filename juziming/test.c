@@ -10,6 +10,8 @@ void swap(int *p1,int *p2,int *p3)
 		     i = *p3;
 			 *p3 = *p1;
 			 *p1 = i;
+
+			 
 } 
 int main() 
 {
@@ -32,4 +34,4 @@ int main()
 			
 			 return 0;
 
-} 																    
+}  

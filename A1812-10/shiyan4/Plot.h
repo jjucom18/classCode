@@ -9,6 +9,8 @@
 #include<stdio.h>
 #include<unistd.h>
 #include<time.h>                        
+#include<malloc.h>
+#include<ctype.h>
 #include<string.h>
 typedef struct
 {
