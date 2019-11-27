@@ -4,25 +4,24 @@
 #define MaxSize 100
 
 
-struct TreeNode{
+typedef struct TreeNode1{
 	char data;
-    	struct TreeNode *left;
-	struct TreeNode *right;
-} TreeNode ;
-
-
-
-void CreateTree(TreeNode *t,char x){//创建二叉树
+    	struct TreeNode1 *left;
+	struct TreeNode1 *right;
+}TreeNode;
+TreeNode treeNode;
+TreeNode * CreateTree(){//创建二叉树
 	char d;
-	scanf("%c",&d);
-	if (d == x){
+	TreeNode *t = NULL;
+	d = getchar();
+	if (d =='#'){
 	t = NULL;
 	} else {
 	t = (TreeNode *)malloc(sizeof(TreeNode));
 	t->data = d;
-	CreateTree(t->left,x);
-	CreateTree(t->right,x);
-	}
+	t->left = CreateTree();
+	t->right= CreateTree();
+	} return t;
 }
 void PreOrder(TreeNode *t){//先序
 	if(t){
@@ -68,10 +67,10 @@ void LeavlOrder(TreeNode *t){//层次顺序
 }
 
 int main(){
-	TreeNode *t;
+	TreeNode *t = NULL;
 	printf("请按先序输入各字节字符，某节点的左子树或右子树为空时输入一个字符\n");
 	printf("如输入ABD#G###CE##F##\n");
-	t = CreateTree(t, '#');
+	t = CreateTree();
 	printf("先序：");
 	PreOrder(t);
 	printf("\n");
