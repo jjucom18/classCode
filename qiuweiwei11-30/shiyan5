@@ -1,0 +1,141 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef char TypeData ;
+
+typedef struct stBiTreeNode
+{
+    TypeData data;
+    struct stBiTreeNode *lchild, *rchild;
+}BITREENODE;
+
+BITREENODE* createBiTree()
+{
+    char chTempData = 0;
+
+    BITREENODE *pstNewNode = NULL;
+
+    scanf("%c",&chTempData);
+    if(chTempData == '#')
+    {
+        pstNewNode = NULL;
+    }
+    else
+    {
+        
+        pstNewNode = (BITREENODE*)malloc(sizeof(BITREENODE) + 1);
+        pstNewNode->data = chTempData;
+
+     
+        pstNewNode->lchild = createBiTree();
+        pstNewNode->rchild = createBiTree();
+    }
+
+    return pstNewNode;
+}
+
+
+int preVisitBiTree(BITREENODE* InRoot)
+{
+    if(InRoot)
+    {
+        
+        printf("%c ",InRoot->data);
+
+        
+        preVisitBiTree(InRoot->lchild);
+
+        
+        preVisitBiTree(InRoot->rchild);
+
+    }
+    return 0;
+}
+
+
+/* 中序遍历二叉树 */
+int inVisitBiTree(BITREENODE* InRoot)
+{
+    if(InRoot)
+    {
+       
+        preVisitBiTree(InRoot->lchild);
+
+
+        
+        printf("%c ",InRoot->data);
+
+        
+        preVisitBiTree(InRoot->rchild);
+
+    }
+    return 0;
+}
+
+
+int postVisitBiTree(BITREENODE* InRoot)
+{
+    if(InRoot)
+    {
+        
+        preVisitBiTree(InRoot->lchild);
+        preVisitBiTree(InRoot->rchild);
+        printf("%c ",InRoot->data);
+
+    }
+    return 0;
+}
+int levelVistBiTree(BITREENODE* InRoot)
+{
+ 	BITREENODE *q[100];
+			int front=0,rear=0;
+			BITREENODE *p;
+			if(InRoot==NULL) return;
+			q[rear]=InRoot;
+			rear=(rear+1)%100;
+			while(front!=rear)
+			{p=q[front];
+			front=(front+1)%100;
+			printf("%c",p->data);
+			if(p->lchild)
+			{
+			q[rear]=p->rchild;
+			rear=(rear+1)%100;
+			}
+			if(p->rchild)
+			{
+			q[rear]=p->rchild;
+			rear=(rear+1)%100;
+			}
+			}
+}
+
+
+
+
+int main(void)
+{
+    BITREENODE* pstRoot;
+
+    /* 构造一个二叉树 */
+    pstRoot = createBiTree();
+
+    /* 前序遍历左子树 */
+    preVisitBiTree(pstRoot);
+
+    printf("\n");
+
+    /* 中序遍历左子树 */
+    inVisitBiTree(pstRoot);
+    printf("\n");
+      /* 层序遍历左子树 */
+    levelVistBiTree(pstRoot);
+
+
+    printf("\n");
+
+    /* 后序遍历左子树 */
+    postVisitBiTree(pstRoot);
+   printf("\n");
+    return 0;
+}
