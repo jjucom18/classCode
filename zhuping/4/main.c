@@ -43,9 +43,16 @@ int main(int argc ,char  **argv){
 		case 4:if(!QueueEmpty(Qu)){//显示候车场车辆
 				   printf("侯车场中的车辆:");
 				   DispQueue(Qu);}
-			   else printf("候车场无车辆\n")
+			   else printf("候车场无车辆\n");
 			   break;
+		case 0:/*结束*/ if (!StackEmpty(St) ) {
+							printf("  >>停车场中的车辆:") ; 
+							DispStack(St) ;} 
+						if (!QueueEmpty(Qu)) {
+							printf("  >>候车场中的车辆:") ; 
+							DispQueue(Qu) ;}  									
+							break;
 		default:printf("输入命令有误\n");//其他错误
-				break;}}
+				break;}} 
 	while(come!=0);
 	return 0;}
