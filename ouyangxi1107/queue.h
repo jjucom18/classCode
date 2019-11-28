@@ -13,7 +13,6 @@ typedef struct{
     int num;
 }CSeqQueue;
 
-CSeqQueue *initQueue();
 bool emptyQueue(CSeqQueue *queue);
 bool fullQueue(CSeqQueue *queue);
 void inQueue(CSeqQueue *queue,datatype data);

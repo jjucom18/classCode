@@ -24,5 +24,5 @@ int main(){
 
 
 
-	return 0;
+	ireturn 0;
 }
