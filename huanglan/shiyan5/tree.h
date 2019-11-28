@@ -4,8 +4,8 @@
 #define MaxSize 100
 typedef char dataType;
 typedef struct TreeNode{
-	dataType data;
-struct Tree *left,*right;
+        dataType data;
+        struct TreeNode *left,*right;
 }TreeNode;
 void PreOrder(TreeNode *t);
 void InOrder(TreeNode *t);
