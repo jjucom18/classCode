@@ -23,10 +23,10 @@ typedef struct
 	int top;
 }SqStackCar;
 
-void InitSeqStack(SqStackCar *s) 
-int push(SqStackCar *s,CarNode x)	
-CarNode pop(SqStackCar *s)	
-void Arrive(SeStackCar *stop,LinkQueueCar *lq,CarNode x)	
-void Leave (SqStackCar *s1,SqStackCar *s2,LinkQueueCar *p CarNode y)
+void InitSeqStack(SqStackCar *s) ;
+int push(SqStackCar *s,CarNode x);	
+CarNode pop(SqStackCar *s)	;
+void Arrive(SqStackCar *stop,CarNode x);	
+void Leave (SqStackCar *s1,SqStackCar *s2, CarNode y);
 
 #endif
