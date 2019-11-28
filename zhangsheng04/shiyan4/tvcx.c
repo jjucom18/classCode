@@ -168,10 +168,89 @@ if(i<MaxChe){
 	cout<<"停车场已满"<<endl;
 	cout<<"返回首页"<<endl;
 	int h;
+    cin>>h;
 	if(h==1){
 		system("cls");
 		Shouye();
 	}else
 		Cuo1();
+}
+}
+void Output()//车辆离开停车场并计算停车费用
+{
+	ifstream fin("text.txt",ios::in);
+	if(!fin){
+		cout<<"文件打开失败"<<endl;
+	} int i;
+	fin>>i;
+	cout<<"停车场中已有车"<<"辆"<<endl;
+	Che p[MaxChe];
+	for(int j=0;j<i;j++)
+	{
+		fin>>p[j].ID>>p[j].Color>>p[j].CheXing>>p[j].aTime.year>>p[j].aTime.mouth>>p[j].aTime.day>>p[j]
+			.aTime.hour>>p[j].aTime.minute>>p[j].aTime.second<<endl;
+		cout<<p[j].ID<<"\t"<<p[j].Color<<"\t"<<p[j].CheXing<<"\t"<<p[j].aTime.year<<"-"<<p[j].aTime.mouth
+		<<"-"<<p[j].aTime.day<<"-"<<p[j].aTime.hour<<":"<<p[j].aTime.minute<<":"<<p[j].aTime.second<<endl;
+	}fin.cloes();
+	if(1!=0){
+		string cp;
+		out<<"按车牌查询"<<endl;
+		cout<<"离开停车场车牌:";
+			cin>>cp;
+			cout<<"出场时间"<<endl;
+			Time bTime;
+              bTime.setTime();
+			  ofstream fout("text.txt",ios::out);
+			  fout<<i-1<<endl;
+			  for(j=0;j<1;j++){
+				  if(p[j].ID==cp){
+					  cout<<"******************************************************"<<endl;
+					  cout<<"该车辆进入停车场的时间为:";
+        cout<<p[j].aTime.year<<"-"<<p[j].aTime.mouth<<"-"<<p[j].aTime.day<<"-"<<p[j].aTime.hour<<":"<<P[j]
+			.aTime.minute<<":"<<p[j].aTime.second<<endl;
+		cout<<"每分钟"<<Chefei<<"元钱"<<endl;
+		int money;
+     money=(bTime.year-p[j].aTime.year)*12*31*24*60+(bTime.mouth-p[j].aTime.mouth)*31*24*60+(bTime.day-
+			 p[j].aTime.day)*24*60+(bTime.hour-p[j].aTime.hour)*60+(bTime.minute-p[j].aTime.minute)*10;
+	 cout<<"共计"<<money<<"元钱"<<endl;
+			  }
+	}for(j=0;j<i;j++){
+		if(p[j].ID==cp){
+		int a;
+		a=j;
+		for(j=0;j<a;j++){
+			fout<<p[j].ID<<"\t"<<p[j].Color<<"\t"<<p[j].CheXing<<"\t"<<p[j].aTime.year<<"\t"<<p[j].aTime.
+				mouth<<"\t"<<p[j].aTime.day<<"\t"<<p[j].aTime.hour<<"\t"<<p[j].aTime.minute<<"\t"<<p[j].
+				aTime.second<<endl;	
+		}for(int j=a+1;j<1;j++){
+			fout<<p[j].ID<<"\t"<<p[j].Color<<"\t"<<p[j].CheXing<<"\t"<<p[j].aTime.year<<"\t"<<p[j].aTime
+				.mouth<<"\t"<<p[j].aTime.day<<"\t"<<p[j].aTime.hour<<"\t"<<p[j].aTime.minute<<"\t"<<p[j].
+                 aTime.second<<endl;
+		}cout<<"离场成功*********************"<<endl;
+		cout<<"返回首页";
+		int h;
+		cin>>h;
+		if(h==1){
+			system("cls");
+			Shouye();
+		}else Cuo1();
+		break;
+	}
+}
+fout.close();
+}
+else{
+	cout<<"停车场中无车辆"<<endl;
+	cout<<"车辆进入停车场"<<endl;
+	cout<<"返回首页"<<endl;
+	int h;
+	cin>>h;
+	if(h==1)
+		Input();
+	if(h==2){
+		system("cls");
+				Shouye();
+	}if(h!=1&&h!=2)
+	Cuo1();
 }
 } 

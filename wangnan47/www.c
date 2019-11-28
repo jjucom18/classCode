@@ -7,15 +7,15 @@
 	  dataType data;
 	  struct_TreeNode *left, *right;
   } TreeNode;
- 
+
 void CreateTree(TreeNode *tree, dataType x); //创建二叉树
-void PreOrder((TreeNode *tree);  //先序遍历二叉树
+void PreOrder(TreeNode *tree);  //先序遍历二叉树
 void InOrder(TreeNode *tree); //中序遍历二叉树
 void PostOrder(TreeNode *tree);  //后序遍历二叉树
 void LevelOrder(TreeNode *tree); //以层次遍历二叉树
 #endif
 
-#include"tree.h"
+#include<stdio.h>
 void CreateTree(TreeNode *tree, dataType x) 
 {
 	dataType data;

@@ -130,7 +130,7 @@ void Display()
 
 void welcome()
 {
-    printf ("\t*******************目前停车场状况***********************\n");
+    printf ("\t                     目前停车场状况                   \n");
     printf ("\t停车场共有%d个车位,当前停车场共有%d辆车,等候区共有%d辆车\n", 
 			MAX_STOP, s.top+1, (p.rear + MAX_PAVE - p.front)
                                                                        % MAX_PAVE);
@@ -141,5 +141,6 @@ void welcome()
     printf ("\t                     4.exit                           \n");
     
 }
+
 
 
