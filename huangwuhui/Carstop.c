@@ -6,12 +6,12 @@ typedef struct
 {
 	int hour;
 	int minute;
-}Time;/*时间节点*/
-typedef struct/*定义栈元素类型*/
+}Time;
+typedef struct
 {
-	int num;/*车牌号*/
-	Time arrtime;/*到达时刻或离去时刻*/
-}CarNode;/*车辆信息节点*/
+	int num;
+	Time arrtime;
+}CarNode;
 typedef struct
 {
 CarNode stack[MaxSize];

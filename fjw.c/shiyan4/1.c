@@ -100,7 +100,7 @@ void DispQueue(SqQueue *q)
 }
 
 //main函数用于模拟停车场的工作
-int main() 
+int main( ) 
 {
 	int comm;
 	int no,e1,time,e2;
@@ -138,36 +138,35 @@ int main()
 			case 2:       /*汽车离开*/
 				printf("输入车号和时间：");
 				scanf("%d%d",&no,&time);
-				for (i=0; i<=St->top &&St->CarNo[i]!=no; i++;  //在栈中找
+				for (i=0; i<=St->top &&St->CarNo[i]!=no; i++) ;  //在栈中找
 						if (i>St->top)
 						printf("  >>未找到该编号汽车\n");
 				else
-				
-
-				    t=St->top - i;;
+				{
+				    t = St->top - i;
 				    for (j=0; j<t; j++)
-				    
+					{
 				        Pop(St,e1,e2);
 				        Push(St1,e1,e2);
-				    
+					} 
                     Pop(St,e1,e2);
 				    printf("  >>%d汽车停车费用：%d\n",no,(time-e2)*Price);
 				    while(!StackEmpty(St1))
-				    
+					{
                         Pop(St1,e1,e2);
 					    Push(St,e1,e2);
-				    
+					} 
 				    if(!QueueEmpty(Qu))
-				    
+					{
 				        deQueue(Qu,e1);
 						Push(St,e1,time);
-				    
-				
+					} 
+				} 
 				break;    
 		    case 3:
 				if(!StackEmpty(St))
 				{
-					printf("  >>停车场中的车辆：")；
+					printf("  >>停车场中的车辆：");
 						DispStack(St);
 				}
 				else
@@ -176,7 +175,7 @@ int main()
 			case 4:
 				if (!QueueEmpty(Qu))
 				{
-					printf("  >>o候车场中的车辆：")；
+					printf("  >>o候车场中的车辆：");
 						DispQueue(Qu);
 				}
 				else
@@ -185,12 +184,12 @@ int main()
 			case 0:
 				if (!StackEmpty(St))
 				{
-					printf("  >>停车场中的车辆：")；
+					printf("  >>停车场中的车辆：");
 						DispStack(St);
 				}
 				if (!QueueEmpty(Qu))
 				{
-					printf("  >>候车场中的车辆：")；
+					printf("  >>候车场中的车辆：");
 						DispStack(Qu);
 				}
 				break;
