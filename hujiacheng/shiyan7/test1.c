@@ -52,52 +52,40 @@ void Init_Graph(Graph *G)
     strcpy(G->place[0].intro,"特别大气漂亮，是学校的门面\n");
     G->place[1].index=2;
     strcpy(G->place[1].name ,"竞知楼");
-    strcpy(G->place[1].intro,"接待外宾的去所\n");
+    strcpy(G->place[1].intro,"电子学院活跃的地方\n");
     G->place[2].index=3;
     strcpy(G->place[2].name,"一食堂");
-    strcpy(G->place[2].intro,"里面有外语、建规等多个学院\n");
+    strcpy(G->place[2].intro,"饭量充足\n");
     G->place[3].index=4;
     strcpy(G->place[3].name,"三食堂");
-    strcpy(G->place[3].intro,"经管学院，漂亮妹子多\n");
+    strcpy(G->place[3].intro,"便宜实惠\n");
     G->place[4].index=5;
     strcpy(G->place[4].name,"厚德楼");
-    strcpy(G->place[4].intro,"工大羽毛球馆，林丹这里夺的冠！\n");
+    strcpy(G->place[4].intro,"做物理实验的地方\n");
     G->place[5].index=6;
-    strcpy(G->place[5].name,"香园楼");
-    strcpy(G->place[5].intro,"比较好吃花样多，除了贵一点啥都好!\n");
+    strcpy(G->place[5].name,"香远楼");
+    strcpy(G->place[5].intro,"外国语学院\n");
     G->place[6].index=7;
     strcpy(G->place[6].name,"义丰楼");
-    strcpy(G->place[6].intro,"好吃不贵，几乎一律六块，你值得拥有！\n");
+    strcpy(G->place[6].intro,"经管学院\n");
     G->place[7].index=8;
     strcpy(G->place[7].name,"文友楼");
-    strcpy(G->place[7].intro,"上课的地方，上自习得好地方！\n");
+    strcpy(G->place[7].intro,"理学院\n");
     G->place[8].index=9;
     strcpy(G->place[8].name,"实训楼");
-    strcpy(G->place[8].intro,"都柏林学院\n");
+    strcpy(G->place[8].intro,"金工实习和微机课\n");
     G->place[9].index=10;
     strcpy(G->place[9].name,"立信楼");
-    strcpy(G->place[9].intro,"学习氛围很好，不过工科书多，缺少文化氛围\n");
+    strcpy(G->place[9].intro,"会计学院\n");
     G->place[10].index=11;
     strcpy(G->place[10].name,"逸夫楼");
-    strcpy(G->place[10].intro,"桌椅和高中一样，暖气很暖和，很舒服\n");
+    strcpy(G->place[10].intro,"工科书多，但缺乏文化氛围\n");
     G->place[11].index=12;
     strcpy(G->place[11].name,"西门");
-    strcpy(G->place[11].intro,"和一教差不多\n");
+    strcpy(G->place[11].intro,"学校最大的门，但是人少\n");
     G->place[12].index=13;
     strcpy(G->place[12].name,"北门");
-   strcpy(G->place[12].intro,"分两层，一层实惠，二层高档\n");
-   /* G->place[13].index=14;
-    strcpy(G->place[13].name,"四号宿舍楼");
-    strcpy(G->place[13].intro,"我住在这里，感觉环境欠改善\n");
-    G->place[14].index=15;
-    strcpy(G->place[14].name,"北门");
-    strcpy(G->place[14].intro,"有烤冷面小贩出没\n");
-    G->place[15].index=16;
-    strcpy(G->place[15].name,"校医院");
-    strcpy(G->place[15].intro,"小病报销比例高，大病看不了\n");
-    G->place[16].index=17;
-    strcpy(G->place[16].name,"浴室");
-    strcpy(G->place[16].intro,"非常方便，水温合适\n");*/
+    strcpy(G->place[12].intro,"最晚晚建的门\n");
     /////////////////////////////////////////
     //具体距离
    G->edge[0][1]=20;
@@ -153,9 +141,9 @@ void show_menu(Graph *G)
     int flag=0;
     do
     {
-    system("cls");
-    printf("----------九江学院校园导航系统---------\n");
-    printf("----------      以下为简易地图           ----------\n");
+   // system("cls");
+    printf("----------    九江学院校园导航系统        ----------\n");
+    printf("----------       以下为简易地图           ----------\n");
     printf("                                13.北门            \n");
     printf("                                                   \n");
     printf("                                                   \n");
@@ -177,8 +165,8 @@ void show_menu(Graph *G)
     printf("         |      \n");
     printf("        南    \n"); 
     printf("请输入您所选择的功能序号：\n"); 
-    printf("1.查询最短路径\n");
-   // printf("2.查询景点信息\n");
+    printf("1.查询路径\n");
+    printf("2.查询地点信息\n");
     printf("3.退出\n");
     scanf("%d",&choice);
     if(choice==1)
@@ -197,7 +185,7 @@ void show_menu(Graph *G)
         display(G,start,end);
         printf("最小路径为：%.2f M\n",minroad);
     }
-   /* else if(choice==2)
+    else if(choice==2)
     {
     
         printf("请输入您想查询位置的序号\n");
@@ -217,7 +205,7 @@ void show_menu(Graph *G)
         
         
         
-    }*/
+    }
     else if(choice==3)
     {
         exit(-1);
