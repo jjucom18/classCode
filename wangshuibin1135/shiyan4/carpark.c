@@ -1,191 +1,111 @@
-#include"carpark.h"
+#include "carpark.h"
 
-CAR parking[10];
-CAR giveway[10];
-int per = N;
-int topp = -1;
-int topg = -1;
-QUE *front = NULL;
-QUE *rear = NULL;
- 
-void enterque()
+void stop_to_pave()                         // 车停入便道
 {
-    QUE *newnode = (QUE *)malloc(sizeof(QUE));
-    if(rear == NULL)
+    // 判断队满
+    if (p.count > 0 && (p.front == (p.rear + 1) % MAX_PAVE))
     {
-	newnode->flt = 1;
-	front = newnode;
-	rear = newnode;
-	rear->next = NULL;
+        printf ("便道已满，请下次再来\n");
     }
     else
     {
-        newnode->flt = 1;
-	rear = newnode;
-	rear->next = NULL;
+        strcpy(p.Pave[p.rear].plate, C);    // 车进入便道
+        p.rear = (p.rear + 1) % MAX_PAVE;   // 队尾指示器加1
+        p.count++;                          // 计数器加1
+        printf ("牌照为%s的汽车停入便道上的%d的位置\n", C, p.rear);
     }
 }
- 
-void outque()
+
+void car_come()                             // 车停入停车位
 {
-    if(front == NULL)
+    printf ("请输入即将停车的车牌号:");     // 输入车牌号
+    scanf ("%s", &C);
+    if (s.top >= MAX_STOP - 1)              // 如果停车位已满，停入便道
     {
-        printf("没有人在等待!\n");
+        stop_to_pave();                     // 停入便道
     }
     else
     {
- 
-        QUE *tmp = front;
-	front->flt = 0;
-	front = front->next;
-	free(tmp);
-	tmp = NULL;
+        s.top++;                            // 停车位栈顶指针加1
+        time_t t1;
+        long int t = time(&t1);             // 记录进入停车场的时间
+        char* t2;
+        t2 = ctime (&t1);                   // 将当前时间转换为字符串
+        s.Stop[s.top].timeIn = t;
+
+        strcpy(s.Stop[s.top].plate, C);     // 将车牌号登记
+        printf ("牌照为%s的汽车停入停车位的%d车位, 当前时间:%s\n", C, s.top + 1, t2);
     }
+
+    return ;
 }
- 
-void pushp()
+
+void stop_to_buff()                         // 车进入让路栈
 {
-    if(topp == 9)
+    // 停车位栈压入临时栈，为需要出栈的车辆让出道
+    while (s.top >= 0)
     {
-        printf("停车位已满，请等待！\n");
+        if (0 == strcmp(s.Stop[s.top].plate, C))
+        {
+            break;
+        }
+
+        // 让出的车进入让路栈
+        strcpy(b.Help[b.top++].plate, s.Stop[s.top].plate);
+        printf ("牌照为%s的汽车暂时退出停车场\n", s.Stop[s.top--].plate);
+    }
+
+    // 如果停车位中的车都让了道，说明停车位中无车辆需要出行
+    if (s.top < 0)
+    {
+        printf ("停车位上无此车消息\n");
     }
     else
     {
-        topp++;
-        time_t timer = time(NULL);
-	parking[topp].timer = (char *)malloc(30);
-	strcpy(parking[topp].timer,ctime(&timer));
+        printf ("牌照为%s的汽车从停车场开走\n", s.Stop[s.top].plate);
+        time_t t1;
+        long int t = time (&t1);
+        c.timeOut = t;                        // 标记离开停车场的时间
+        char* t2;
+        t2 = ctime (&t1);                   // 获取当前时间
+        printf ("离开时间%s\n需付%ld元\n", t2, Price * (c.timeOut - s.Stop[s.top].timeIn));
+        s.top--;
+    }
+
+    // 将让路栈中的车辆信息压入停车位栈
+    while (b.top > 0)
+    {
+        strcpy(s.Stop[++s.top].plate, b.Help[--b.top].plate);
+        printf ("牌照为%s的汽车停回停车位%d车位\n", b.Help[b.top].plate, s.top);
+    }
+
+    // 从便道中 -> 停车位
+    while (s.top < MAX_STOP-1)
+    {
+        if (0 == p.count)               // 判断队列是否为空
+        {
+            break;
+        }   // 不为空，将便道中优先级高的车停入停车位
+        else
+        {
+            strcpy(s.Stop[++s.top].plate, p.Pave[p.front].plate);
+            printf ("牌照为%s的汽车从便道中进入停车位的%d车位\n", p.Pave[p.front].plate, s.top);
+            p.front = (p.front + 1) % MAX_PAVE;
+            p.count--;
+        }
     }
 }
- 
-char * popp()
+
+void car_leave()                        // 车离开
 {
-    char *str = (char *)malloc(30);
-    if(topp == -1)
+    printf ("请输入即将离开的车牌号:\n");
+    scanf ("%s", &C);
+    if (s.top < 0)                      // 判断停车位是否有车辆信息
     {
-        printf("停车位为空！\n");
+        printf ("车位已空，无车辆信息！\n");
     }
     else
     {
-        strcpy(str,parking[topp].timer);
-	free(parking[topp].timer);
-	parking[topp].timer = NULL;
-	topp--;
-    }
-    return str;
-}
- 
-void pushg(char *tm)
-{
-    if(topg == 9)
-    {
-        printf("让路间已经不能在进车了！\n");
-    }
-    else
-    {
-        topg++;
-	giveway[topg].timer = (char *)malloc(30);
-        strcpy(giveway[topg].timer,tm);
+        stop_to_buff();
     }
 }
- 
-void popg()
-{
-    if(topg == -1)
-    {
-        printf("让路间还是空的哦！\n");
-    }
-    else
-    {
-        topp++;
-	parking[topp].timer = (char *)malloc(30);
-        strcpy(parking[topp].timer,giveway[topg].timer);
-	topg--;
-    }
-}
- 
-void incar()
-{
-    if(topp == 9)
-    {
-        printf("停车位已经满！请耐心等待！\n");
-	enterque();
-    }
-    else
-    {
-        if(rear == NULL)
-	{
-	    printf("当前有空位！请停车！\n");
-	    pushp();
-	}
-	else
-	{
-	    printf("停车位已满！请等待！\n");
-	    enterque();
-	}
-    }
-}
- 
-void outcar()
-{
-    int no,i,temp;
-    printf("请输出要出车的停车位号：");
-    char *tmp = (char *)malloc(30);
-    scanf("%d",&no);
-    if(no > topp)
-    {
-        printf("该车位没有车！\n");
-	goto end;
-    }
-    temp = topp - no;
-    for(i = 0; i < temp; i++)
-    {
-        //char *tmp = (char *)malloc(30);
-        tmp = popp();
-	pushg(tmp);
-    }
-    tmp = popp();
-    time_t timer = time(NULL);
-    printf("进来时间：%s\n",tmp);
-    printf("当前时间：%s\n",ctime(&timer));
-    mytime(tmp,ctime(&timer));
-    for(i = 0;i < temp; i++)
-    {
-        popg();
-    }
-    if(front == NULL)
-    {
-        //printf("我去居然没人在等车～～～\n");
-    }
-    else
-    {
-        printf("有空位了！等待人员进入停车！\n");
-	outque();
-	pushp();
-    }
-    end:
-    printf("");
-}
- 
-void myprint()
-{
-    int i;
-    for(i = 0;i <= topp; i++)
-    {
-        printf("%d:%s",i,parking[i].timer);
-    }
-}
- 
-void mytime(char *timer1,char *timer2)
-{
-    int hour1 = (timer1[11]- '0') * 10 + (timer1[12] - '0');
-    int min1 = (timer1[14]- '0') * 10 + (timer1[15] - '0');
-    int sec1 = (timer1[17]- '0') * 10 + (timer1[18] - '0');
-    int hour2 = (timer2[11]- '0') * 10 + (timer2[12] - '0');
-    int min2 = (timer2[14]- '0') * 10 + (timer2[15] - '0');
-    int sec2 = (timer2[17]- '0') * 10 + (timer2[18] - '0');
-    printf("您一共停了:%02d:%02d:%02d\n",hour2-hour1,min2-min1,sec2-sec1);
-    int money = ((hour2 - hour1) * 60 * 60 + (min2 - min1) * 60 + (sec2 - sec1)) * per;
-    printf("消费了%d元钱！\n",money);
-}
- 
