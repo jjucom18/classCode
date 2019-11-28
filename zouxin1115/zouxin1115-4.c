@@ -92,8 +92,8 @@ int DriveOut(SeqStack *S, ElemType e, SeqStack *St) {
 			Push(St, S2S);
 			}
 		if (S->Selem[S->top] == e) {
-				printf("\n		%d车驶出成功\n", S->Selem[S->top]);
-				printf("		应收停车费为	%d\n", COUNT_FEE(*S, S->top));
+				printf("\n  %d车驶出成功\n", S->Selem[S->top]);
+				printf("应收停车费为	%d\n", COUNT_FEE(*S, S->top));
 				for (int i = S->top; i < SMaxSize -1; i++){
 					S->TIME[i] = S->TIME[i+1];
 					}
