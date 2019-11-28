@@ -1,95 +1,92 @@
-#include<stdio.h>
-#include<malloc.h>
-#include<stdlib.h>
-#define MaxSize 100
-
-typedef char dataType;
-struct TreeNode  {
-  dataType data;
-  TreeNode *left, *right;
-};
-
-//创建二叉树
-//以先序序列输入各结点的数据某结点的左子树或右子树为空时输入一个特定的值x
-void CreateTree(TreeNode* &t, dataType x)
-{	
-  dataType d;
-  scanf("%c", &d);
-  if (d == x) {
-    t = NULL; 
-  } else {
-    t = (TreeNode *)malloc(sizeof(TreeNode));          
-    t->data = d;
-    CreateTree(t->left, x);           
-    CreateTree(t->right, x);          
-  } 
-} 
-
-//先序遍历二叉树 
-void PreOrder(TreeNode *t){
-    if (t) { 
-    printf("%c ", t->data);
-    PreOrder(t->left);
-    PreOrder(t->right);
-  }
+/**********************************************
+ * Author:tmw
+ * date:2018-2-13
+ * **********************************************/
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdbool.h>
+ 
+#define MAXSIZE 100
+ 
+/**二叉树数据结构定义**/
+typedef struct BiTreeNode
+{
+	    char data;
+	        struct BiTreeNode *left;
+		    struct BiTreeNode *right;
+}BiTreeNode,*BiTree;
+ 
+/**二叉树的建立--按照先序方式建立--插入**/
+void CreateBiTree(BiTree *T)
+{
+	    char val;
+	        scanf("%c",&val);
+		 
+		    if(val == '#')
+			            *T = NULL;  //null表示为空枝
+		     
+		        else
+				    {
+					            *T = (BiTree)malloc(sizeof(BiTreeNode));
+						            (*T)->data = val;
+							            CreateBiTree(&(*T)->left);
+								            CreateBiTree(&(*T)->right);
+									        }
 }
-
-//中序遍历二叉树 
-void InOrder(TreeNode *t) {
-    if (t) { 
-    InOrder(t->left);
-    printf("%c ", t->data);
-    InOrder(t->right);
-  }
+ 
+ 
+/**先序遍历  根左右**/
+void PreOrderTravel(BiTree T)
+{
+	    if(T==NULL)
+		            return;
+	        printf("%c ",T->data);
+		    PreOrderTravel(T->left);
+		        PreOrderTravel(T->right);
 }
-
-//后序遍历二叉树 
-void PostOrder(TreeNode *t) {
-  if (t) {
-    PostOrder(t->left);
-    PostOrder(t->right);
-    printf("%c ", t->data);
-  }
+ 
+/**中序遍历 左根右**/
+void InOrderTravel(BiTree T)
+{
+	    if(T==NULL)
+		            return;
+	        InOrderTravel(T->left);
+		    printf("%c ",T->data);
+		        InOrderTravel(T->right);
 }
-
-//以层次顺序遍历二叉树 
-void LevelOrder(TreeNode *t) {
-  TreeNode *q[MaxSize];
-  int front = 0, rear = 0; 
-  TreeNode *p;
-  if (t == NULL) return;
-  q[rear] = t;
-  rear = (rear+1) % MaxSize;
-  while (front != rear) {
-    p = q[front];
-    front = (front+1) % MaxSize; 
-    printf("%c ", p->data);
-    if (p->left) {
-      q[rear] = p->left;
-      rear = (rear+1) % MaxSize;
-    }
-    if (p->right) {
-      q[rear] = p->right;
-      rear = (rear+1) % MaxSize;
-    }
-  }
-};
-
+ 
+/**后序遍历 左右根**/
+void TailOrderTravel(BiTree T)
+{
+	    if(T==NULL)
+		            return;
+	        TailOrderTravel(T->left);
+		    TailOrderTravel(T->right);
+		        printf("%c ",T->data);
+}
 int main()
-{ struct  TreeNode *t;
-  printf("请按先序序列输入各结点的字符，某结点的左子树或右子树为空时输入一个字符#。\n");
-  printf("如输入ABD#G###CE##F##\n");  
-  CreateTree(t, '#');
-  printf("先序遍历为：");
-  PreOrder(t);
-  printf("\n");
-  printf("中序遍历为：");
-  InOrder(t);
-  printf("\n");
-  printf("后序遍历为：");
-  PostOrder(t);
-  printf("\n");
-  printf("层序遍历为：");
-  LevelOrder(t);
-  printf("\n");
+{
+	 
+	    printf("测试代码\n");
+	        BiTree T;
+		    T = (BiTree)malloc(sizeof(BiTreeNode));
+		     
+		        printf("请给二叉树按照先序方式依次输入结点的值(空结点为#):\n");
+			    CreateBiTree(&T);
+			     
+			     
+			        printf("先序方式遍历结果：\n");
+				    PreOrderTravel(T);
+				        printf("\n");
+					 
+					    printf("中序方式遍历结果：\n");
+					        InOrderTravel(T);
+						    printf("\n");
+						     
+						        printf("后序方式遍历结果：\n");
+							    TailOrderTravel(T);
+							        printf("\n");
+								    return 0;
 }
+
+

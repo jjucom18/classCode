@@ -1,3 +1,5 @@
+#ifndef duilie_h
+#define duilie_h
 #include <stdio.h>
 #include <malloc.h>
 #define N 10//停车场最多的停车数
