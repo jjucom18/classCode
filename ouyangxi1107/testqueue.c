@@ -27,9 +27,4 @@ return 0;
 queue *initqueue();
 bool emptyqueue(CSeqQueue *queue);
 
-
-
-
-
-
 }
