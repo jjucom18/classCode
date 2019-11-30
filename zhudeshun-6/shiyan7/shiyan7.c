@@ -1,3 +1,4 @@
+#include<string.h>
 #include <stdio.h>
 #include <stdlib.h>
 #define M 3000              //假设两顶点之间没有路径,用3000来表示
