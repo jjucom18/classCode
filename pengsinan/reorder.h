@@ -1,6 +1,5 @@
 #ifndef reorder_h
 #define reorder_h
-#include <stdio.h>
 
 #define Maxnum = 20
 
@@ -40,7 +39,7 @@ void Bubblesort(int arr[] ,int arrsize);
 void Quick_sort(int datatype Q[] ,int s ,int z);
 void Select_sort(int datatype S[] ,int n);
 
-
+#endif
 
 
 
