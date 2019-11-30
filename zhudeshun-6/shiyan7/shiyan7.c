@@ -126,6 +126,18 @@ int main()   //主函数
 	scanf("%d",&c);
 	if(c==1){
 	printf("**********************************\n");
+	printf("              九院大致景点如下图                 \n");
+	printf("              [ 南门 ]                                       \n");
+	printf("                                                             \n");
+	printf("         [ 校医院 ]                                          \n");
+	printf("                                        [  西门 ]            \n");
+	printf("[ 南区操场 ]                           [ 碟湖 ]              \n");
+	printf("            [ 竞知楼 ]                                       \n");
+	printf("                       [ 三食堂 ]                            \n");
+	printf("          [ 厚德楼 ]                                         \n");
+	printf("                    [ 逸夫图书馆 ]    	          	     \n");
+	printf("                                      [ 北门 ]	             \n");
+        printf("*********************************\n");
 	printf("九江学院共有如下十处景点：\n");
 	for(i=1;i<=10;i++){
 	printf("%d.",T->vexs[i].num);
