@@ -5,9 +5,10 @@
 #include<string.h>
 
 #define MAX 20//停车场最大容量
-#define price 1
+#define price 0.05
 #define pricee 0.5
-typedef struct Node{
+
+typedef struct NODE{
  CarNode *stack[MAX+1];
  int top;
 }SeqStackCar;//便道的栈顺序存储
@@ -25,18 +26,18 @@ typedef struct Node{
 typedef struct time{
 	int hour;
 	int min;
-}Time;
+}Time;//定义时间结构体
 
 typedef struct node{
 	char num[10];
 	Time reach;
 	Time leave;
-}CarNode;
+}CarNode;//定义车辆信息结构体
 
 void InitStack(SeqStackCar *);
 int InitQueue(LinkQueueCar *);
-int Arrival(SeqStackCar *,LinkQueueCar *)
-void Leave(SeqStackCar *,SeqStackCar *,LinkQueueCar *)
+int Arrival(SeqStackCar *,LinkQueueCar *);
+void Leave(SeqStackCar *,SeqStackCar *,LinkQueueCar *);
 void List(SeqStackCar,LinkQueueCar);
 
 #endif

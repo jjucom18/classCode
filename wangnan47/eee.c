@@ -1,6 +1,6 @@
-#include"tree.h"
+#include"111.h"
 
-int main(int argc,char **argv)
+int (int argc,char **argv)
 {
 	TreeNode *tree;
 	printf("请按先序序列遍历输入各节点的字符，某节点的左字数或右子树为空时输入一个字符#\n");
@@ -14,3 +14,11 @@ int main(int argc,char **argv)
 	printf("\n");
 	printf("后序遍历为:\n");
 	PostOrder(tree);
+	printf("\n")
+	printf("层次遍历为:\n");
+	LevelOrder(tree);
+	printf("\n");
+
+
+	return;
+} 

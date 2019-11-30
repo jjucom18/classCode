@@ -16,7 +16,7 @@ typedef struct
 }SqQueue;  /*定义循环队类型，用于描述候车场*/
 
 /*以下为顺序栈的基本运算算法*/
-void InitStack(SqStack *&s)
+void InitStack(SqStack *s)
 {
 	s=(SqStack *)malloc(sizeof(SqStack));
 	s->top=-1;
@@ -25,7 +25,7 @@ int StackEmpty(SqStack *s)
 {
 	return(s->top==N-1);
 }
-int Push(SqStack *&s,int e1,int e2)
+int Push(SqStack *s,int e1,int e2)
 {
 	if (s->top==N-1)
 		return 0;
@@ -34,7 +34,7 @@ int Push(SqStack *&s,int e1,int e2)
 	s->CarTime[s->top]=e2;
 	return 1;
 }
-int Pop(SqStack *&s,int &e1,int &e2)
+int Pop(SqStack *s,int e1,int e2)
 {
 	if (s->top==-1)
 		return 1;
@@ -47,7 +47,7 @@ void DispStack(SqStack *s)
 	printf("\n");
 }
 /*以下为循环队列的基本运算算法*/
-void InitQueue(SqQueue *&q)
+void InitQueue(SqQueue *q)
 {
 	q=(SqQueue *)malloc(sizeof(SqQueue));
 	q->front=q->rear=0;
@@ -60,22 +60,22 @@ int QueueFull(SqQueue *q)  /*判断队满*/
 {
 	return ((q->rear+1)%M==q->front);
 }
-int enQueue(SqQueue *&q,int e)  /*进队*/
+int enQueue(SqQueue *q,int e)  /*进队*/
 {
 	if((q->rear+1)%M==q->front)  /*队满*/
 		return 1;
 }
-int deQueue(SqQueue *&q,int &e)  /*出队*/
+int deQueue(SqQueue *q,int e)  /*出队*/
 {
 	if (q->front==q->rear)
 		return 1;
 }
-void DispQueue(SeQueue *q)  /*输出队中元素*/
+void DispQueue(SqQueue *q)  /*输出队中元素*/
 {
 	int i;
 	i=(q->front+1)%M;
 	printf("%d",q->CarNo[i]);
-	while((q->rear-i+M)%M>o)
+	while((q->rear-i+M)%M>0)
 	{
 		i=(i+1)%M;
 		printf("%d",q->CarNo[i]);
@@ -110,7 +110,7 @@ int main()
 				}
 				else  /*停车场满*/
 				{
-					if(!QueueFull(Qu))  /候车场不满*/
+					if(!QueueFull(Qu))  /*候车场不满*/
 					{
 						enQueue(Qu,no);
 						printf("  >>候车场位置:%\n",Qu->rear);
@@ -142,8 +142,7 @@ int main()
 					Push(St,e1,time);
 				}
 		   }
-		break;
-		case 3:  /*显示停车场中的车辆*/
+		break;  /*显示停车场中的车辆*/
 		if(!StackEmpty(Qu))
 		{
 			printf("  >>候车场中的车辆:");/*输出候车场中的车辆*/
@@ -151,8 +150,7 @@ int main()
 		}
 		else
 			printf("  >>候车场中无车辆\n");
-		break;
-	case 0:  /*结束*/
+		break;  /*结束*/
 		if (!StackEmpty(St))
 		{
 			printf("  >>停车场中的车辆:");/*输出停车场中的车辆*/
@@ -163,15 +161,9 @@ int main()
 			printf("  >>候车场中的车辆:");/*输出候车场中的车辆*/
 			DispQueue(Qu);
 		}
-		break;
-	default:  /*其他情况*/
+		break;   /*其他情况*/
 		printf("  >>输入的命令错误\n");
 		break;
-	} 
-} 
 while(comm!=0);
 return 0;
 
-
-	}
-}
