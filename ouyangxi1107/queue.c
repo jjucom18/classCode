@@ -1,14 +1,5 @@
 #include "queue.h"
 
-#define MAXSIZE 10
-typedef int datatype;
-typedef struct{
-    datatype data[MAXSIZE];
-    int front;
-    int rear;
-    int num;
-}CSeqQueue;
-
 CSeqQueue *initQueue(){
 CSeqQueue *queue =(CSeqQueue*)malloc(sizeof(CSeQueue));
 q->front=q->rear=MAXSIZE-1;

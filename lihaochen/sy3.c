@@ -23,6 +23,7 @@
 																							
 																						
 														}
+    } 
 }
 
      void insertSort(int arr[] )
@@ -30,16 +31,17 @@
      int i, j, tmp;
 
      for(i = 1; i < 10; i++)
-							  {
+					 {
      for(j = i; j > 0; j--)
 							{ 
-     if(arr[j] < arr[j-1]		     {  tmp = arr[j];     arr[j] = arr[j-1];    arr[j-1] = tmp;
+     if(arr[j] < arr[j-1]		     
+ {  tmp = arr[j];     arr[j] = arr[j-1];    arr[j-1] = tmp;
 																								  				                }
 																						  						         else
 																		 							  {   break;}
 																													 																	            
 																													 				 }
-											  		}
+							}
 
 						    return;
 }
@@ -52,7 +54,7 @@ void selectSort(int arr[])
 	{ if(arr[minValue] > arr[j])
 { minValue = j;
 																						  				   }
-																	 }
+									 }
  if(minValue != i)
 { tmp = arr[i]; arr[i] = arr[minValue];  arr[minValue] = tmp;
 																							 					  }
@@ -74,7 +76,8 @@ void selectSort(int arr[])
 																							            {     																    					                    if(elem < arr[j-k])
    																																										    						                {
 																																													                        arr[j] = arr[j-k];
-																																																								                }
+											
+																																																		}
 																																									    				                    else																																											    				                {
 																																																 break;
 																																																								 }
@@ -121,13 +124,6 @@ void out_arr(int arr[])
 
 																								printf("\n");
 
-																												
-																												
-
-																											
-																											
-
-																								    
 }
 	    	
     int main(int agrc,char **argv)
