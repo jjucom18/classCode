@@ -21,10 +21,10 @@ Q->head=(QueueNode *)malloc(sizeof(QueueNode));
     {
         Q->head->next=NULL;
         Q->rear=Q->head;
-        return OK;
+        return 1;
     }
     else
- return ERROR;
+ return 0;
  }
     void Print(CarNode *p,int room)     // 车辆收费
  { 
@@ -57,7 +57,7 @@ scanf("%d:%d",&(p->leave.hour),&(p->leave.min));
           printf("\n车辆到达时间:");
           scanf("%d:%d",&(p->reach.hour),&(p->reach.min));
           Enter->stack[Enter->top]=p;
-            return ok;
+            return 1;
              }
               else
         {
@@ -67,7 +67,7 @@ scanf("%d:%d",&(p->leave.hour),&(p->leave.min));
                      t->next=NULL;
                        W->rear->next=t;
                          W->rear=t;
-                         return ok;
+                         return 1;
                          }
                           }
 void Leave(SeqStackCar *Enter,SeqStackCar *Temp,LinkQueueCar *W)//车辆的离开
@@ -77,7 +77,7 @@ int room;
   QueueNode *q;
    if(Enter->top>0)         //  判断车场是否为空
    {
-        while(TRUE)      //输入离开车辆的信息
+        while(1)      //输入离开车辆的信息
         {
         printf("\n请输入车在车场的位置/1--%d/：",Enter->top);
     scanf("%d",&room);
@@ -159,7 +159,7 @@ int room;
         {
             printf(" \n请选择1|2|3： ");
             printf("\n 1.车场列表\n 2.便道列表\n 3.返回主菜单\n");
-            while(TRUE)
+            while(1)
         {
             scanf("%d",&tag);
             if(tag>=1 && tag<=3) break;

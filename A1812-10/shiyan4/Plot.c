@@ -18,7 +18,7 @@ void stop_to_pave()
 void car_come()                             
 {
     printf ("请输入即将停车的车牌号:");     
-    scanf("%s",&C);
+    scanf("%d",&C);
     if (s.top >= MAX_STOP - 1)              
     {
         stop_to_pave();                     
@@ -89,7 +89,7 @@ void stop_to_buff()
 void car_leave()                        
 {
     printf ("请输入即将离开的车牌号:\n");
-    scanf ("%s", &C);
+    scanf ("%d", &C);
     if (s.top < 0)                  
     {
         printf ("车位已空，无车辆信息！\n");
@@ -112,10 +112,11 @@ void Display()
     printf ("\t车牌号\t\t\t停放时间\t\t当前所需支付金额\n");
     while (i != -1)
     {
-        printf("\t%s\t\t%d秒\t\t\t%d元\n",s.Stop[i].plate,t-s.Stop[i].timeIn,Price*(t-s.Stop[i].timeIn)/10);
+        printf("\t%s\t\t%ld秒\t\t\t%ld元\n",s.Stop[i].plate,t-s.Stop[i].timeIn,Price*(t-s.Stop[i].timeIn)/10);
         i--;
     }
 }
+
 
 void welcome()
 {

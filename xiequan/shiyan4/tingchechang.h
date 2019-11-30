@@ -1,10 +1,11 @@
 #ifndef tingchechang_h
 #define tingchechang_h
-#define F=0
-#define T=1
+#define F 0
+#define T 1
 #define Max 3
-
-
+#include<stdio.h>
+#include<stdlib.h>
+#include<malloc.h>
 
 
 
@@ -36,7 +37,7 @@ typedef struct Linkstack{
 }Linkstack;
       
 
-void menu(LinkQueue *wait,LinkQueue *par,Linksack *giveway,int num ,int t);
+void menu(LinkQueue *wait,LinkQueue *par,Linkstack *giveway,int num ,int t);
 int  init(LinkQueue *wait,LinkQueue *park,Linkstack *giveway);
 int  linklength(LinkQueue q);
 int  inqueue(LinkQueue *q,int num,int t);

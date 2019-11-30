@@ -1,6 +1,5 @@
-#include<iostream>
-#include<string>
-#include<fstream>
+#include<stdio.h>
+#include<malloc.h>
 void StackInit(SeqStackCar *s) //初始化车场
 {      int i; s->top = 0;
        for(i=0; i<=MAXNUM;i++) 
@@ -98,8 +97,8 @@ void Leave(SeqStackcar *Enter,SeqStackcar *Temp,LinkQueueCar *W) //车辆离开
 	q =w->head->next;
 	t =q->data;
 	Enter->top++;
-	printf("\n便道的%s号车进入车场第%d位置.",t->num,Enter->top);
-	printf("\n请输入现在的时间/**：**/：");
+	printf("\n 便道的%s号车进入车场第%d位置.",t->num,Enter->top);
+	printf("\n 请输入现在的时间/**：**/：");
 	scanf("%d:%d", &(t->reach.hour), &(t->reach.min));
 	W->head->next =q->next;
 	if(q==w->rear) W->rear=W->head;
@@ -110,20 +109,20 @@ void Leave(SeqStackcar *Enter,SeqStackcar *Temp,LinkQueueCar *W) //车辆离开
 	 printf("\n 便道里没有车.\n");
 }
 else 
-         printf("\n车场里没车.") ; /*没车*/
+         printf("\n 车场里没车.") ; /*没车*/
 }
 void List1(SeqStackCar *s)  //显示车场信息
 {
 	int i;
 	if(s->top> 0) /*判断车场内是否有车*/
 {
-	printf("\n车场:");
+	printf("\n 车场:");
 	printf("\n 位置 到达时间 车牌号\n");
 	 s->stack[i]->reach.hour,s-stack[i]->reach.min;
 	 puts(s->stack[i]->num);
 }
 }
-else
-     printf("\n车场里没车"）；
+         else
+       printf("\n 车场里没车")
 }
          	  
