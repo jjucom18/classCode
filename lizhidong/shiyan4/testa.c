@@ -22,3 +22,7 @@ void initStack19(stack1 s)
 	_Bool isfull(stack1 s){//判断1号栈是否为满（即车库的车位是否满） 
 		if(s->top<=size-1)
 			return 0;else return 1;}
+			int enterqueue2(queue q,char str[])//进入队列（准备排队进入车库）{printf("\n您已经进入便道排队，请等待……");
+	int i=0;queue2 temp;temp=(queue2)malloc(sizeof(queue2));if(temp==NULL）
+			{printf("申请空间失败\n");return0;}
+			else if (str[i]!=
