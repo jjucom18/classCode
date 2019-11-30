@@ -20,12 +20,12 @@ int init(LinkQueue *wait,LinkQueue *park,Linkstack *giveway){
 	giveway->count=0;
 }
 void menu(LinkQueue *wait,LinkQueue *park,Linkstack *giveway,int num,int t){
-	printf("**********Welcome to our Car Parking");
-	printf("********** Please choose function  **********");
-	printf("**********     1:park.      **********");
-	printf("**********     2:leave.     **********");
-	printf("**********     3:view.      **********");
-	printf("**********     4:exit.      **********");
+	printf("**********Welcome to our Car Parking**********\n");
+	printf("********** Please choose function  **********\n");
+	printf("**********     1:park.      **********\n");
+	printf("**********     2:leave.     **********\n");
+	printf("**********     3:view.      **********\n");
+	printf("**********     4:exit.      **********\n");
 	int option;
 	scanf("%d",&option);
 	switch(option){
@@ -46,11 +46,11 @@ void menu(LinkQueue *wait,LinkQueue *park,Linkstack *giveway,int num,int t){
 			break;
 			   }
         case 4:{
-			printf("**********   欢迎再次使用，谢谢。\n  ************");
+			printf("**********   欢迎再次使用，谢谢。  ************\n");
 			break;
 			   }
         default:{
-			printf("**********   请输入正确的指令！\n   **********");
+			printf("**********   请输入正确的指令！   **********\n");
 			menu(wait,park,giveway,num,t);
 			break;
 				}
