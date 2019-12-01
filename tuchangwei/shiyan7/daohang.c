@@ -46,6 +46,7 @@ void Init_Graph(Graph *G)
             }
         }
     }
+    ////////////////////具体输入图
     G->place[0].index=1;
     strcpy(G->place[0].name,"南门");
     strcpy(G->place[0].intro,"特别大气漂亮\n");
