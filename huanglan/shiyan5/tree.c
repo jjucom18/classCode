@@ -1,16 +1,26 @@
-#include"tree.h"
+#include<stdio.h>
+#include<malloc.h>
+#include<malloc.h>
+#define MaxSize 100
+
+typedef struct TreeNode{
+        char data;
+        struct TreeNode *left,*right;
+}TreeNode;
 //创建二叉树
-void CreateTree(TreeNode *&t,dataType x){
-	dataType d;
-	scanf("%c",&d);
-		if(d == x){
+TreeNode treeNode;
+TreeNode *CreateTree(){
+	char d;
+	TreeNode *t=NULL;
+	d= getchar(); 
+		if(d == '#'){
 			t = NULL;
 		}else{
 			t = (TreeNode *)malloc(sizeof(TreeNode));
 			t->data = d;
-			CreateTree(t->left,x);
-			CreateTree(t->right,x);
-		}
+			t->left=CreateTree();
+            t->right=CreateTree();
+		}return t;
 }
 //先序遍历二叉树
 void PreOrder(TreeNode *t){
@@ -57,4 +67,22 @@ void LevelOrder(TreeNode *t){
 			rear = (rear+1)% MaxSize;
 		}
 	}
+}
+int main(){
+	TreeNode *t=NULL ;
+	printf("请按先序序列输入各节点的字符，某节点的左子树或右子树为空时输入一个字符#。");
+	printf("如输入ABD#G###CE##F##\n");
+	t=CreateTree();
+	printf("先序遍历为：");
+	PreOrder(t);
+	printf("\n");
+	printf("中序遍历为：");
+	InOrder(t);
+	printf("\n");
+	printf("后序遍历为：");
+	PostOrder(t);
+	printf("\n");
+	printf("层序遍历为：");
+	LevelOrder(t);
+	printf("\n");
 }
