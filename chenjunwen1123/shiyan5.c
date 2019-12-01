@@ -1,84 +1,132 @@
 #include<stdio.h>
 #include<malloc.h>
-#define MaxSize 100
 
-typedef char dateType;
-struct TreeNode {
-	dateType data;
-	TreeNode *left, *right;};
+struct TreeNode
+{
+	int num;
+	struct TreeNode *left, *right;
+}*treeNode = { NULL };
 
-void CreateTree(TreeNode *&t,dateType x){
-	dataType d;
-	scanf("%c",&d);
-	if (d==x) {
-		t=NULL;
-	}else{
-		t=(TreeNode*)malloc(sizeof(TreeNode));
-		t->data=d;
-		CreateTree(t->left,x);
-		CreateTree(t->right,x);}
+
+//先序遍历输入
+struct TreeNode * createTree(struct TreeNode * treeNode, int num, int stopNum)
+{
+	//创建空间并赋值
+	treeNode = (struct TreeNode *)malloc(sizeof(struct TreeNode));
+	treeNode->num = num;
+	//输入左右节点的数字
+	int numA, numB;
+	scanf_s("%d", &numA);
+	//如果左节点不是停止的数字
+	if (numA != stopNum)
+	{
+		treeNode->left = createTree(treeNode->left, numA, stopNum);
+	}
+	else
+	{
+		treeNode->left = NULL;
+	}
+	scanf_s("%d", &numB);
+	//如果右节点不是停止的数字
+	if (numB != stopNum)
+	{
+		treeNode->right = createTree(treeNode->right, numB, stopNum);
+	}
+	else
+	{
+		treeNode->right = NULL;
+	}
+	return treeNode;
 }
 
-void PreOrder(TreeNote *t){
-	if (t){
-		printf("%c", t->data);
-		PreOrder(t->left);
-		PreOrder(t->right);
+//先序遍历
+void firstTreeSearch(struct TreeNode * treeNode)
+{
+	//如果不为空
+	if (treeNode != NULL)
+	{
+		printf("%d ", treeNode->num);
+		firstTreeSearch(treeNode->left);
+		firstTreeSearch(treeNode->right);
 	}
 }
 
-void InOrder (TreeNode *t) {
-	if (t){
-		InOrder(t->left);
-		printf ("%c",t->data);
-		InOrder(t->right);
+//中序遍历
+void middleTreeSearch(struct TreeNode * treeNode)
+{
+	//如果不为空
+	if (treeNode != NULL)
+	{
+		middleTreeSearch(treeNode->left);
+		printf("%d ", treeNode->num);
+		middleTreeSearch(treeNode->right);
 	}
 }
 
-void PostOrder(TreeNode *t) {
-	if (t) {
-		PostOrder(t->left);
-		PostOrder(t->right);
-		printf("%c",t->data);
+//后序遍历
+void lastTreeSearch(struct TreeNode * treeNode)
+{
+	//如果不为空
+	if (treeNode != NULL)
+	{
+		lastTreeSearch(treeNode->left);
+		lastTreeSearch(treeNode->right);
+		printf("%d ", treeNode->num);
 	}
 }
 
-void LevelOrder(TreeNode *t){
-	TreeNode *q[MaxSize];
-	int front=0,rear=0;
-	TreeNode *p;
-	if(t==NULL)，return;
-	q[rear]=t;
-	rear=(rear+1) % MaxSize;
-	while (front!=rear){
-		p=q[front];
-		front=(front+1) % MaxSize;
-	printf("%c",p->data);
-	if(p->left){
-		q[raar]=p->left;
-		rear=(rear+1) % MaxSize;
+//层次遍历
+void levelTreeSearch(struct TreeNode * treeNode)
+{
+	if (treeNode == NULL)
+	{
+		return;
 	}
-	if (p->right) {
-		q[rear]=p->right;
-		rear=(rear+1) % MaxSize;
-	}
+	struct TreeNode * t1[100], *tt;
+	int front = 0, rear = 0;
+	t1[rear] = treeNode;
+	rear = (rear + 1) % 100;
+	for (; front != rear;)
+	{
+		tt = t1[front];
+		front = (front + 1) % 100;
+		printf("%d ", tt->num);
+		if (tt->left != NULL)
+		{
+			t1[rear] = tt->left;
+			rear = (rear + 1) % 100;
+		}
+		if (tt->right != NULL)
+		{
+			t1[rear] = tt->right;
+			rear = (rear + 1) % 100;
+		}
 	}
 }
-int main(){
-	TreeNode *t;
-	printf("请按先序序列输入各节点的字符，某节点的左子树或右子树为空时输入一个字符#。\n");
-	printf("如输入ABD#G###CE##\n");
-	CreateTree(t,'#');
-	printf("先序遍历为： ");
-	PreOrder(t);
-	printf("\n");
-	printf("中序遍历为： ");
-	InOrder(t);
-	printf("\n");
-	printf("后序遍历为： "）；
-	PostOrder(t);
-	printf("\n");
-	printf("层序遍历为： "）；
-	LevelOrder(t);
-	printf("\n");
+
+
+int main()
+{
+	printf("请先先序输入各个节点的数，并用空格隔开，当为空时输入9999\n");
+	printf("举例：132 242 534 9999 54 9999 9999 9999 432 50 9999 9999 33 9999 9999\n");
+	int num;
+	scanf_s("%d", &num);
+	if (num == 9999)
+	{
+		return -1;
 	}
+	treeNode = createTree(treeNode, num, 9999);
+	printf("先序遍历的次序：\n");
+	firstTreeSearch(treeNode);
+	printf("\n中序遍历的次序：\n");
+	middleTreeSearch(treeNode);
+	printf("\n后序遍历的次序：\n");
+	lastTreeSearch(treeNode);
+	printf("\n层次遍历的次序：\n");
+	levelTreeSearch(treeNode);
+	printf("\n所有输出结束\n");
+
+	getchar();
+	getchar();
+	return 0;
+}
