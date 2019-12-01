@@ -11,7 +11,8 @@ typedef struct{
 }ArCell,ArcNode[MAX_VERTEX_NUM][MAX_VERTEX_NUM]; 
 typedef struct{      char name[30];   
      	int num;  
-    	char info[100];  
+    	char info[100];
+}VexNode;
 typedef struct{ 
    	VexNode vertex[MAX_VERTEX_NUM];   
      	ArcNode arcs;  
