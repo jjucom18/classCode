@@ -1,4 +1,4 @@
-#include <stdio.h>
+nclude <stdio.h>
 #include <string.h>
 #include <stdlib.h>
 //校园导航系统
