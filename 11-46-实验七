@@ -1,0 +1,176 @@
+#include<stdio.h>
+#include<process.h>
+#define TNT_MAX  10000
+#define n 10
+int cost[n] [n] ;/*边的值*/
+int shorts[n] [n] ;/*两点间的最短距离*/
+int path[n] [n] ;/*经过的景点*/
+void main() 
+{
+	/*主函数*/
+	int i, j;
+	char k
+		for(i=0;i<=n;i++) 
+			for(j=0;j<=n;j++) 
+				cost[i] [j] =INT_ MAX;
+	cost[1] [3] =cost[3] [1] =2;
+	cost[2] [3] =cost[3] [2] =1;
+	cost[2] [4] =cost[4] [2] =2;
+	cost[3] [10] =cost[10] [3] =4;
+	cost[1] [10]  =cost[10] [1] =4;
+	cost[2] [10]  =cost[10] [2] =4;
+	cost[4]  [10] =cost[10] [4] =4;
+	cost[1] [4] =cost[4] [1] =5;
+	cost[4] [5] =cost[5] [4] =3;
+	cost[4] [9] =cost[9] [4] =4;
+	cost[5] [9]  =cost[9] [5] =8;
+	cost[5] [7]  =cost[7] [5] =4;
+	cost[5] [6]  =cost[6] [5] =2;
+	cost[6] [7]  =cost[7] [6] =1;
+	cost[7] [8] =cost[8] [7] =3;
+	cost[8] [6]  =cost[6] [8] =4;
+	cost[1] [1] =cost[2] [2] =cost[3] [3] =cost[4] [4] =cost[5] [5] =0;
+	cost[6] [6]  =cost[7] [7] =cost[8]  [8] =cost[9] [9]  =cost[10] [10] =0;
+	while(1) 
+		printf(
+				-欢迎使用九江学院导游系统!
+				\n") ;
+	printf("1.景点信息查......请按i (introduc)  键\n") ;
+	printf("2.景点最短路径查询..请按s (shortestdistance)  键\n") ;
+	printf("3.退出系统........请按e (exit)  键\n") ;
+	printf("学校景点列表:\n") ;
+	printf("1:学校南门") ;
+	printf("2:行政楼") ;
+	printf(”3:蝶湖") ;
+	printf("4:主图书馆") ;
+	printf(”5:女生宿舍楼") ;
+	printf(”6:男生宿舍楼") ;
+	printf("7:五食堂") ;
+	printf("8:三食堂") ;
+	printf("9:逸夫图书馆”) ;
+	printf(" 10:学校东门\n") ;
+	printf("请选择服务:") ;
+	scanf("\n%c" , &k)  ;
+	swi tch (k) 
+		case
+		'i' :
+		printf("进入景点信息查询:") ;
+	introduce()  ;
+	break;
+	case
+		printf(”进入最短路径查询:") ;
+	shortestdi stance()  ;
+	break;
+	exit(0) ;
+	default:
+	printf("输入信息错误!\n请输入字母i或s或e. \n") ;
+	break;
+} 
+} / *main*/
+void introduce () 
+{
+	/*景点介绍*/
+	int a;
+	printf("您想查询哪个景点的详细信息?请输入景点编号:") ;
+	scanf(" %d' , &a)  ;
+	getchar() ;
+	printf(" \n") ;
+	switch (a)  .
+		printf("1:学校南门\n\n学校的正门，前面竖立学校名字，气势宏
+				伟。\n\n")  ; break; 
+			printf(" 2:行政楼\n\n学校领导办公的地方。\n\n" )  ;break;
+	case 3:
+	printf(”3:蝶湖\n\n晨读锻炼得地方。\n\n")  ;break;
+	case 4:
+	printf("4:主图书馆\n\n学生学习的地方\n\n")  ; break;
+	printf(" 5:女生宿舍楼\n\n女生宿舍分布。\n\n")  ;break;
+	printf(" 6:男生宿舍楼\n\n男生宿舍分布。
+			\n\n" )  ;break;
+	printf("7:五食堂\n\n我校学生吃饭的地方\n\n")  ;break;
+	case 8:
+	printf(" 8:三食堂\n\n我校学生吃饭的地方。\n\n" )  ;break;
+	case 9:
+	printf("9:逸夫图书馆\n\n学校的第二图书馆，有大量藏书。\n\n" )  ; break;
+	case 10:
+	printf("10:学校南门\n\n门口是一些生活住宅区。\n\n")  ;break;
+	default:
+	printf("景点编号输入错误!请输入1->10的数字编号!\n\n") ; break;
+} /*introduce*/
+int shortestdi stance() 
+{
+	/*要查找的两景点的最短距离*/
+	int i,j;
+	printf("请输入要查询的两个景点的编号(1->10的数字编号并用’，’间隔) :
+			") ;
+	scanf(" %d, %d" , &i,&j) ;
+	if(i>n||i<=0|lj>n||j<0) 
+		printf("输入信息错误!\n\n") ;
+	printf("请输入要查询的两个景点的编号(1->10的数字编号并用’，’间隔) :
+			\n") ;
+			 scanf(”%d, %d" , &i,&j)  ;
+} 
+else
+floyed() ;
+display(i, j) ;
+return 1;
+} /*shortestdi stance*/ '
+void floyed () 
+{
+	/*用floyed算法求两个景点的最短路径*/
+	int i, j,k;
+	for(i=1;i<=n;i++) 
+		for(j=1;j<=n;j++) 
+			shortest[i] [j] =cost[i] [j] ;
+	path[i] [j] =0;
+	for(k=1;k<=n;k++) 
+		for(i=1;i<=n;i++) 
+			for(j=1;j<=n;j++) 
+				if (shortest[i]  [j] > (shortest[i]  [k] +shortest[k] [j] ) ) 
+				{
+					/*用path[] [] 记录从i到j的最短路径上点j的前驱景点的序号*/
+					shortest[i] [j] =shortest[i] [k]  +shortest[k] [j] ;
+					path[i] [j] =k;
+					path[j] [i]  =k;
+				} 
+} /*floyed*/
+void display(int i, int j) 
+{
+	/*打印两个景点的路径及最短距离*/
+	int a, b;
+	a=i;
+	b=j;
+	printf ("您要查询的两景点间最短路径是:\n\n") ;
+	if (shortest[i] [j] !=INT_ _MAX) 
+		if(i<j) 
+			printf("%d" ,b)  ;
+	while(path[i] [j] !=0) 
+	{
+		/*把i到j的路径上所有经过的景点按逆序打印出来*/
+		printf("<- %d", path[i] [j] ) ;
+		if(i<j) 
+			j=path[i] [j] ;
+		else 
+			i=path[j] [i] ;
+		printf("<- %d" ,a)  ;
+		printf("\n\n")  ;
+		printf(" (%d->%d) 最短距离是:%d米\n\n"，a, b, shortest[a] [b] ) ;
+	} 
+		else
+			printf(" %d" ,a)  ;
+	while(path[i] [j] !=0) 
+	{
+		/*把i到j的路径上所有经过的景点按顺序打印出来*/'
+			printf("->%d" , path[i] [j] ) ;
+		if(i<j) 
+			j=path[i] [j] ;
+		else .
+			i=path[j] [i] ;
+	} 
+	printf("->%d" ,b)  ;
+	printf("\n\n") ;
+	printf("(%d ->%d) 最短距离是:%5d米\n\n",a, b, shortest[a] [b] )  ;
+} 
+else
+printf("输入错误!不存在此路!\n\n") ;
+printf("\n") ;
+} /*di splay*/
