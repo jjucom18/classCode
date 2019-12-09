@@ -1,4 +1,4 @@
-#include "List.h"
+#include "list.h"
 
 List *initSeq(){
 	List *ptrList = NULL;
