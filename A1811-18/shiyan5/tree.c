@@ -16,8 +16,8 @@ void CreateTree(TreeNode *t,dataType x){
 void PreOrder(TreeNode *t){
 	if(t){
 		printf("%c",t->data);
-		preOrder(t->left);
-		preOrdef(t->right);
+		PreOrder(t->left);
+		PreOrdef(t->right);
 	}
 }//先序遍历二叉树
 void InOrder(TreeNode  *t){
