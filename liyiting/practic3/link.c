@@ -1,6 +1,6 @@
 #include "link.h"
 
-void outArr(int arr[],int n);{
+void outArr(int arr[],int Maxsize );{
 	for(int i = 0;i < n; i++)
 		printf("%d\t",arr[i]);
 			printf("\n");
@@ -8,7 +8,7 @@ void outArr(int arr[],int n);{
 			}
 
 
-void insertSort(int arr[], int n);{
+void insertSort(int arr[], int Maxsize);{
 	for(int = 2; i<n ;i++){
 		if(arr[i] < arr[i-1]){
 			arr[0] = arr[i];
@@ -20,7 +20,7 @@ void insertSort(int arr[], int n);{
 }
 
 
-void bubbleSort(int arr[], int n);{
+void bubbleSort(int arr[], int Maxsize);{
 	int tmp = 0;
 	for(int i = 1; i < n; i++){
 		for(int j = 0;j < n - i; j++){
@@ -31,12 +31,12 @@ void bubbleSort(int arr[], int n);{
 				}
 				}
 				}
-				outArr( arr , n );
+				outArr( arr , Maxsize );
 				return;
 				}
 
 
-void selectSort(int arr[], int n);{
+void selectSort(int arr[], int Maxsize);{
       int i,j,k, tmp = 0;
       for(i = 0; i < n-1;i++){
           tmp = arr[i];
@@ -48,13 +48,13 @@ void selectSort(int arr[], int n);{
 	     arr[i] = tmp;
 	  }
       }
-	outArr( arr , n );
+	outArr( arr , Maxsize);
 	return;
 }
 
 
 
-void shellkSort(int arr[], int n);
+void shellkSort(int arr[], int Maxsize);
 {
 	int i,j,k,h;
 	k = n/2;
@@ -68,7 +68,7 @@ void shellkSort(int arr[], int n);
 		}
 		arr[j] =h;
 	}k =k /2;}
-	outArr( arr , n );
+	outArr( arr , Maxsize);
 	return;
 	}
 
