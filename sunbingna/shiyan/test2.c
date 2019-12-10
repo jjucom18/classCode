@@ -11,6 +11,7 @@ void main()
 {
 	int a,b;
 	int *pt1,*pt2;
+	printf("请输入两个数字\n");
 	scanf("%d%d",&a,&b);
 	pt1=&a;pt2=&b;
 	if(a<b) swap(pt1,pt2);
