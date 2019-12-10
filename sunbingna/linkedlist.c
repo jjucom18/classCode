@@ -27,6 +27,17 @@ void addHead(Node *head,int data)
 	head->next = newnode;
 }
 
+void addtail(Node *head,int data)
+{
+	Node *newnode = creatnode(data);
+	Node *p= head;
+	while(NULL != p->next)
+	{
+		p=p->next;
+	}
+	p->next =  newnode;
+}
+
 void printfnode(Node *head)
 {
 	Node *pmove = head->next;
@@ -55,8 +66,9 @@ int main()
 	Node *list = creatList();
 	addHead(list,1);
 	addHead(list,5);
-	addHead(list,6);
-	addHead(list,8);
+	addtail(list,6);
+	addtail(list,8);
+	addtail(list,4);
 	printfnode(list);
 	deletenode(list,6);
 	printfnode(list);
