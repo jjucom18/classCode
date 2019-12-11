@@ -1,5 +1,5 @@
 #include<stdio.h>
-
+#include<stdlib.h>
 void Ptr1(int var1){
 	int *ptr_var1;
 	ptr_var1 = &var1;
@@ -64,6 +64,7 @@ int main(int argc, char **argv)
 	printf("请输入var2的值\n");
 	scanf("%d",&var2);
 	Ptr3(var1,var2);
-	
+	const int *cptr_cvar1;
+	printf("常量指针的值不能被修改!\n");
 	return 0;
 }
