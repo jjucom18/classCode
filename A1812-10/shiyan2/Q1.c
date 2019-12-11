@@ -1,8 +1,6 @@
 #include<stdlib.h>
 #include<stdio.h>
-
 #include"Q1.h"
-
 void InitList(List *list) {
 
 		list->head = NULL;
@@ -88,3 +86,5 @@ void dispList(List *list) {
 					
 		return;
    }
+
+    
