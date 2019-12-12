@@ -1,24 +1,25 @@
 #include<stdio.h>
 #include<stdio.h>
 #include<string.h>
+#include"testc3.h"
 
-typedef struct_LinkList
+/*typedef struct_node
+{
+	void *data;
+	struct _node *next;
+}Node;
+
+typedef struct _LinkList
 {
 	Node *head;
 	Node *tail;
 	Node *nowdata;
-}LinktList;
-
-typedef struct_node
-{
-	void *data;
-	struct_node *next;
-}Node;
+}LinktList;*/
 
 Node *node = (Node *)malloc(sizeof(Node));
 *stastic = (stastic *)malloc(sizeof(stastic));
 int tmp = NULL;
-int *stastic
+int *stastic;
 
 void initLinkList(LinkList *list){
 	list -> head = NULL;
@@ -29,8 +30,9 @@ void initLinkList(LinkList *list){
 }
 
 void addHead(LinkList *, void *data){
+Node *node = (Node *)malloc(sizeof(Node));
 	node -> data = data;
-	node -> next = NULL;
+/*	Node -> next = NULL;*/
 
 	if (list -> tail == NULL){
 		list -> tail = node;
@@ -39,8 +41,10 @@ void addHead(LinkList *, void *data){
 		node -> next = list ->head;
 	}
 	list -> head = node;
-}	
+}
+
 void addTail(LinkList *, void *data){
+Node *node = (Node *)malloc(sizeof(Node));
 	node -> data = data;
 	node -> next = NULL;
 
@@ -95,11 +99,3 @@ else{
 }
 	return ;
 } 
-
-
-
-
-
-
-
-
