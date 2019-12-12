@@ -75,8 +75,8 @@ void Init_Graph(Graph *G)
     strcpy(G->place[8].name,"实训楼");
     strcpy(G->place[8].intro,"电子实训中心\n");
     G->place[9].index=10;
-    strcpy(G->place[9].name,"立信楼");
-    strcpy(G->place[9].intro,"会计学院\n");
+    strcpy(G->place[9].name,"莲池");
+    strcpy(G->place[9].intro,"好多情侣约会的地方\n");
     G->place[10].index=11;
     strcpy(G->place[10].name,"逸夫楼");
     strcpy(G->place[10].intro,"主要收藏工科类的图书，另外学习气氛不错\n");

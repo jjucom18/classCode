@@ -48,7 +48,6 @@ void PostOrder(struct TreeNode *t){
 		printf("%c",t->data);
 	}
 }
-
 //以层次顺序遍历二叉树
 void LevelOrder(struct TreeNode *t){
 	struct TreeNode *q[MaxSize];
