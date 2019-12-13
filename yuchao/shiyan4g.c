@@ -88,7 +88,7 @@ void Display(){
 	time_t t1;
 	long int t = time(&t1);
 	printf("\t车牌号：\t\t\t停放时间：\t\t当前所需支付金额：\n");
-	while(i! = -1){
+	while(i!= -1){
 		printf("\t%s\t\t%d秒\t\t\t%d元\n",s.Stop[i].plate,t - s.Stop[i].timein,Price(t - s.Stop[i].timein)/10);
 		i--;
 	}

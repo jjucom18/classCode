@@ -21,25 +21,23 @@ typedef struct MGraph
 } MGraph;
 MGraph* CreateGraph()
 {    
-
 	MGraph *G;
-
-	
 	int i,j,k;
 	G=(MGraph*)malloc(sizeof(MGraph));//初始化访问标志
-	for(i=0;i<10;i++){
+	for(i=0;i<14;i++){
 	G->vexs[i].park=0;
 	}     //初始化顶点数目和路线数目
-	G->v=10;
-	G->e=13;
+	G->v=14;
+	G->e=22;
 	//给景点数组编号
 	for(i=1;i<=G->v;i++)
 	G->vexs[i].num=i;
-	for(j=1;j<=10;j++)
-	for(k=1;k<=10;k++)
+	for(j=1;j<=14;j++)
+	for(k=1;k<=14;k++)
 	{
 	G->arc[j][k]=M;
 	} //初始化矩阵,赋予每条边权值
+	//初始化顶点信息
 	 G->arc[1][2]=G->arc[2][1]=1;
 	 G->arc[1][3]=G->arc[3][1]=3;
 	 G->arc[1][10]=G->arc[10][1]=4;
@@ -52,7 +50,16 @@ MGraph* CreateGraph()
 	 G->arc[10][7]=G->arc[7][10]=3;		
 	 G->arc[8][9]=G->arc[9][8]=2;			
 	 G->arc[8][10]=G->arc[10][8]=2;		
-	 G->arc[9][10]=G->arc[10][9]=3; //初始化顶点信息
+	 G->arc[9][10]=G->arc[10][9]=3; 
+	 G->arc[11][3]=G->arc[3][11]=2;
+	 G->arc[11][10]=G->arc[10][11]=1;
+	 G->arc[12][9]=G->arc[9][12]=1;
+	 G->arc[12][5]=G->arc[5][12]=1;
+	 G->arc[12][7]=G->arc[7][12]=2;
+	 G->arc[13][5]=G->arc[5][13]=1;
+	 G->arc[13][7]=G->arc[7][13]=1;
+	 G->arc[14][12]=G->arc[12][14]=2;
+	 G->arc[14][8]=G->arc[8][14]=2;
 	 strcpy(G->vexs[1].name ,"南  门");
 	 strcpy(G->vexs[2].name ,"校医院");
 	 strcpy(G->vexs[3].name ,"竞知楼");
@@ -63,6 +70,10 @@ MGraph* CreateGraph()
 	 strcpy(G->vexs[8].name ,"北门");
 	 strcpy(G->vexs[9].name ,"逸夫图书馆");
 	 strcpy(G->vexs[10].name ,"碟湖");
+	 strcpy(G->vexs[11].name ,"男生公寓15栋");
+	 strcpy(G->vexs[12].name ,"实训楼");
+	 strcpy(G->vexs[13].name ,"四食堂快递点");
+	 strcpy(G->vexs[14].name ,"室内田径场");
 	 strcpy(G->vexs[1].introduction ,"是最美九江学院最繁华的门，周边是商业区");
 	 strcpy(G->vexs[2].introduction ,"校医院担负的是九院师生的健康");
 	 strcpy(G->vexs[3].introduction ,"是九院的标志建筑，也是电子学院的教学楼");
@@ -73,8 +84,12 @@ MGraph* CreateGraph()
 	 strcpy(G->vexs[8].introduction ,"北门是靠近艺术学院的一个大门");
 	 strcpy(G->vexs[9].introduction ,"学校最大的图书馆，主要存放理工类书籍");
 	 strcpy(G->vexs[10].introduction ,"碟湖环境优美，非常适合散步");
+	 strcpy(G->vexs[11].introduction ,"男生公寓15栋是电子学院男生的宿舍");
+	 strcpy(G->vexs[12].introduction ,"实训楼有机房和机械实训中心");
+	 strcpy(G->vexs[13].introduction ,"四食堂二楼有好几个快递的站点，非常方便");
+	 strcpy(G->vexs[14].introduction ,"室内田径场是每年新生报名的地方");
 	 return G;
-	 }
+	 } //一共14个景点，22条路径
 void RudeGraph(MGraph *G,int b,int w,int k,int sum)
 {
 	int p,j,n;
@@ -83,7 +98,7 @@ void RudeGraph(MGraph *G,int b,int w,int k,int sum)
 	printf("%d->",G->a[p]);
 	}
 	printf("%d  ",G->a[k]);
-	printf("路线长度为：%dkm\n",sum);
+	printf("路线长度为：%d米\n",sum*200);
 	if(sum<G->minrude){
 	G->r=k;
 	G->minrude=sum;
@@ -94,7 +109,7 @@ void RudeGraph(MGraph *G,int b,int w,int k,int sum)
 	return ;
 	}
 	else{
-	for(j=1;j<=10;j++){
+	for(j=1;j<=14;j++){
 	if(G->arc[b][j]<3000&&G->vexs[j].park==0)
 	{
 	k++;
@@ -110,12 +125,12 @@ void RudeGraph(MGraph *G,int b,int w,int k,int sum)
        	}
        	return; 
 }
-int main()   //主函数
+int main(int argc, char **argv) //主函数
 {
 	int c,i,p,k;
 	MGraph *T;
 	T=CreateGraph();
-	while(1){
+	while(1){//系统界面
 	printf("**********************************\n");
 	printf("***    欢迎使用九院导航系统    ***\n");
 	printf("**********************************\n");
@@ -126,8 +141,22 @@ int main()   //主函数
 	scanf("%d",&c);
 	if(c==1){
 	printf("**********************************\n");
-	printf("九江学院共有如下十处景点：\n");
-	for(i=1;i<=10;i++){
+        printf("              九院大致景点如下图                 \n");
+	printf("              [ 南门 ]                                       \n");
+	printf("                                                             \n");
+	printf("         [ 校医院 ]                                          \n");
+	printf("                                        [  西门 ]            \n");
+	printf("[ 南区操场 ]                           [ 碟湖 ]              \n");
+	printf("            [ 竞知楼 ]           [学生公寓15栋]              \n");
+	printf("                       [ 三食堂 ]                            \n");
+	printf("                      [ 四食堂快递点]                        \n");
+	printf("          [ 厚德楼 ]                [实训楼]                 \n");
+	printf("                  [ 室内田径场 ]                             \n");
+	printf("                    [ 逸夫图书馆 ]    	          	     \n");
+	printf("                                      [ 北门 ]	             \n");
+        printf("*********************************\n");
+	printf("九江学院共有如下14处标志性景点：\n");
+	for(i=1;i<=14;i++){
 	printf("%d.",T->vexs[i].num);
 	printf("%s:    ",T->vexs[i].name);
 	printf("%s\n",T->vexs[i].introduction);
@@ -136,14 +165,14 @@ int main()   //主函数
 	else if(c==2){
 	printf("**********************************\n");
 	printf("分别输入你的当前地点编号和你想要去的地点编号：\n");
-	printf("1.南门 2.校医院 3.竞知楼 4.南区操场 5.厚德楼 6.西门 7.学生三食堂 8.北门 9.逸夫图书馆 10.碟湖\n");
+	printf("1.南门 2.校医院 3.竞知楼 4.南区操场 5.厚德楼 6.西门 7.学生三食堂 8.北门 9.逸夫图书馆 10.碟湖 11.男生公寓15栋 12.实训楼 13.四食堂快递点 14.室内田径场\n");
 	int b,w;//初始化访问标志
-	for(i=0;i<10;i++)
+	for(i=0;i<14;i++)
 	{
 	T->vexs[i].park=0;
 	}
 	scanf("%d %d",&b,&w);
-       	while(b<1||b>10||w<1||w>10){			 
+       	while(b<1||b>14||w<1||w>14){			 
 	       	printf("输入错误，请重新输入:\n");
       		scanf("%d %d",&b,&w);
 	}
@@ -162,13 +191,13 @@ int main()   //主函数
      		printf("%d->",T->min[p]);
 		}
 		printf("%d  ",T->min[T->r]);
-		printf("路线总长：%dkm\n",T->minrude);
+		printf("路线总长：%d米\n",(T->minrude)*200);
 		T->minrude=100;     //重新初始化最短路径长度
 	}
 	}
 	else if(c==3) break;
 	else printf("输入错误，请重新输入：\n");
 	}
-	printf("感谢使用本系统，欢迎您下次使用！");
+	printf("感谢使用本系统，欢迎您下次使用！\n");
 	return 0;
 }
