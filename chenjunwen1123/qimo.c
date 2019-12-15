@@ -25,7 +25,7 @@ int LinkedListInsert(LinkedList head){
              }while((tempnum/100000)==0);//检查是否是六位数
             printf("系统为你自动生成的6位数帐号是%d\n",tempnum);
 
-//输入用户姓名，哇我为什么不用C++输入！！！
+//输入用户姓名！！！
             printf("请输入用户姓名：");
             fflush(stdin);
             for(int i=0;i<9;i++){
@@ -33,7 +33,7 @@ int LinkedListInsert(LinkedList head){
             if(gc == '\r' || gc == '\n') break;
                  tempname[i] = gc;
                     }   
-//余额输入，做个有钱人！
+//余额输入
             printf("请输入用户余额：");
             scanf("%f",&tempbalance);
 
