@@ -45,7 +45,7 @@ int Partition1(int R[],int low,int high ){
 		while(low<high && R[high]>=x)  high--;
 		if (low < high){
 			R[low] = R[high];
-			low++;
+               low++;
 		}
 		while (low<high && R[low]<=x)  low++;
 		if (low < high){
@@ -56,6 +56,7 @@ int Partition1(int R[],int low,int high ){
 	R[low] = x;
 	return low;
 }
+
 
 int Partition2(int R[],int low,int high ){
  int i=low, j=high=1,x=R[low],t;
@@ -80,3 +81,4 @@ void QSort(datatype *r){
 		QSort(R,mid+1,high);
 	}
 }
+
