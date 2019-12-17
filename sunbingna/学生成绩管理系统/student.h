@@ -10,15 +10,25 @@ typedef struct student
     int id;
     char name[20];
     float score[3];
-    struct student *next;
 }Student;
 
+typedef struct _node
+{
+    Student data;
+    struct _node *next;
+}Node;
+
+Node *pH = NULL;
 void menu();
-Student *CreatNode(Student *pH);
-Student *initlist();
-void addtail(Student *pH);
-void SaveInf(Student *pH);
-void PrintfStudent(Student *pH);
+Node *CreatNode();
+Node *initlist();
+void addtail();
+void SaveInf();
+void PrintfStudent();
 void ReadInf();
+void Quit();
+void SearchId();
+void SearchName();
+
 
 #endif
