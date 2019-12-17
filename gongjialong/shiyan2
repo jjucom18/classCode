@@ -1,82 +1,288 @@
 #include <stdio.h>
-#include <malloc.h>
-typedef int dataType;
-typedef struct node {
-	dataType data;
-	struct node *next;
-} LinkList;
-LinkList* CreatList() {
-	LinkList *head;
-	head = (LinkList*)malloc(sizeof(LinkList));
-	head->next = NULL;
-	return head;
-}//创建链表
-void initializeList(LinkedList *list){
-	list->head = NULL;
-	list->tail = NULL;
-	list->current = NULL;
-}//初始化链表
-void addHead(LinkList *list, void* data） {
-	Node *node = (Node*) malloc(sizeof(Node));
-	node->data = data;
-	if (list->head == NULL) {
-	list->tail = node;
-	node->next = NULL;
-}else {
-node->next = list->head;
-}
-list->head = node;
-}//给链表的头节点添加数据
-void addTail(LinkedList *list, void* data) {
-        Node *node = (Node*) malloc(sizeof(Node)); 
-	node->data = data;
-	node->next = NULL;
-	if (list->head == NULL) {
-	list->head = node;
-	} else {
-	list->tail->next = node;
-	}
-	list->tail = node;
-}//给链表的尾节点添加数据
-void delete(LinkedList *list, Node *node) {
-	if (node == list->head) {
-		if (list->head->next == NULL) {
-			list->head = list->tail = NULL;
-		} else {
-			list->head = list->head->next;
-		}
-	} else {
-		Node *tmp = list->head;
-		while (tmp != NULL && tmp->next != node) {
-			tmp = tmp->next;
-		}
-		if (tmp != NULL) {
-			tmp->next = node->next;
-		}
-	}
-	free(node);
-}//从链表删除节点
-Node *getNode(LinkedList *list, COMPAREUF compare , void* data) {
-	Node *node *node = list->head;
-	while (node != NULL) {
-		if (compare(node->data, data) == 0) {
-			return node;
-		}
-		node = node->next;
-	}
-	return NULL;
-}//返回包含指定数据的节点指针
-void diaplayLinkedList(LinkedList *list, DISPLAY display) {
-	printf("\nLinked List\n");
-	Node *current = list->head;
-	while (current != NULL) {
-		display(current->data);
-		current = current->next;
-	}
-}//打印链表
-int main(int argc, char **argv)
+
+#include <stdlib.h>
+
+typedef struct _node
+
 {
-	int dataArr[] = {21, 34, 56, 78, 91};
+
+	int  data;
+
+	struct _node *next;
+
+}Node;
+
+
+
+typedef struct _linkedList
+
+{
+
+	Node *head;
+
+	Node *tail;
+
+	Node *current;
+
+}LinkedList;
+
+
+
+
+
+void initList (LinkedList *list);
+
+
+
+void addTail(LinkedList *list, int data);
+
+void addHead(LinkedList *list, int data);
+
+void delNode(LinkedList *list,Node *node);
+
+
+
+void displayList(LinkedList *list);
+
+Node *FindData(LinkedList *list,int data);
+
+int main(int argc, char **argv){
+
+	
+
+	int data;
+
+	char flat;
+
 	LinkedList *list = (LinkedList *)malloc(sizeof(LinkedList));
+
+	int DataArr[] = {501,502,503,504,505,506,507};
+
 	initList(list);
+
+	printf("&&&&&&&欢迎使用单链表的应用&&&&&&\n");
+
+	printf("				\n");
+
+	printf("	1.如果使用头插法请输入T	\n");
+
+	printf("				\n");
+
+	printf("	2.如果使用尾插法请输入W	\n");
+
+	scanf("%c",&flat);
+
+	if (flat == 't'||flat == 'T')
+
+	{
+
+		for (int i = 0; i < (sizeof(DataArr)/sizeof(DataArr[0])); ++i){
+
+		addHead(list, DataArr[i]);
+
+		}
+
+	}else 
+
+	if (flat == 'w'||flat == 'W'){
+
+
+
+		for (int i = 0; i < (sizeof(DataArr)/sizeof(DataArr[0])); ++i){
+
+		addTail(list,DataArr[i]);
+
+		}
+
+	}
+
+	displayList(list);
+
+	printf("\n请输入你要删除的数据\n");
+
+	scanf("%d",&data);
+
+	delNode(list,FindData(list,data));
+
+	printf("删除成功 ！\n");
+
+	displayList(list);
+
+	printf("\n");
+
+	
+
+
+
+	return 0;
+
 }
+
+void initList (LinkedList *list){
+
+
+
+	list->head = NULL;
+
+	list->tail = NULL;
+
+	list->current = NULL;
+
+
+
+	return;
+
+}
+
+
+
+void addTail(LinkedList *list, int data){
+
+
+
+	Node *node = (Node *)malloc(sizeof(Node));
+
+	node->data = data;
+
+	node->next = NULL;
+
+
+
+	if(NULL == list->head){
+
+		list->head = node;
+
+	}
+
+	else{
+
+		list->tail->next = node;
+
+	}
+
+	list->tail = node;
+
+
+
+	return;
+
+}
+
+void addHead(LinkedList *list, int data){
+
+
+
+	Node *node = (Node *)malloc(sizeof(Node));
+
+	node->data = data;
+
+	node->next = NULL;
+
+
+
+	if(NULL == list->head){
+
+		list->tail = node;
+
+	}
+
+	else{
+
+		node->next = list->head;
+
+	}
+
+	list->head = node;
+
+
+
+	return;
+
+}
+
+
+
+void displayList(LinkedList *list){
+
+
+
+	Node *tmp = list->head;
+
+	while(tmp !=NULL){
+
+		printf("%d\t",tmp->data);
+
+		tmp = tmp->next;
+
+	}
+
+
+
+}
+
+void delNode(LinkedList *list,Node *node){
+
+
+
+	if(node == list->head){
+
+		if(list->head->next == NULL){
+
+			list->head = list->tail = NULL;
+
+		}
+
+		else{
+
+			list->head = list->head->next;
+
+		}
+
+	}
+
+	else{
+
+		Node *tmp = list->head;
+
+		while(tmp != NULL && tmp->next != node){
+
+			tmp = tmp->next;
+
+		}
+
+		if(tmp != NULL){
+
+			tmp->next = node->next;
+
+		}
+
+	}
+
+	free(node);
+
+
+
+	return;
+
+	
+
+}
+
+
+
+Node *FindData(LinkedList *list,int data){
+
+
+
+	Node *tmp = list->head;
+
+	while(tmp != NULL && tmp->data != data){
+
+		tmp = tmp->next;
+
+	}
+
+	return tmp;
+
+}
+
