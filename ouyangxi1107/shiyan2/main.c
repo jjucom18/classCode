@@ -23,7 +23,7 @@ int main(int argc, char **argv){
 		}
 	}
 	displayList(list);
-	printf("\n请输入你要删除的数据\n");
+	printf("\n删除数据为data的节点\n");
 	scanf("%d",&data);
 	delNode(list,FindData(list,data));
 	printf("删除成功 ！\n");
