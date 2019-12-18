@@ -29,6 +29,9 @@ void ReadInf();
 void Quit();
 void SearchId();
 void SearchName();
+void SearchChoice();
+void Change();
+void Delete();
 
 
 #endif

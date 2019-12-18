@@ -1,5 +1,4 @@
 #include"student.h"
-#include"display.h"
 
 Node *CreatNode()//创建一个新结点
 {
@@ -137,11 +136,10 @@ void SearchName()
     char name[20];
     printf("请输入查找学生姓名:");
     scanf("%s",name);
-    printf("%s",name);
-    sleep(2);
-    while(p !=NULL)
+    while(p != NULL)
     {
-        if(p->data.name == name)
+       
+        if(strcmp(p->data.name,name) == 0)
         {
             system("clear");
             printf("*****************************************************************\n");   
@@ -158,6 +156,163 @@ void SearchName()
         }       
     }
 }
+
+void SearchChoice()
+{
+    int a;
+    system("clear");
+    printf("*****************************************************************\n");
+    printf("*\t\t\t学生成绩管理系统\t\t\t*\n");
+    printf("*****************************************************************\n");
+    printf("*\t\t\t请选择\t\t\t\t\t*\n");
+    printf("*****************************************************************\n");
+    printf("*\t\t\t1.按学号进行查找\t\t\t*\n");
+    printf("*\t\t\t2.按姓名进行查找\t\t\t*\n");
+    printf("*****************************************************************\n");
+    scanf("%d",&a);
+    switch (a)
+    {
+    case 1:
+        SearchId();
+        break;
+    case 2:
+        SearchName();
+        break;
+    
+    default:
+        break;
+    }
+}
+
+void Change()
+{
+    char name[20];
+    int id;
+    float Chinese,English,data;
+    Node *p = pH->next;
+    printf("请输入要修改的学生姓名:");
+    scanf("%s",name);
+    while(p != NULL)
+    {
+       
+        if(strcmp(p->data.name,name) == 0)
+        {
+            system("clear");
+            printf("*****************************************************************\n");   
+            printf("*\t学号\t姓名\t英语\t语文\t数据结构\t\t*\n");
+            printf("*****************************************************************\n");
+            printf("*\t%d\t%s\t%.1f\t%.1f\t%.1f\t\t\t*\n",p->data.id,p->data.name,p->data.score[0],p->data.score[1],p->data.score[2]);
+            printf("*****************************************************************\n");
+            printf("请输入修改后的学生信息:\n");
+            printf("*************************************************************************\n");
+            printf("*\t\t请输入学生学号，姓名和英语，语文，数据结构的成绩\t*\n");
+            printf("*************************************************************************\n");
+            scanf("%d%s%f%f%f",&id,name,&Chinese,&English,&data);   
+            p->data.id = id;
+            memcpy(p->data.name,name,sizeof(Student));
+            p->data.score[0] = Chinese;
+            p->data.score[1] = English;
+            p->data.score[2] = data;
+            //sleep(2);
+            break;
+        }
+        else
+        {
+            if(p->next == NULL){
+                printf("查无此人!\n");
+                sleep(2);
+                return;
+            }
+            else{
+            p = p->next;
+            }
+        } 
+    }         
+    printf("学生信息修改成功!\n");
+    sleep(2);
+}
+
+/* void Delete()
+{
+    Node *p = pH, *q;
+    q = p->next;
+    char name[10];
+    int id;
+    printf("请输入学生姓名：");
+    scanf("%s", name);
+    printf("请输入学生学号：");
+    scanf("%d", &id);
+    printf("%d\t%s\n",id,name);
+    sleep(2);
+  
+    while (q != NULL)
+    {
+        if (strcmp(q->data.name, name) == 0 && p->data.id == id)
+        {
+            p->next = q->next;
+            free(q);  //删除p节点       
+            printf("删除成功\n");
+            sleep(2);
+            break;
+        }
+        else
+        {
+            p = p->next;
+            q = q->next;
+        }
+    }//while循环结束
+} */
+void Delete()
+{
+    char name[20];
+    int flag;
+    Node *pfront = pH;
+    Node *p = pH->next; 
+    printf("请输入要删除的学生姓名:");
+    scanf("%s",name);
+     while(p != NULL)
+    {
+        if(strcmp(p->data.name,name) == 0)
+        {
+            system("clear");
+            printf("\t\t学生原信息如下\t\t\n");
+            printf("*****************************************************************\n");   
+            printf("*\t学号\t姓名\t英语\t语文\t数据结构\t\t*\n");
+            printf("*****************************************************************\n");
+            printf("*\t%d\t%s\t%.1f\t%.1f\t%.1f\t\t\t*\n",p->data.id,p->data.name,p->data.score[0],p->data.score[1],p->data.score[2]);
+            printf("*****************************************************************\n");
+            printf("\t\t\t请选择\t\t\t\t\t\n");
+            printf("\t\t1.确认删除\t2.取消删除\t\t\t\n");
+            scanf("%d",&flag);
+            switch (flag)
+            {
+            case 1:
+                pfront->next = p->next;
+                free(p);
+                printf("删除成功!\n");
+                sleep(2);
+                return;break;
+            case 2:
+                return;break;
+            default:
+                break;
+            }
+        }
+        else{
+            if(p->next == NULL){
+                printf("查无此人!\n");
+                sleep(2);
+                return;
+            }
+            else{
+                p = p->next;
+                pfront = pfront->next;
+            }           
+        }  
+    }
+} 
+
+
 void Quit()
 {
     SaveInf();
@@ -179,7 +334,9 @@ int main()
             case 2:PrintfStudent();break;
             case 3:SaveInf();break;
             case 4:ReadInf();break;
-            case 5:SearchName();break;
+            case 5:SearchChoice();break;
+            case 6:Change();break;
+            case 7:Delete();break;
             case 8:Quit();break;
             default: break;
         }
