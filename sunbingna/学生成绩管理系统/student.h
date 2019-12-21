@@ -1,5 +1,5 @@
-#ifndef student_h
-#define student_h
+#ifndef _STUDENT_H
+#define _STUDENT_H
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
@@ -32,6 +32,6 @@ void SearchName();
 void SearchChoice();
 void Change();
 void Delete();
-
+void SortId();
 
 #endif

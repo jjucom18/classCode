@@ -78,8 +78,9 @@ void ReadInf()
         Pmove = (Node *)malloc(sizeof(Node));//重新分配内存
         fread(Pmove, sizeof(Node), 1, file);
     } //while循环结束
-    p->next = NULL;   
+    p->next = NULL; 
     printf("加载数据成功!\n");
+    
     fclose(file);  
     sleep(2);
 }
@@ -87,11 +88,17 @@ void ReadInf()
 void PrintfStudent()
 {
     system("clear");
+    SortId();
     Node *Pmove = (Node *)malloc(sizeof(Node));
     Pmove = pH->next;
     printf("*****************************************************************\n");   
     printf("*\t学号\t姓名\t英语\t语文\t数据结构\t\t*\n");
     printf("*****************************************************************\n");
+    if(Pmove == NULL)
+    {
+        printf("请先录入信息!\n");
+        return;
+    }
     while(Pmove != NULL)
     {
         printf("*\t%d\t%s\t%.1f\t%.1f\t%.1f\t\t\t*\n",Pmove->data.id,Pmove->data.name,Pmove->data.score[0],Pmove->data.score[1],Pmove->data.score[2]);
@@ -124,7 +131,14 @@ void SearchId()
         }
         else
         {
+            if(p->next == NULL){
+                printf("\n查无此人!\n");
+                sleep(2);
+                return;
+            }
+            else{
             p = p->next;
+            }
         }
     }
 }
@@ -152,7 +166,14 @@ void SearchName()
         }
         else
         {
+            if(p->next == NULL){
+                printf("查无此人!\n");
+                sleep(2);
+                return;
+            }
+            else{
             p = p->next;
+            }
         }       
     }
 }
@@ -232,36 +253,6 @@ void Change()
     sleep(2);
 }
 
-/* void Delete()
-{
-    Node *p = pH, *q;
-    q = p->next;
-    char name[10];
-    int id;
-    printf("请输入学生姓名：");
-    scanf("%s", name);
-    printf("请输入学生学号：");
-    scanf("%d", &id);
-    printf("%d\t%s\n",id,name);
-    sleep(2);
-  
-    while (q != NULL)
-    {
-        if (strcmp(q->data.name, name) == 0 && p->data.id == id)
-        {
-            p->next = q->next;
-            free(q);  //删除p节点       
-            printf("删除成功\n");
-            sleep(2);
-            break;
-        }
-        else
-        {
-            p = p->next;
-            q = q->next;
-        }
-    }//while循环结束
-} */
 void Delete()
 {
     char name[20];
@@ -312,6 +303,37 @@ void Delete()
     }
 } 
 
+void SortId()//冒泡排序法
+{
+	Node *tail=pH,*p;
+	Student t;
+	while(tail->next != NULL)//让tail指针指向链表结尾
+		tail=tail->next;
+	while(pH->next!=tail)//控制冒泡的次数
+	{
+		p=pH->next;
+		while(p->next != tail)//每一次的循环比较
+		{
+			if(p->data.id> p->next->data.id)
+			{
+				t=p->data;
+				p->data=p->next->data;
+				p->next->data=t;
+			}
+			p=p->next;
+		}
+		if(p->data.id> p->next->data.id)//尾结点的比较
+		{
+				t=p->data;
+				p->data=p->next->data;
+				p->next->data=t;
+		}
+		tail=p;//尾指针前移一个
+	}
+     
+	printf("已排序完成!\n");
+    sleep(1);
+}
 
 void Quit()
 {
@@ -319,10 +341,9 @@ void Quit()
     exit(0);
 }
 
-int main()
+
+void Choice()
 {
-    pH = initlist();
-    char a;
     int n;
     while(1)
     {  
@@ -341,6 +362,29 @@ int main()
             default: break;
         }
     } 
+}
+
+int main()
+{
+    pH = initlist();
+    char a;
+    int n,m;
+    
+    while(1)
+    {
+        stackmenu();
+        scanf("%d",&m); 
+        switch (m)
+        {
+            case 1:stackchoice();
+                break;
+            case 2:queuechoice();
+                break;
+            
+            default:
+                break;
+        }
+    }
     return 0;
 }
     
