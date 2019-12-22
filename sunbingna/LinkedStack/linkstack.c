@@ -17,7 +17,7 @@ void PushStack(LinkStack *stack,DataType data)
     StackNode *p = (StackNode *)malloc(sizeof(StackNode));
     p->data = data;
     //printf("%d\t",p->data);  
-    p->next = stack;
+    p->next = stack;//s->top!!!
     stack = p;
     //printf("%d\t",stack->data);
     //p->next = NULL;
@@ -41,3 +41,4 @@ void TopStack(LinkStack *stack)
      if(stack->next = NULL) {printf("stack is empty!\n"); printf("\n");}
      else printf("%d\t",stack->data);
 }
+
