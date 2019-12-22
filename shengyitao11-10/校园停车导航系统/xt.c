@@ -2,8 +2,8 @@
 void Init_Graph(Graph *G)
 {
     int i,j;
-    G->vertexnum=15;
-    G->edgenum=20;
+    G->vertexnum=15;//点的数目为15
+    G->edgenum=20;//边的数目为20
     ///////最初初始化一下图 
     for(i=0;i<G->vertexnum;i++)
     {
@@ -21,7 +21,7 @@ void Init_Graph(Graph *G)
     }
     //////////////具体输入图
     G->place[0].index=1;
-    strcpy(G->place[0].name,"南门");
+    strcpy(G->place[0].name,"南门");//程序名存入了G
     strcpy(G->place[0].intro,"九江学院最繁华的大门但是门口不能停车\n");
     G->place[1].index=2;
     strcpy(G->place[1].name,"一食堂小门前");
@@ -66,7 +66,7 @@ void Init_Graph(Graph *G)
     strcpy(G->place[14].name,"北区田径馆门口");
     strcpy(G->place[14].intro,"外来人员锻炼身体可在这停车\n");
     ///////////////////////////
-    //具体距离
+    //具体距离  建立图的边的值
    G->edge[0][1]=1200;
    G->edge[1][0]=1200;
    G->edge[0][2]=1100;
@@ -126,19 +126,19 @@ void show_menu(Graph *G)
     printf("   西---------东\n");
     printf("         |      \n");
     printf("        南    \n"); 
-    printf("               15.北区田径馆门口                   \n");
-    printf(" 12. 义丰楼旁边       13.   文友楼旁边    14.   立信楼旁边               \n");
-    printf("         9.四食堂前方                       \n");
-    printf("        11.五食堂门口和旁边                \n");
-    printf("        10. 外国宿舍门前             \n");
-    printf("        7.西门                           \n");
-    printf("        6.  逸夫图书馆门口           \n"); 
-    printf("        8.厚德楼                     \n");
-    printf("        5.  马路                       \n");
-    printf("        4.   二食堂门口              \n");
-    printf("        2.一食堂小门前                    \n");
-    printf("        3.南区操场入口边            \n");
-    printf("                 1.南门                      \n");
+    printf("                        15.北区田径馆门口                   \n");
+    printf(" 12. 义丰楼旁边    13.   文友楼旁边   14.   立信楼旁边               \n");
+    printf("          9.四食堂前方                       \n");
+    printf("          11.五食堂门口和旁边                \n");
+    printf("          10.外国宿舍门前             \n");
+    printf("          7.西门                           \n");
+    printf("          6.逸夫图书馆门口           \n"); 
+    printf("          8.厚德楼                     \n");
+    printf("          5.马路                       \n");
+    printf("          4. 二食堂门口              \n");
+    printf("          2.一食堂小门前                    \n");
+    printf("          3.南区操场入口边            \n");
+    printf("                           1.南门                      \n");
    
     printf("请输入您所选择的功能序号：\n"); 
     printf("1.查询最短停车路径\n");
@@ -279,9 +279,9 @@ void display(Graph *G,int start,int end)
 
  } 
 
-int init(LinkQueue *wait,LinkQueue *park,LinkStack *giveway)
+int init(LinkQueue *wait,LinkQueue *park,LinkStack *giveway)//init为初始化
 {
-    QueueNode newnode1 = (QueueNode)malloc(sizeof(struct QueueNode));
+    QueueNode newnode1 = (QueueNode)malloc(sizeof(struct QueueNode));//QueueNode的初始化分配内存
     if(NULL == newnode1)
     {
         return F;
@@ -310,7 +310,7 @@ void menu(LinkQueue *wait,LinkQueue *park,LinkStack *giveway,int num,int t)
     printf("---------        1 : 停车.        ----------\n");
     printf("--------         2 : 离开.         ----------\n");
     printf("--------         3 : 查询.          ---------\n");
-	printf("-----------------4 : 退出系统------\n");
+    printf("---------       4 : 退出系统     ---------\n");
     int option;
     scanf("%d",&option);
     switch(option)
@@ -339,7 +339,7 @@ void menu(LinkQueue *wait,LinkQueue *park,LinkStack *giveway,int num,int t)
             printf("--------     请输入正确的指令！    --------\n");
             menu(wait,park,giveway,num,t);
             break;
-        }
+        }//无任何case匹配时，才会执行default;如果有case语句匹配时，运行结果是和default放在switch的最后是一样的。
     }
 
 }
@@ -366,7 +366,7 @@ int enqueue(LinkQueue *pack,int num,int t)
     newnode->infom.time = t;
     newnode->next = NULL;
     pack->rear->next = newnode;
-    pack->rear = newnode;
+    pack->rear = newnode;//把rear的next给rear
     return T;
 }
 
@@ -374,7 +374,7 @@ int dequeue(LinkQueue *q,int *num,int *t)
 {
     if(q->front == q->rear)
     {
-        printf("the queue is empty!\n");
+        printf("没有这种车在里面!\n");//如果队头等于队尾则该队为空
         return F;
     }
     *num = q->front->next->infom.number;
@@ -420,11 +420,11 @@ int push(LinkStack *s,int num,int t)
     return T;
 }
 
-int pop(LinkStack *s,int *num,int *t)
+int pop(LinkStack *s,int *num,int *t)//出栈
 {
     if(0 == s->count)
     {
-        printf("the stack is empty !\n");
+        printf("the stack is empty !\n");//栈空不能入栈
         return F;
     }
     *num = s->top->data.number;
@@ -432,9 +432,9 @@ int pop(LinkStack *s,int *num,int *t)
     StackNode temp = s->top;
     s->top = s->top->next;
     free(temp);
-    s->count--;
+    s->count--;//更新栈顶指针
     return T;
-}
+}//栈顶元素存入*num *t,返回
 
 void leave2(LinkQueue *wait,LinkQueue *park,LinkStack *giveway,int num,int t)
 {
@@ -503,8 +503,6 @@ void view3(LinkQueue wait,LinkQueue park)
     }
     printf("\n");
 }
-
-
 
 
 
