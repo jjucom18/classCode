@@ -1,9 +1,20 @@
 #include "ditu.h"
 
-#define MAX 50       //  停车场最大容量为5辆，便于观察
-#define price 0.1    //  定义停车费
+#include<stdio.h>
 
-void InitStack(SeqStackCar *s){   // 栈的初始化
+ #include<stdlib.h>
+
+ #include<unistd.h>
+
+ #include<string.h>
+
+ #define MAX 50       //  停车场最大容量为5辆，便于观察
+
+ #define price 0.1    //  定义停车费
+
+ 
+
+ void InitStack(SeqStackCar *s){   // 栈的初始化
 
 int i;
 
@@ -98,6 +109,7 @@ scanf("%d:%d",&(p->leave.hour),&(p->leave.min));
           Enter->stack[Enter->top]=p;
 
             return(1);
+
              }
 
               else
@@ -147,6 +159,7 @@ int room;
         printf("\n请输入车在车场的位置/1--%d/：",Enter->top);
 
     scanf("%d",&room);
+
     if(room>=1&&room<=Enter->top) break;
 
     else printf("\n 输入有误,请重输: ");
@@ -196,6 +209,7 @@ int room;
                 q=W->head->next;
 
                 t=q->data;
+
                 Enter->top++;
 
                 printf("\n便道的%s号车进入车场第%d位置.",t->num,Enter->top);
@@ -245,6 +259,7 @@ int room;
         printf("  %d:%d     ",S->stack[i]->reach.hour,S->stack[i]->reach.min);
 
         puts(S->stack[i]->num);
+
         }
 
         }
@@ -294,6 +309,7 @@ int room;
         {
 
         int flag,tag;
+
         flag=1;
 
          while(flag)
@@ -343,6 +359,7 @@ void menu()
      SeqStackCar Enter,Temp;
 
      LinkQueueCar Wait;
+
       int ch;
 
       system("color 1A");
@@ -369,7 +386,7 @@ void menu()
 
     printf("3. 车辆列表显示\t");
 
-    printf("4. 百度地图\t");
+    printf("4. 地图\t");
     printf("5. 退出管理系统\n");
 
      while(1)
@@ -380,9 +397,9 @@ void menu()
 
      scanf("%d",&ch);
 
-     if(ch>=1&&ch<=5)break;
+     if(ch>=1&&ch<=4)break;
 
-       else printf("\n 输入有误，请重新选择： 1~5: ");
+       else printf("\n 输入有误，请重新选择： 1~4: ");
 
     }
 
@@ -430,7 +447,18 @@ default: break;
 
  }
 
-}
+}   
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -471,7 +499,7 @@ int j,m,k,p;
 
 char a[10],b[10];
 
-printf("所以的城市，以0为结束\n");
+printf("所以的辖区，以0为结束\n");
 
 scanf("%s",g->V[i]);
 
@@ -480,6 +508,7 @@ while(strcmp("0",g->V[i])!=0){
 i++;
 
 scanf("%s",g->V[i]);
+
 }
 
 g->vexnum=i;
@@ -490,7 +519,7 @@ for(j=0;j<g->vexnum;j++)
 
 g->R[i][j]=INFINITY;
 
-	printf("城市之间的路程，以0 0 0为结束标志\n");
+	printf("辖区之间的路程，以0 0 0为结束标志\n");
 
 scanf("%s %s %d",a,b,&m);
 
@@ -504,7 +533,7 @@ while(strcmp("0",a)!=0||strcmp("0",b)!=0||m!=0)
 
 	if(k==-1)
 
-	{printf("没有%s这个城市\n",a);
+	{printf("没有%s这个辖区\n",a);
 
 		return 0;
 
@@ -512,7 +541,7 @@ while(strcmp("0",a)!=0||strcmp("0",b)!=0||m!=0)
 
 	if(p==-1){
 
-		printf("没有%s这个城市\n",b);
+		printf("没有%s这个辖区\n",b);
 
 		return 0;
 
@@ -527,6 +556,7 @@ while(strcmp("0",a)!=0||strcmp("0",b)!=0||m!=0)
 return 1;
 
 }
+
 
 
 int minimun(struct tree *a,Graph g){
@@ -578,6 +608,7 @@ void  MiniSpanTree_PRIM(Graph g,char a[10]){
 		money+=closedge[k].lowcost;
 
 		printf("%d:%s %s %d\n",i,g.V[closedge[k].weizhi],g.V[k],closedge[k].lowcost);
+
 		closedge[k].lowcost=0;
 
 		for(j=0;j<g.vexnum;j++){
@@ -594,6 +625,6 @@ void  MiniSpanTree_PRIM(Graph g,char a[10]){
 
 	}
 
-//	printf("总费用为:%d\n",money);
+	printf("总费用为:%d\n",money);
 
 }

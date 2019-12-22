@@ -25,15 +25,6 @@ void InitQueue(LinkQueue *Q)
     Q->front->next=NULL; 
 }
 
-/* //3、清空链式队列 
-void ClearQueue(LinkQueue *Q)
-{ QueuePtr p;
-p=Q->front->next;
-while (p)
-{ Q->front->next=p->next;
-free(p); }
-Q->rear=Q->front;
-} */
 
 /* 4、判断空队列 */
 int QueueEmpty(LinkQueue Q)
@@ -42,20 +33,6 @@ return 1;
 else
 return 0; }
 
-/* 5、求链式队列长度 */
-/* int QueueLength(LinkQueue Q)
-{ QueuePtr p; int n=0;
-p=Q.front;
-while (p!=Q.rear)
-{ n++; p=p->next; }
-return n;
-} */
-
-/* 6、取队头元素 */
-/* int GetHead(LinkQueue Q)
-{ if (Q.front!=Q.rear)
-return Q.front->next->data;
-} */
 
 /* 7、入队列 */
 void EnQueue(LinkQueue *Q)
