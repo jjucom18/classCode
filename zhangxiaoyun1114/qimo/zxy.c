@@ -1,39 +1,39 @@
 #include"zxy.h"
-void OpenForDay()
+void OpenForDay()//初始化操作
 {
     int i;
     TotalTime = 0; 
     CustomerNum = 0;
-    InitList(&ev);
+    InitList(&ev);//初始化事件链表
     en.OccurTime = 0;
     en.NType = 0;
-    OrderInsert(&ev, en);
+    OrderInsert(&ev, en);//将事件en插入到事件链表中
     for (i = 1; i < 5; i++)
-        InitQueue(&q[i]);
+        InitQueue(&q[i]);//初始化队列
 }
 
-void CustomerArrived() 
+void CustomerArrived() //顾客到达事件
 {
     int durtime, intertime, i, t;
     QElem e;
     ++CustomerNum;
     intertime = rand() % 5 + 1;
     durtime = rand() % 30 + 1;
-    t = en.OccurTime + intertime;
+    t = en.OccurTime + intertime;//到达时间=前一个客户到达时间+办理业务时间
     if (t < CloseTime)
     {
         printf("A new customer will arrive at:%d\n", t);
         OrderInsert(&ev, NewEvent(t, 0));
-        i = ShortestQueue();
+        i = ShortestQueue();//找出最短的队
         e.ArrveTime = en.OccurTime;
         e.Duration = durtime;
-        EnQueue(&q[i], e);
+        EnQueue(&q[i], e);//入队
         if (QueueLength(q[i]) == 1)
             OrderInsert(&ev, NewEvent(en.OccurTime + durtime, i));
     }
 }
 
-void CustomerDeparture() 
+void CustomerDeparture() //顾客离开事件
 {    
     int i = en.NType;
     DelQueue(&q[i], &customer);
@@ -46,7 +46,7 @@ void CustomerDeparture()
     }
 }
 
-void Bank_Simulation()
+void Bank_Simulation()//银行排队模拟
 {
     OpenForDay();
     srand((unsigned)time(NULL));
@@ -62,7 +62,7 @@ void Bank_Simulation()
         (float)TotalTime/CustomerNum);
 }
 
-void PrintQueue()
+void PrintQueue()//打印当前队列
 {
     int i;
     for ( i = 1; i < 5; i ++)
@@ -73,10 +73,10 @@ void PrintQueue()
     printf("\n");
 }
 
-void PrintEventList() 
+void PrintEventList() //输出事件链表
 {
     printf("Current Eventlist is:\n");
-    ListTraverse(&ev);
+    ListTraverse(&ev);//遍历
 }
 
 int Min(int a[], int n)
@@ -92,7 +92,7 @@ int Min(int a[], int n)
     return ind;
 }
 
-int ShortestQueue()
+int ShortestQueue()//找出最短队列
 {
     int i, a[4];
     for(i = 1; i <= 4; i++)
@@ -101,7 +101,7 @@ int ShortestQueue()
 }
 
 //------------------------队和栈表操作-------------------//
-Event NewEvent(int occurT, int nType)
+Event NewEvent(int occurT, int nType)//创建新事件
 {
     Event e;
     e.OccurTime = occurT;
@@ -109,7 +109,7 @@ Event NewEvent(int occurT, int nType)
     return e;
 }
 
-Status InitList(LinkList *L)
+Status InitList(LinkList *L)//初始化链表
 {
     L->head = L->tail = (ElemType)malloc(sizeof(Event));
     if (!L->head) 
@@ -122,7 +122,7 @@ Status InitList(LinkList *L)
     return OK;
 }
 
-Status OrderInsert(LinkList *L, Event e)
+Status OrderInsert(LinkList *L, Event e)//将事件e插入事件链表中
 {
     ElemType p, q, newptr;
     newptr = (ElemType)malloc(sizeof(Event));
@@ -163,7 +163,7 @@ Status ListEmpty(LinkList *L)
         return FALSE;
 }
 
-Status DelFirst(LinkList *L, ElemType e)
+Status DelFirst(LinkList *L, ElemType e)//删除链表首节点，用e返回
 {
     ElemType p = L->head->next;
     if (!p)
@@ -176,7 +176,7 @@ Status DelFirst(LinkList *L, ElemType e)
     return OK;
 }
 
-Status ListTraverse(LinkList *L)
+Status ListTraverse(LinkList *L)//遍历链表
 {
     ElemType p = L->head->next;
     if (!p)
@@ -193,7 +193,7 @@ Status ListTraverse(LinkList *L)
     return OK;
 }
 
-Status InitQueue(LinkQueue *Q)
+Status InitQueue(LinkQueue *Q)//初始化队列
 {
     Q->head = Q->tail = (QElemType)malloc(sizeof(QElem));
     if (!Q->head)
@@ -205,7 +205,7 @@ Status InitQueue(LinkQueue *Q)
     return OK;
 }
 
-Status EmptyQueue(LinkQueue *Q)
+Status EmptyQueue(LinkQueue *Q)//判断队列是否为空
 {
     if ((Q->head == Q->tail) && (Q->head != NULL))
         return TRUE;
@@ -213,7 +213,7 @@ Status EmptyQueue(LinkQueue *Q)
         return FALSE;
 }
 
-Status DelQueue(LinkQueue *Q, QElemType e)
+Status DelQueue(LinkQueue *Q, QElemType e)//删除队首节点用e返回
 {
     QElemType p = Q->head->next;
     if (!p)
@@ -226,7 +226,7 @@ Status DelQueue(LinkQueue *Q, QElemType e)
     return OK;
 }
 
-Status EnQueue(LinkQueue *Q, QElem e)
+Status EnQueue(LinkQueue *Q, QElem e)//节点e入队
 {
     QElemType p = (QElemType)malloc(sizeof(QElem));
     if (!p)
@@ -241,7 +241,7 @@ Status EnQueue(LinkQueue *Q, QElem e)
     return OK;
 }
 
-int QueueLength(LinkQueue Q)
+int QueueLength(LinkQueue Q)//得到队列长度
 {
     int count = 0;
     QElemType p = Q.head->next;
@@ -253,7 +253,7 @@ int QueueLength(LinkQueue Q)
     return count;
 }
 
-Status GetHead(LinkQueue *Q, QElemType e)
+Status GetHead(LinkQueue *Q, QElemType e)//获取队首节点e
 {
     if (EmptyQueue(Q))
         return ERROR;
@@ -261,7 +261,7 @@ Status GetHead(LinkQueue *Q, QElemType e)
     return OK;
 }
 
-Status QueueTraverse(LinkQueue *Q)
+Status QueueTraverse(LinkQueue *Q) //队列遍历
 {
     QElemType p = Q->head->next;  
     if(!p){  
