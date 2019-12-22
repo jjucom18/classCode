@@ -49,7 +49,7 @@ void Init_Graph(Graph *G)
     ////////////////////具体输入图
     G->place[0].index=1;
     strcpy(G->place[0].name,"南门");
-    strcpy(G->place[0].intro,"特别大气漂亮，是学校的门面\n");
+    strcpy(G->place[0].intro,"特别大气漂亮.\n");
     G->place[1].index=2;
     strcpy(G->place[1].name ,"竞知楼");
     strcpy(G->place[1].intro,"电子学院活跃的地方\n");
