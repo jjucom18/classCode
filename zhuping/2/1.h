@@ -1,19 +1,19 @@
-#ifndef 1_h
-#define 1_h
-#include<stdio.h>
-typedef struct _node{
-     void *data;
-     struct _node*next;
-} Node;
-typedef struct _linkedList{
-	Node *head;
-	Node *tail;
-	Node *current;
+#ifndef l_h
+#define l_h
+
+#define MAXSIZE 10;
+typedef int Datadata;
+typedef struct{
+	DataType data[MAXSIZE];
+	int size;
 } LinkedList;
-void initializeList(LinkedlList*)
-void addHead(LinkedList*, void*)
-void addTail(LinkedList*, void)
-void delete(LinkedList*, Node*)
-Node *getNode(LinkedList*, COMPARE, void*)
-void displayLinkedList(LinkedList*, DISPLAY)
-#endif	
+
+void initializeList(LinkedListi *list);
+void addHead(LinkedList *list,void *data);
+void addTail(LinkedList *list,void *data);
+void delete(LinkedList *list,Node *node);
+Node *getNode(LinkedList *list,void*data);
+void displayLinkedList(LinkedList *list);
+
+#endif
+

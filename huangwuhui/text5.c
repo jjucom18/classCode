@@ -1,114 +1,104 @@
-#include<stdio.h>
-#include<stdlib.h>
-typedef struct Node
-{
-	int data;
-	struct Node *next;
-}LinkNode,*LinkList;
-LinkList head;
+#include <stdio.h>
+#include <malloc.h>
+typedef struct node
 
-void InitList(LinkList *head)
+{ 
+  int data;
+  struct node *next;
+} Linklist;
+
+
+Linklist *creat() 
+{  Linklist *phead;
+ phead=(Linklist *) malloc(sizeof(Linklist) ) ;
+ phead->next=NULL;
+  return phead;
+					} 
+
+
+/*头插法*/
+void head_insert(Linklist *phead,int n) 
+	
 {
-	head=(LinkList*)malloc(sizeof(LinkList));
-		(*head)->next=NULL;
-}
-LinkList CreatFormHead()
-{
-	LinkList head;
-	LinkList s;
-	char ch;
-	int flag=1;
-	head=(LinkList*)malloc(sizeof(LinkList));
-	head->next=NULL;
-	while(flag)
-	{
-		ch=getchar();
-		if(ch!='$')
-		{
-			s=(LinkList*)malloc(sizeof(LinkList));
-			s->data=ch;
-			s->next=head->next;
-			head->next=s;
-		}
-		else
-			flag=0;
-	}
-	return head;
-}
-LinkList CreatFromTail()
-{
-	LinkList head,r,s;
-	char ch;
-	int flag=1;
-	head=(LinkList*)malloc(sizeof(LinkList));
-	head->next=NULL;
-	r=head;
-	while(flag)
-	{
-		ch=getchar();
-		if(ch!='$')
-		{
-		s=(LinkList*)malloc(sizeof(LinkList));
-		s->data=ch;
-		r->next=s;
-		r=s;
-		} 
-		else
-		{
-		flag=0;
-		r->next=NULL;
-		} 
-		}
-	return head;
+  Linklist *p;
+   int i;
+  for(i=0;i<n;i++) 
+{							        
+	p=(Linklist *) malloc(sizeof(Linklist) ) ;
+   scanf("%d",&p->data);											      
+    p->next=phead->next;
+	  phead->next=p;
 } 
-void DeleteList(LinkList head,int i)
-{
-	LinkList pre,r;
-	int j;
-	pre=head; j=0;
-	while(pre->next!=NULL&&j<i-1)
-	{
-		pre=pre->next;
-		j++;
-	}
-	if(j!=i-1||pre->next==NULL)
-	{
-		printf("\nPosition Error\n");
-		return ;
-	}
-	r=pre->next;
-	pre->next=r->next;
-	free(r);
-}
-LinkList GetElem(LinkList head,int i)
-{
-	int j;
-	LinkNode *p;
 
-	p=head;j=0;
-	while(p->next!=NULL&&j<i)
-	{
-		p=p->next;
-		j++;
-	}
-	if(i==j&&i!=0)
-		return p;
-	else
-		return NULL;
-}
-int main(int argc,char **argv)
-{
-	LinkList head;
-	int x,i;
-	head=CreatFromHead();
-	printf("please input insert location\n");
-	scanf("%d",&i);
-	printf("please input insert data\n");
-	scanf("%d",&x);
-	head=CreatFronTail();
-	printf("please input insert location\n");
-    scanf("%d",i);
-	printf("please input insert data\n");
-	scanf("%d",&x);
 
-}
+} 
+/*尾插法*/
+void tail_insert(Linklist *phead,int value) 
+	
+{
+	Linklist *p,*t;
+    int i;
+	t=phead;
+ p=(Linklist *) malloc(sizeof(Linklist) ) ;
+  p->data=value;
+  while(t->next!=NULL) 
+  t=t->next;
+ t->next=p;
+ p->next=NULL; 
+			} 
+
+
+
+/*打印链表*/
+void print(Linklist *phead) 
+	
+{
+	Linklist *p;
+  p=phead->next;
+ if(p==NULL) 
+ printf("此链表为空.\n") ;
+ while(p!=NULL) 
+ {
+	 printf("%d ",p->data) ;
+     p=p->next;
+				} 
+printf("\n") ;
+		} 
+
+
+
+/*删除结点*/
+void delete(Linklist *phead,int value) 
+	{
+ Linklist *p,*t;
+ t=phead;
+ while(t->next!=NULL) 
+{
+	if(t->next->data==value) 
+{
+ p=t->next;
+t->next=p->next;
+ free(p) ;
+	 } 
+ else
+t=t->next;
+	} 
+	} 
+
+
+int main(void) 
+{
+ Linklist *phead;
+ int value,num;
+ phead=creat() ;
+ head_insert(phead,5) ;
+ print(phead) ;
+ printf("请输入你想插入的数字:\n") ;
+ scanf("%d",&value) ;
+ tail_insert(phead,value) ;
+ print(phead) ;
+ printf("请输入你想删除的数字:\n") ;
+scanf("%d",&num) ;
+ delete(phead,num) ;
+ print(phead) ;
+} 

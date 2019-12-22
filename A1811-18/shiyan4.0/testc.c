@@ -1,7 +1,8 @@
 #include "carStop.c"
 #include "carWait.c"
 #include "insertcar.c"
-#include "dispaly.c"
+#include "display.c"
+
 int main (int argc,char **argv)
 {
 	display();
@@ -10,7 +11,7 @@ int main (int argc,char **argv)
 	carStop top;
 	top = (stackNode *)malloc(sizeof(carStop));
 	car *x;
-	//x = (car *)malloc(sizeof(car));
+	x = (car *)malloc(sizeof(car));
 	init_carStop(top);
 	init_carWait(q);
 	insertcar(top,q);

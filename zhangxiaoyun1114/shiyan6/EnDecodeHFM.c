@@ -3,8 +3,7 @@
 #include <string.h>
 
 typedef int ELEMTYPE;
-
-   typedef struct HuffmanTree
+typedef struct HuffmanTree
    {
       ELEMTYPE weight;
       ELEMTYPE id;       
@@ -113,7 +112,8 @@ typedef int ELEMTYPE;
  }
 
  
- void HuffmanDecode(char ch[], HuffmanNode* hufmTree, char string[])     // ch是要解码的01串，string是结点对应的字符
+ void HuffmanDecode(char ch[], HuffmanNode* hufmTree, char string[])    
+	// ch是要解码的01串，string是结点对应的字符
  {
      int i;
      int num[500];
@@ -148,7 +148,7 @@ typedef int ELEMTYPE;
      }
  }
 
- int main()
+ int main(int argc,char **argv)
  {
      int i, n;
      printf("请输入叶子结点的个数：\n");
