@@ -66,7 +66,7 @@ scanf("%d:%d",&(p->leave.hour),&(p->leave.min));
       free(p); }       // 车辆的到达登记
 
 
-
+//车辆入栈
  int Arrival(SeqStackCar *Enter,LinkQueueCar *W){
 
         CarNode *p;
@@ -128,7 +128,7 @@ void Leave(SeqStackCar *Enter,SeqStackCar *Temp,LinkQueueCar *W)
 
 {
 
-    //车辆的离开
+//车辆的离开
 
 int room;
 
@@ -173,7 +173,7 @@ int room;
 
             Enter->top--;
 
-             while(Temp->top>=1)     //  再把临时栈里德车辆进停车场
+             while(Temp->top>=1)     //  再把临时栈里的车辆进停车场
 
             {
 
@@ -243,9 +243,9 @@ int room;
         printf("  %d   ",i);
 
         printf("  %d:%d     ",S->stack[i]->reach.hour,S->stack[i]->reach.min);
-
         puts(S->stack[i]->num);
         }
+	    printf("车场还有空位!\n");
 
         }
 
@@ -361,15 +361,16 @@ void menu()
 
 
 
-    printf(" 欢迎使用停车场系统\n");
+    printf("******* 欢迎使用站点路径查询系统*******\n");
 
-    printf("1. 车辆到达登记\t");
+    printf("1. 车辆到达登记\n");
 
-    printf("2. 车辆离开登记\t");
+    printf("2. 车辆离开登记\n");
 
-    printf("3. 车辆列表显示\t");
+    printf("3. 车辆列表显示\n");
 
-    printf("4. 百度地图\t");
+    printf("4. 百度地图查询\n");
+
     printf("5. 退出管理系统\n");
 
      while(1)
@@ -419,8 +420,7 @@ void menu()
 		MiniSpanTree_PRIM(g,a);
 
 	}
-		 
-		 
+		  
 	 }break;
      case 5:exit(0);
 
