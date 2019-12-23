@@ -89,6 +89,7 @@ void floyd(){
 
 int shortdistance(){
     int i,j;
+    printf("**************************************************************\n");
     printf("Choose two numbers from 1 to 11,and 11 is exit! \n");
     scanf("%d %d",&i,&j);
     if(i>N||i<0||j>N||j<0){
@@ -98,7 +99,8 @@ int shortdistance(){
     }
     else{
         floyd();
-        printf("Two Points are the shortest distance: \n\n");
+        printf("Two Points are the shortest distance: \n");
+        printf("**************************************************************\n");
         fflush(stdin);
             if(i<j){
                 printf("%d",j);
@@ -109,8 +111,9 @@ int shortdistance(){
                     else
                         i=path[j][i];
                     }
-                    printf("<-%d\n\n",i);
-                    printf("%d->%d shortest path: %d meters。\n\n",i,j,shortest[i][j]);
+                    printf("<-%d\n",i);
+                    printf("%d->%d shortest path: %d meters。\n",i,j,shortest[i][j]);
+                    printf("**************************************************************\n");
             }
             else{
                 printf("%d",i);
@@ -121,8 +124,9 @@ int shortdistance(){
                     else
                         i=path[j][i];
                 }
-            printf("->%d\n\n",j);
-            printf("%d->%d shortest path: %d meters。\n\n",i,j,shortest[i][j]);
+            printf("->%d\n",j);
+            printf("%d->%d shortest path: %d meters。\n",i,j,shortest[i][j]);
+            printf("**************************************************************\n");
         }
     }
     return 1;
@@ -216,12 +220,19 @@ void Enter(){
     while (1) {
 	scanf("%c", &con);
 	if (con == '2') {
+            printf("*******************************************************\n");
 	    printf("Computer number\n");
 	    scanf("%d", &num);
 	}
 	if (con == '3') {
   	return 0;
 	}
+        if (con == '0'){
+            shortdistance();
+        }
+        if (con == '4') {
+        Map();
+        }
 	if (con == '1') {
 	    if (Push(&S,count) == 0) {
 		if(EnQueue(&Qc, count) == 0 ) printf("No Computer,thanks!\n");
@@ -231,6 +242,7 @@ void Enter(){
 		}
 	    }
 	    else {
+            printf("**************************************************************\n");
 		printf("%dSuccessful Internet surfing!\n", count);
 		S.TIME[S.top] = COUNT_TIME();
 		count++;
@@ -239,12 +251,16 @@ void Enter(){
 	if (con == '2') {
 	    if (InternetOut(&S, num, &St) == 1) Internet(&Qc, &S);
 	}
-        if (con == '0'){
-            shortdistance();
-        }
 	printALL(S, Qc);
 	getchar();
     }
 }
 
-
+int Map(){
+    printf("****| exit |**************************************************\n");
+    printf("**************************************************************\n");
+    printf("********| 1 |*****| 2 |*****| 3 |*****| 4 |*****| 5 |*********\n");
+    printf("**************************************************************\n");
+    printf("********| 6 |*****| 7 |*****| 8 |*****| 9 |*****| 10 |********\n");
+    printf("**************************************************************\n");
+} 
