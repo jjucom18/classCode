@@ -10,16 +10,19 @@ typedef struct TreeNode {
 
 //创建二叉数
 //以先序序列输入各节点的数据。某节点的左指数或右指数为空时，输入一个特点的值x
-void CreateTree(TreeNode *t,dataType x){
+void CreateTree(TreeNode *t,dataType x)
+{
 	dataType d;
 	scanf("%c",&d);
 	if (d == x){
 		t=NULL;
 	}else{
 		t= (TreeNode *)malloc(sizeof(TreeNode ));
-		t->data =d;
-		CreateTree (t->left,x);
+		t->data = d;
+		//printf("*");
 		CreateTree (t->right,x);
+		printf("*");
+		CreateTree (t->left,x);
 	}
 }
 
@@ -79,6 +82,7 @@ int main(){
 			"请按先序序列输入各节点的字符，某节点的左子树或右子树为空时输入一个字符#。\n");
 	printf("如输入ABD#G###CE##F##\n");
 	CreateTree(t,'#');
+	//printf("*");
 	printf("先序遍历为：");
 	PreOrder(t);
 	printf("\n");

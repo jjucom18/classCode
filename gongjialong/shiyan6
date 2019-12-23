@@ -1,0 +1,158 @@
+#include <stdio.h>
+#include <stdlib.h>
+#define maxval 1024
+#define n 5
+#define m 2*n-1
+typedef int datatype;
+
+
+//定义结构体
+typedef struct
+{
+	float weight;
+	int lchild,rchild,parent;
+}hufmtree;
+
+
+//定义结构体
+typedef struct
+{
+	char bits[n];
+	int start;
+	char ch;
+}codetype;
+hufmtree tree[m];
+codetype code[n];
+
+
+//建立哈夫曼树
+void HUFFMAN(hufmtree tree[])
+{
+	int i,j,p1,p2;
+	float small1,small2,f;
+	for(i=0;i<m;i++)
+	{
+		tree[i].parent=0;
+		tree[i].lchild=0;
+		tree[i].rchild=0;
+		tree[i].weight=0.0;
+	}
+	printf("\n\t\t\t\t哈夫曼编码与译码\n");
+	printf("请输入叶子结点的权值：");
+	for(i=0;i<n;i++)
+	{
+		scanf("%f",&f);
+		tree[i].weight=f;
+	}
+	for(i=n;i<m;i++)
+	{
+		p1=0;
+		p2=0;
+		small1=maxval;
+		small2=maxval;
+		for(j=0;j<=i-1;j++)
+			if(tree[j].parent==0)
+				if(tree[j].weight<small1)
+				{
+					small2=small1;
+					small1=tree[j].weight;
+					p2=p1;
+					p1=j;
+				}
+				else
+					if(tree[j].weight<small2)
+					{
+						small2=tree[j].weight;
+						p2=j;
+					}
+					tree[p1].parent=i+1;
+					tree[p2].parent=i+1;
+					tree[i].lchild=p1+1;
+					tree[i].rchild=p2+1;
+					tree[i].weight=tree[p1].weight+tree[p2].weight;
+	}
+}
+
+
+//哈夫曼编码
+void HUFFMANCODE(codetype code[],hufmtree tree[])
+{
+	int i,c,p;
+	codetype cd;
+	for(i=0;i<n;i++)
+	{
+		cd.start=n;
+		scanf("%c",&cd.ch);		
+		c=i+1;
+		p=tree[i].parent;
+		while(p!=0)
+		{
+			cd.start--;
+			if(tree[p-1].lchild==c)
+				cd.bits[cd.start]='0';
+			else
+				cd.bits[cd.start]='1';
+			c=p;
+			p=tree[p-1].parent;
+		}
+		    code[i]=cd;
+	}
+}
+
+
+//哈夫曼译码
+void DECODE(codetype code[],hufmtree tree[])     
+{
+	int i,j=0,b[60];
+	i=m-1;
+	printf("\n\n\n请输入电文（以-1结束）：");
+	do
+	{
+	    scanf("%d",&b[j]);
+	}while(b[j++]!=-1);
+	j=0;
+	printf("\n\n电文译码为：");
+	while(b[j]!=-1)
+	{
+		if(b[j]==0)
+			i=tree[i].lchild-1;
+		else
+			i=tree[i].rchild-1;
+		if(tree[i].lchild==0)
+		{
+			putchar(code[i].ch);
+			i=m-1;
+		}
+		j++;	
+	}
+}
+
+
+
+//输出哈夫曼编码
+void Printma(codetype code[],hufmtree tree[])                
+{
+ int i,j;
+ printf("\n");
+ printf("哈夫曼编码:\n");
+ for(i=0;i<n;i++)
+ {
+	 for(j=code[i].start;j<n;j++)
+		 printf("%c ",code[i].bits[j]);
+	 printf("\n");
+ }
+}
+
+
+//主函数
+void main()
+{
+	HUFFMAN(tree);
+	getchar();
+	printf("\n请输入结点所代表的字符：");
+	HUFFMANCODE(code,tree);
+	getchar();
+	Printma(code,tree);	
+	DECODE(code,tree);
+	printf("\n");
+}
