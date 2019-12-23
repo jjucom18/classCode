@@ -24,7 +24,7 @@ void InitStack(SqStack *&s)
 }
 int StackEmpty(SqStack *s)
 {
-	retutn(s->top==-1);
+	return(s->top==-1);
 }
 int StackFull(SqStack *s) 
 {
@@ -51,7 +51,7 @@ int Pop(SqStack *&s,int &e1,int &e2)
 void DispStack(SqStack *s)
 {
 	int i;
-	for (i=s->top; i>=o; i--)
+	for (i=s->top; i>=0; i--)
 		printf("%d",s->CarNo[i]);
 	printf("\n");
 }
@@ -109,7 +109,7 @@ int main( )
 	SqQueue *Qu;
 	InitStack(St);
 	InitStack(St1);
-	InitStack(Qu);
+	InitStack(Qu) ;
 	do
 	{
 		printf("输入指令(1：到达 2：离开 3：显示停车场 4：显示候车场 0：推出)：");
@@ -190,7 +190,7 @@ int main( )
 				if (!QueueEmpty(Qu))
 				{
 					printf("  >>候车场中的车辆：");
-						DispStack(Qu);
+						DispStack(Qu) ;
 				}
 				break;
 			default:

@@ -25,7 +25,7 @@ typedef LinkList EventList;        //事件链表
 
 typedef struct QElem{            //队列元素
     int ArrveTime;                //到达时间
-    int Duration;                //办理事务所需事件
+    int Duration;                //办理事务所需时间
     struct QElem *next;
 }QElem,*QElemType;
 
@@ -43,14 +43,14 @@ Status ListTraverse(LinkList *L);    //遍历链表
 Status InitQueue(LinkQueue *Q);        //初始化队列
 Status EmptyQueue(LinkQueue *Q);    //判断队列为空
 Status DelQueue(LinkQueue *Q, QElemType e);    
-Status EnQueue(LinkQueue *Q, QElem e);    //接点e插入队列
-int       QueueLength(LinkQueue Q);
-Status GetHead(LinkQueue *Q, QElemType e);    //取队列首部结点e
+Status EnQueue(LinkQueue *Q, QElem e);    //节点e插入队列
+int    QueueLength(LinkQueue Q);
+Status GetHead(LinkQueue *Q, QElemType e);    //取队列首部节点e
 Status QueueTraverse(LinkQueue *Q);
 
 Event NewEvent(int occurTime, int nType);    //创建新事件
 
-int Min(int a[], int n);    //返回长度为n的数组a[]第一个最小下标，从1开始
+int Min(int a[], int n);    //返回长度为n的数组a[]的一个最小下标，从1开始
 int ShortestQueue();        //获取最短队列编号
 void OpenForDay();            //初始化操作
 void CustomerArriver();        //顾客到达事件
