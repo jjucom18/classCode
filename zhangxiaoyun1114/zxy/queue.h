@@ -7,6 +7,8 @@
 #define TRUE 1
 #define FALSE 0
 
+typedef int Status;
+
 typedef struct QElem{            //队列元素
     int ArrveTime;                //到达时间
     int Duration;                //办理事务所需时间
