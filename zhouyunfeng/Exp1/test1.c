@@ -9,6 +9,7 @@ int main(int argc,  char **argv)
 	      int *ptr_var1=&var1;int *ptr_var2=&var2;int *ptr_var3=&var3;
 
 	        
+	      printf("请输入三个变量值：\n");
 
 	      scanf("%d,%d,%d",&var1,&var2,&var3);
 

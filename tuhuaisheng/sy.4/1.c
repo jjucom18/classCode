@@ -138,7 +138,7 @@ int pop(stack1 s,int flag)//出车库，同时修改车库栈中汽车的位置
 	{
 		if(choice==1){
 			printf("\n您当前选择到达（1）")；
-				if（isfull(&s1)==1) {
+				if(isfull(&s1)==1) {
 					printf("\n（1号栈）车库位置以达到上限，请等待，开始进入便道排队")；
 						printf("请输入您的车牌号\n");
 					scanf("%s",&str);

@@ -1,0 +1,25 @@
+//#include "linklist.h"
+//#include "caidan.h"
+//#include "qunue.h"
+//#include "graph.h"
+#include "linklist.c"
+//#include "linklist.h"
+int main(int argc,char **argv)
+{
+	int num = 0;
+    int t = 0;
+    LinkQueue *wait;
+    wait = (LinkQueue *)malloc(sizeof(LinkQueue));                                                                 
+    LinkQueue *pack;
+    pack = (LinkQueue *)malloc(sizeof(LinkQueue));
+    LinkStack *giveway;
+    giveway = (LinkStack *)malloc(sizeof(LinkStack));
+	init(wait,pack,giveway);
+	linklist *head;
+	head = (linklist *)malloc(sizeof(linklist));
+	head = Initlist(head);
+	Graph *G;
+	Init_Graph(&G);
+	menu(head);
+	return 0;
+}

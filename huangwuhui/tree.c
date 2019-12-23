@@ -1,5 +1,6 @@
 #include<stdio.h>
 #include<stdlib.h>
+#include<malloc.h>
 #define MaxSize 100
 
 typedef char dataType;
