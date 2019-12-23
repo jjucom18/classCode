@@ -2,7 +2,7 @@
 
 void add(Node* h,T d){
 	if(h == NULL){
-		printf("空链表,添加失败!\n");
+		printf("ERROR!\n");
 		return;
 	}
 	Node* p = h;	
@@ -70,10 +70,6 @@ MGraph MGr;
 int shortest[N][N];
 int path[N][N];
 
-
-
-
-
 void Init(){
     int i,j;
 	
@@ -86,16 +82,16 @@ void Init(){
         shortest[i][j]=0;
     }
 
-    MGr.length[1][11]=MGr.length[11][1]=5;
-    MGr.length[2][11]=MGr.length[11][2]=10;
-    MGr.length[3][11]=MGr.length[11][3]=15;
-    MGr.length[4][11]=MGr.length[11][4]=20;
-    MGr.length[5][11]=MGr.length[11][5]=25;
-    MGr.length[6][11]=MGr.length[11][6]=30;
-    MGr.length[7][11]=MGr.length[11][7]=35;
-    MGr.length[8][11]=MGr.length[11][8]=40;
-    MGr.length[9][11]=MGr.length[11][9]=45;
-    MGr.length[10][11]=MGr.length[11][10]=50;
+    MGr.length[1][11]=MGr.length[11][1]=20;
+    MGr.length[2][11]=MGr.length[11][2]=30;
+    MGr.length[3][11]=MGr.length[11][3]=40;
+    MGr.length[4][11]=MGr.length[11][4]=50;
+    MGr.length[5][11]=MGr.length[11][5]=60;
+    MGr.length[6][11]=MGr.length[11][6]=70;
+    MGr.length[7][11]=MGr.length[11][7]=80;
+    MGr.length[8][11]=MGr.length[11][8]=90;
+    MGr.length[9][11]=MGr.length[11][9]=100;
+    MGr.length[10][11]=MGr.length[11][10]=110;
 }
 
 void floyd(){
@@ -249,9 +245,9 @@ void Enter(){
     char con;
     int num,i;
     int count = 1;
-    Node* head = NULL;  //2.1 定义指针
-    head = malloc(SIZE);//2.2 分配内存
-    head->data = 0;     //2.3 赋值
+    Node* head = NULL;  
+    head = malloc(SIZE);
+    head->data = 0;     
     head->next = NULL;
     i=con;
 
