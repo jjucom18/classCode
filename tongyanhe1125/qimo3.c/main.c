@@ -50,6 +50,7 @@ int main() {
 		case 0://退出
 			exitApp();
 			break;
+
 		default:
 			printf("您输入的菜单错误,请重新输入。\n");
 			break;
