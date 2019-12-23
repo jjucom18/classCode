@@ -23,8 +23,8 @@ LinkedList LinkedList()
 LinkedList LinkedListCreatH()
 {
 	Node *L
-		L=(Node*)malloc(sizeof(Node));
-	L->next = NULL;
+    L=(Node*)malloc(sizeof(Node));
+   	L->next = NULL;
 
 	Elemtype x;
 	while(scanf("%d",&x)!=EOF) 
