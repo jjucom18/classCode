@@ -2,7 +2,7 @@
 #include<stdio.h>
 #include<string.h>
 #define N 100
-using namespace std;
+typedef using namespace std;
 typedef struct
 {char data[5];
 	int weight;
@@ -14,7 +14,7 @@ typedef struct
 {char cd[N];
 	int start;
 }HCode;
-void CreateHF(HFNode ht[],int n)
+void CreateHF(HTNode ht[],int n)
 {int lnode,rnode;
 	double min1,min2;
 	for(int i=0;i<2*n-1;i++)
@@ -59,7 +59,7 @@ void CreateHCode(HTNode ht[],HCode hcd[],int n)
 }
 void DispHCode(HTNode ht[],HCode hcd[],int n)
 {
-	int sum=0,m=0,j;
+	int sum=0,m=0,j;cout;
 	for(int i=0;i<n;i++)
 	{
 		j=0;
@@ -74,8 +74,8 @@ void DispHCode(HTNode ht[],HCode hcd[],int n)
 		cout<<end1;
 	}
 	cout<<"平均长度："<<sum/m;
-	main()
-		int n=15;
+   int	main()
+   {int n=15;
 	char str[][5]={"T].parent=i;ht[rnode].parent=i;
 	}
 }
@@ -103,9 +103,9 @@ void DispHCode(HTNode ht[],HCode hcd[],int n)
 	for(int i=0;i<n;i++)
 	{
 		strcpy(ht[i].data,str[i]);
-		ht[i].weight=fnum[i];
+		ht[i].weight=sum[i];
 	}
-	CreateHT(ht,n);
+	CreateHF(ht,n);
 	CreateHCode(ht,hcd,n);
 	DispHCode(ht,hcd,n);
 	return 0;
