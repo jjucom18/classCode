@@ -1,6 +1,34 @@
-#include "qimo2.h"
+#include "qimo5.h"
 
-void InitStack(SeqStack *S) {
+void add(Node* h,T d){
+	if(h == NULL){
+		printf("ERROR!\n");
+		return;
+	}
+	Node* p = h;	
+	Node* pn = malloc(SIZE);
+	pn->data = d;
+	pn->next = NULL;
+	while(1){
+		if(p->next == NULL)
+			break;
+		p = p->next;
+	}
+	p->next = pn;
+	printf("add success!\n");
+}
+void travel(Node* h){
+	Node* p = h;
+	printf("list:");
+	while(p->next != NULL){
+		p = p->next;
+		printf("%d ",p->data);
+	}
+	printf("\n");
+}
+
+
+InitStack(SeqStack *S) {
     S->top = -1;
 }
 
@@ -54,16 +82,16 @@ void Init(){
         shortest[i][j]=0;
     }
 
-    MGr.length[1][11]=MGr.length[11][1]=5;
-    MGr.length[2][11]=MGr.length[11][2]=10;
-    MGr.length[3][11]=MGr.length[11][3]=15;
-    MGr.length[4][11]=MGr.length[11][4]=20;
-    MGr.length[5][11]=MGr.length[11][5]=25;
-    MGr.length[6][11]=MGr.length[11][6]=30;
-    MGr.length[7][11]=MGr.length[11][7]=35;
-    MGr.length[8][11]=MGr.length[11][8]=40;
-    MGr.length[9][11]=MGr.length[11][9]=45;
-    MGr.length[10][11]=MGr.length[11][10]=50;
+    MGr.length[1][11]=MGr.length[11][1]=20;
+    MGr.length[2][11]=MGr.length[11][2]=30;
+    MGr.length[3][11]=MGr.length[11][3]=40;
+    MGr.length[4][11]=MGr.length[11][4]=50;
+    MGr.length[5][11]=MGr.length[11][5]=60;
+    MGr.length[6][11]=MGr.length[11][6]=70;
+    MGr.length[7][11]=MGr.length[11][7]=80;
+    MGr.length[8][11]=MGr.length[11][8]=90;
+    MGr.length[9][11]=MGr.length[11][9]=100;
+    MGr.length[10][11]=MGr.length[11][10]=110;
 }
 
 void floyd(){
@@ -151,6 +179,7 @@ int COUNT_FEE(SeqStack S, int gar_NUM) {
 
 int InternetOut(SeqStack *S, Date e, SeqStack *St) {
     Date S2S;
+
     while ( S->Selem[S->top] != e ){
         if (Pop(S, &S2S) == 0) {
 	    while (St->top != -1) {
@@ -164,11 +193,11 @@ int InternetOut(SeqStack *S, Date e, SeqStack *St) {
     }
     if (S->Selem[S->top] == e) {
 	printf("\n NO.%dRecharge successfully!\n", S->Selem[S->top]);
-	    printf(" Should pay cost:%d\n", COUNT_FEE(*S, S->top));
-		for (int i = S->top; i < MAXSIZE1 -1; i++){
-		    S->TIME[i] = S->TIME[i+1];
-		}
-		S->top--;
+	printf(" Should pay cost:%d\n", COUNT_FEE(*S, S->top));
+	    for (int i = S->top; i < MAXSIZE1 -1; i++){
+	       S->TIME[i] = S->TIME[i+1];
+	    }
+	    S->top--;
     }
     while (St->top != -1) {
 	Push(S, St->Selem[St->top]);
@@ -214,8 +243,13 @@ void Enter(){
     InitStack(&St);
     Init();
     char con;
-    int num;
+    int num,i;
     int count = 1;
+    Node* head = NULL;  
+    head = malloc(SIZE);
+    head->data = 0;     
+    head->next = NULL;
+    i=con;
 
     while (1) {
 	scanf("%c", &con);
@@ -242,8 +276,11 @@ void Enter(){
 		}
 	    }
 	    else {
-            printf("**************************************************************\n");
+                printf("**************************************************************\n");
 		printf("%dSuccessful Internet surfing!\n", count);
+                printf("**************************************************************\n");
+                add(head,1);
+                travel(head);
 		S.TIME[S.top] = COUNT_TIME();
 		count++;
 	    }
