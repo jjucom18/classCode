@@ -9,9 +9,7 @@ typedef struct HuffmanTreeNode{
 }HuffmanTreeNode,*PtrHuffman;  
 
 
-/**
- * 创建哈夫曼树
- */
+// 创建哈夫曼树
 PtrHuffman createHuffmanTree(int arr[]){
     PtrHuffman ptrArr[LENGTH];
     PtrHuffman ptr,pRoot=NULL;  
@@ -73,6 +71,7 @@ void midOrderprintHuffmanTreeNode(PtrHuffman pRoot)
         midOrderprintHuffmanTreeNode(pRoot->right);
     }
 }
+
 int main(){
     int arr[] = {3,9,5,12,6,15};
     PtrHuffman pRoot = createHuffmanTree(arr);  //返回指向哈夫曼树根节点的指针
