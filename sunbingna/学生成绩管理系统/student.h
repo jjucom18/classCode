@@ -18,7 +18,6 @@ typedef struct _node
     struct _node *next;
 }Node;
 
-Node *pH = NULL;
 void menu();
 Node *CreatNode();
 Node *initlist();
@@ -33,5 +32,6 @@ void SearchChoice();
 void Change();
 void Delete();
 void SortId();
+void Choice();
 
 #endif

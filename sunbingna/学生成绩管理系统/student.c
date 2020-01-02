@@ -1,4 +1,9 @@
 #include"student.h"
+#include "stack.h"
+#include"queue.h"
+#include"display.h"
+
+Node *pH = NULL;
 
 Node *CreatNode()//创建一个新结点
 {

@@ -1,24 +1,26 @@
 #ifndef _STACK_H
 #define _STACK_H
 #include<stdio.h>
-#include<stdlib.h>
 #include<stdbool.h>
+#include<malloc.h>
 #include<string.h>
-#include <unistd.h>
+#include<unistd.h>
+#include<stdlib.h>
 
-typedef struct  _node
-{
-    char account[5];
-    char password[5];
-    struct _node *next;
-}NodeStack;
+typedef struct node{
+	char account[5],password[5];
+	struct node *next;
+}stacknode, *plinkstack;
 
-typedef struct stack
-{
-    NodeStack *top;
-    int count;
-}Linkstack;
+typedef struct stack{
+	plinkstack top;		//栈顶指针 
+	int count;				//计数器 
+}Linkstack; 
 
-
+void push(Linkstack *S)	;
+void traversestack(Linkstack s);
+void InitStack(Linkstack *S);
+bool match(Linkstack *S);
+void stackchoice();
 
 #endif

@@ -1,21 +1,6 @@
-#include<stdio.h>
-#include<stdlib.h>
-#include<string.h>
-#include<unistd.h>
-#include<stdbool.h>
-
-typedef struct QNode
-{ 
-    char account[5];
-    char password[5];
-    struct QNode *next;
-} QNode, *QueuePtr;
-
-typedef struct
-{ 
-    QueuePtr front;
-    QueuePtr rear;
-} LinkQueue;
+#include"queue.h"
+#include"display.h"
+#include"student.h"
 
 /* 1、初始化链式队列 */
 void InitQueue(LinkQueue *Q)
@@ -28,10 +13,12 @@ void InitQueue(LinkQueue *Q)
 
 /* 4、判断空队列 */
 int QueueEmpty(LinkQueue Q)
-{ if (Q.front==Q.rear)
-return 1;
-else
-return 0; }
+{ 
+    if (Q.front==Q.rear)
+    return 1;
+    else
+    return 0;
+}
 
 
 /* 7、入队列 */

@@ -1,18 +1,6 @@
-#include<stdio.h>
-#include<stdbool.h>
-#include<malloc.h>
-#include<string.h>
-#include<unistd.h>
-
-typedef struct node{
-	char account[5],password[5];
-	struct node *next;
-}stacknode, *plinkstack;
-
-typedef struct stack{
-	plinkstack top;		//栈顶指针 
-	int count;				//计数器 
-}Linkstack;
+#include"stack.h"
+#include"display.h"
+#include"student.h"
 
 int stackempty(Linkstack  S)
 { 
