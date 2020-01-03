@@ -104,4 +104,5 @@ int main(int agrc,char **argv){
 	Del_LinkList(L,i-1);
 	displist(L);
 	return 0;
+
 }
