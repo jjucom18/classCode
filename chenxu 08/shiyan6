@@ -1,0 +1,83 @@
+#include<stdio.h>
+#include<stdlib.h> 
+#define LENGTH 6
+
+typedef struct HuffmanTreeNode{  
+    int weight;  //哈夫曼树中节点的权值
+    struct HuffmanTreeNode* left;  
+    struct HuffmanTreeNode* right;  
+}HuffmanTreeNode,*PtrHuffman;  
+
+
+// 创建哈夫曼树
+PtrHuffman createHuffmanTree(int arr[]){
+    PtrHuffman ptrArr[LENGTH];
+    PtrHuffman ptr,pRoot=NULL;  
+
+    for (int i = 0; i < LENGTH; i++)
+    {  //初始化结构体指针数组,数组中每一个元素为一个结构体指针类型
+        ptr = (PtrHuffman)malloc(sizeof(HuffmanTreeNode));  
+        ptr->weight = arr[i];  
+        ptr->left = ptr->right = NULL; 
+        ptrArr[i] = ptr;
+    }
+    
+    for(int i = 1; i < LENGTH; i++){  //进行 n-1 次循环建立哈夫曼树  
+        //k1表示森林中具有最小权值的树根结点的下标,k2为次最小的下标
+        int k1 = -1, k2;
+        for(int j = 0; j < LENGTH; j++){  
+            if (ptrArr[j] != NULL && k1 == -1){  
+                k1 = j;  
+                continue;  
+            }  
+            if (ptrArr[j] != NULL){  
+                k2 = j;  
+                break;  
+            }  
+        }  
+        //将指针数组中的指针指向的最小值赋值给索引号为k1的,次小值赋值给索引号为k2的
+        for (int j = k2; j < LENGTH; j++){
+            if(ptrArr[j] != NULL){
+                if(ptrArr[j]->weight < ptrArr[k1]->weight){
+                    k2 = k1;
+                    k1 = j;
+                }else if(ptrArr[j]->weight < ptrArr[k2]->weight){
+                    k2 = j;
+                }
+            }
+        }
+        //由最小权值树和次最小权值树建立一棵新树,pRoot指向树根结点
+        pRoot = (PtrHuffman)malloc(sizeof(HuffmanTreeNode));
+        pRoot->weight = ptrArr[k1]->weight + ptrArr[k2]->weight;
+        pRoot->left = ptrArr[k1];
+        pRoot->right = ptrArr[k2];
+
+        ptrArr[k1] = pRoot; //将指向新树的指针赋给ptrArr指针数组中k1位置
+        ptrArr[k2] = NULL; //k2位置为空
+    }
+
+    return pRoot;
+}
+ 
+ //中序打印哈夫曼树的节点
+ 
+void midOrderprintHuffmanTreeNode(PtrHuffman pRoot)
+{
+    if(pRoot==NULL){
+        return;
+    }else{
+        midOrderprintHuffmanTreeNode(pRoot->left);
+        printf("%d ",pRoot->weight);
+        midOrderprintHuffmanTreeNode(pRoot->right);
+    }
+}
+
+int main(){
+    int arr[] = {8,19,2,12,7,15};
+    PtrHuffman pRoot = createHuffmanTree(arr);  //返回指向哈夫曼树根节点的指针
+
+    printf("中序哈夫曼树节点数据\n");
+    midOrderprintHuffmanTreeNode(pRoot);
+    printf("\n");
+    return 0;
+}
